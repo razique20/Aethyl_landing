@@ -43,10 +43,9 @@ export default function CTA() {
               Get Started
             </motion.span>
 
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Ready to Build the{" "}
-              <span className="gradient-text">Future?</span>
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Ready to Build the Future?
+          </h2>
 
             <p className="text-lg text-gray-400 max-w-xl mx-auto mb-10 leading-relaxed">
               Join thousands of developers building trustless commerce with

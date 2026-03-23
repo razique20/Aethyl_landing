@@ -62,9 +62,8 @@ export default function UseCases() {
           <span className="text-sm uppercase tracking-[0.3em] text-neon-pink mb-4 block font-medium">
             Use Cases
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-            Built for{" "}
-            <span className="gradient-text">Every Platform</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+            Built for Every Platform
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
             Whether you&apos;re building the next marketplace, freelance hub, or

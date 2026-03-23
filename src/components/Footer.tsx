@@ -44,7 +44,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-10 mb-16">
           {/* Logo & description */}
           <div className="col-span-2 md:col-span-2">
-            <div className="text-2xl font-bold gradient-text mb-4">Aethyl</div>
+            <div className="text-2xl font-bold text-white mb-4">Aethyl</div>
             <p className="text-sm text-gray-500 leading-relaxed mb-6">
               Next-gen Web3 infrastructure for secure, trustless digital
               commerce.

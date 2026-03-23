@@ -159,10 +159,10 @@ export default function Hero() {
           </motion.div>
 
           {/* Main heading */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-6">
-            <span className="text-white">The Future of</span>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-6 text-white">
+            The Future of
             <br />
-            <span className="gradient-text">Web3 Infrastructure</span>
+            <span className="gradient-text">Web3</span> Infrastructure
           </h1>
 
           {/* Subtitle */}

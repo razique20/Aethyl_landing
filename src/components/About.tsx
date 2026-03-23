@@ -47,9 +47,8 @@ export default function About() {
           <span className="text-sm uppercase tracking-[0.3em] text-neon-blue mb-4 block font-medium">
             About Aethyl
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-            Building the{" "}
-            <span className="gradient-text">Trust Layer</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+            Building the Trust Layer
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
             We&apos;re engineering the foundational infrastructure that powers secure,

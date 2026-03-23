@@ -80,8 +80,8 @@ export default function Services() {
           <span className="text-sm uppercase tracking-[0.3em] text-neon-purple mb-4 block font-medium">
             Products & Services
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-            The <span className="gradient-text">Complete Stack</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">
+            The Complete Stack
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
             Everything you need to build trustless, secure, and scalable digital
