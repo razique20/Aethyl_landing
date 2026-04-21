@@ -48,8 +48,8 @@ export default function CTA() {
           </h2>
 
             <p className="text-lg text-gray-400 max-w-xl mx-auto mb-10 leading-relaxed">
-              Join thousands of developers building trustless commerce with
-              Aethyl. Start with our free tier — no credit card required.
+              Join thousands of businesses architecting the future of global
+              commerce with Aethyl. Start building your transaction system today.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -6,39 +6,39 @@ import { ShoppingCart, Briefcase, Smartphone, Globe } from "lucide-react";
 
 const useCases = [
   {
-    icon: ShoppingCart,
-    title: "Marketplaces",
+    icon: Globe,
+    title: "Global trade & Logistics",
     description:
-      "Power buyer-seller transactions with built-in escrow, automated releases on delivery confirmation, and dispute arbitration. From luxury goods to digital assets.",
-    features: ["Milestone payments", "Buyer protection", "Seller verification"],
+      "Automate cross-border transactions. Release payments based on bill of lading verification, customs clearance, and port arrival triggers.",
+    features: ["Supply chain escrow", "Multi-currency", "Trade compliance"],
     color: "from-neon-blue to-cyan-400",
   },
   {
     icon: Briefcase,
-    title: "Freelance Platforms",
+    title: "Real Estate & M&A",
     description:
-      "Secure project-based payments with milestone escrow, timesheet verification, and automatic fund release. Protect both clients and freelancers.",
+      "Secure high-value asset transfers with multi-signature releases, conditional holds, and verifiable ownership verification on any ledger.",
     features: [
-      "Smart milestones",
-      "Auto time-tracking",
-      "Multi-currency payout",
+      "Conditional escrow",
+      "Large-cap settlement",
+      "Legal-ready docs",
     ],
     color: "from-neon-purple to-violet-400",
   },
   {
     icon: Smartphone,
-    title: "Service Apps",
+    title: "Service Platforms",
     description:
-      "Enable trust in on-demand services with real-time payment holds, service completion triggers, and instant settlement for gig workers.",
-    features: ["Real-time holds", "Geo-verified completion", "Instant payouts"],
+      "Power the next generation of freelance and gig economy platforms with milestone-based rewards and instant global payouts.",
+    features: ["Milestone logic", "Identity sync", "Instant settlement"],
     color: "from-neon-pink to-rose-400",
   },
   {
-    icon: Globe,
-    title: "Cross-Border Commerce",
+    icon: ShoppingCart,
+    title: "Digital Marketplaces",
     description:
-      "Eliminate intermediaries in international trade with multi-chain settlement, currency conversion, and compliance-ready documentation.",
-    features: ["Multi-chain", "Fiat off-ramps", "Trade compliance"],
+      "Enable trustless commerce for digital IP, high-value luxury goods, and synthetic assets with built-in buyer-seller protection.",
+    features: ["IP verification", "Anti-fraud", "Global reach"],
     color: "from-amber-400 to-orange-500",
   },
 ];

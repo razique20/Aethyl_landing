@@ -9,21 +9,21 @@ const pillars = [
     icon: Target,
     title: "Mission",
     description:
-      "To eliminate trust barriers in digital commerce by providing robust, transparent, and decentralized infrastructure that empowers developers and businesses to transact with confidence.",
+      "To provide the world's most secure and automated transaction infrastructure, enabling businesses to bridge the gap between traditional commerce and digital evolution.",
     gradient: "from-neon-blue to-neon-green",
   },
   {
     icon: Eye,
     title: "Vision",
     description:
-      "A world where every online transaction is secured by verifiable, trustless technology — making fraud, disputes, and payment uncertainty relics of the past.",
+      "A global economy where high-value transactions are executed with mathematical certainty — independent of borders, bureaucracy, or doubt.",
     gradient: "from-neon-purple to-neon-pink",
   },
   {
     icon: Layers,
     title: "Core Offerings",
     description:
-      "Smart escrow protocols, multi-chain settlement layers, dispute resolution engines, and a comprehensive SDK — everything you need to build trust into your platform.",
+      "Deals Architecture for complex workflows, Escrow APIs for secure settlement, and Blockchain Foundation for a unified global ledger.",
     gradient: "from-neon-pink to-neon-blue",
   },
 ];

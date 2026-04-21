@@ -9,53 +9,53 @@ const services = [
     icon: Shield,
     title: "Escrow API",
     description:
-      "Non-custodial smart escrow with multi-signature releases, milestone-based payments, and automated dispute handling. One API call to secure any transaction.",
-    tag: "Core Product",
+      "The gold standard for secure, milestone-based payments. Protect any transaction with non-custodial smart escrow and automated dispute resolution.",
+    tag: "Core Layer",
     color: "text-neon-blue",
     borderColor: "group-hover:border-neon-blue/30",
   },
   {
-    icon: Blocks,
-    title: "Multi-Chain Settlement",
+    icon: Code2,
+    title: "Deals Architecture (Offrion)",
     description:
-      "Settle across Ethereum, Polygon, Solana, and more. Our unified abstraction layer handles routing, gas optimization, and finality — seamlessly.",
-    tag: "Infrastructure",
+      "Powered by Offrion. Design complex transaction workflows where partners integrate APIs, distribute deals, and claim automated commissions on user claims.",
+    tag: "Workflow",
     color: "text-neon-purple",
     borderColor: "group-hover:border-neon-purple/30",
   },
   {
-    icon: Code2,
-    title: "Developer SDK",
+    icon: Blocks,
+    title: "Blockchain Foundation",
     description:
-      "TypeScript-first SDK with React hooks, REST & GraphQL APIs, webhooks, and sandbox environments. Build production-ready integrations in hours.",
-    tag: "Developer Tools",
+      "A unified abstraction layer connecting any chain or traditional ledger. Settle globally with optimized routing and instant finality.",
+    tag: "Infrastructure",
     color: "text-neon-green",
     borderColor: "group-hover:border-neon-green/30",
   },
   {
-    icon: Lock,
-    title: "Identity & KYC",
+    icon: Webhook,
+    title: "Universal API",
     description:
-      "On-chain identity verification with privacy-preserving zero-knowledge proofs. Comply with regulations without compromising user sovereignty.",
-    tag: "Compliance",
+      "A single integration point for all Aethyl services. Connect your existing ERP, CRM, or custom application in hours, not weeks.",
+    tag: "Integration",
     color: "text-neon-pink",
     borderColor: "group-hover:border-neon-pink/30",
   },
   {
-    icon: Webhook,
-    title: "Webhooks & Events",
+    icon: Zap,
+    title: "Global Settlement",
     description:
-      "Real-time event streaming for every transaction state change. Integrate with your existing systems using reliable, ordered webhook delivery.",
-    tag: "Integration",
+      "Fiat off-ramps and multi-currency payouts in 190+ countries. Real-time liquidity management for cross-border commerce.",
+    tag: "Payments",
     color: "text-neon-blue",
     borderColor: "group-hover:border-neon-blue/30",
   },
   {
-    icon: Zap,
-    title: "Instant Payouts",
+    icon: Lock,
+    title: "Future-Ready Apps",
     description:
-      "Fiat off-ramps and crypto payouts in 180+ countries. Automated treasury management with configurable settlement windows.",
-    tag: "Payments",
+      "Our modular system is building the next generation of vertical applications in Real Estate, Trade Finance, and beyond.",
+    tag: "Ecosystem",
     color: "text-neon-purple",
     borderColor: "group-hover:border-neon-purple/30",
   },
@@ -78,14 +78,14 @@ export default function Services() {
           transition={{ duration: 0.7 }}
         >
           <span className="text-sm uppercase tracking-[0.3em] text-neon-purple mb-4 block font-medium">
-            Products & Services
+            The Global Stack
           </span>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">
-            The Complete Stack
+            Comprehensive Digital Trust
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Everything you need to build trustless, secure, and scalable digital
-            commerce — from escrow to settlement.
+            Everything you need to build, secure, and scale global commerce —
+            from the underlying ledger to the final deal signature.
           </p>
         </motion.div>
 
@@ -131,7 +131,7 @@ export default function Services() {
             <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
             <div className="w-3 h-3 rounded-full bg-green-500/60" />
             <span className="ml-4 text-xs text-gray-500 font-mono">
-              escrow.ts
+              initialize_deal.ts
             </span>
           </div>
           <pre className="text-sm font-mono overflow-x-auto">
@@ -142,37 +142,46 @@ export default function Services() {
               <span className="text-neon-green"> &apos;@aethyl/sdk&apos;</span>
               {"\n\n"}
               <span className="text-neon-purple">const</span>
-              <span className="text-gray-300"> escrow = </span>
+              <span className="text-gray-300"> deal = </span>
               <span className="text-neon-purple">await</span>
               <span className="text-neon-blue"> Aethyl</span>
-              <span className="text-gray-300">.escrow.</span>
+              <span className="text-gray-300">.deals.</span>
               <span className="text-neon-blue">create</span>
               <span className="text-gray-300">({"{"}</span>
               {"\n"}
-              <span className="text-gray-300">{"  "}amount: </span>
-              <span className="text-neon-green">5000</span>
+              <span className="text-gray-300">{"  "}type: </span>
+              <span className="text-neon-green">&apos;cross_border_trade&apos;</span>
               <span className="text-gray-300">,</span>
               {"\n"}
-              <span className="text-gray-300">{"  "}currency: </span>
-              <span className="text-neon-green">&apos;USDC&apos;</span>
-              <span className="text-gray-300">,</span>
+              <span className="text-gray-300">{"  "}escrow: {"{"} amount: </span>
+              <span className="text-neon-green">250000</span>
+              <span className="text-gray-300">, currency: </span>
+              <span className="text-neon-green">&apos;USD&apos;</span>
+              <span className="text-gray-300"> {"}"},</span>
               {"\n"}
-              <span className="text-gray-300">{"  "}chain: </span>
-              <span className="text-neon-green">&apos;polygon&apos;</span>
+              <span className="text-gray-300">{"  "}settlement: </span>
+              <span className="text-neon-green">&apos;hybrid_on_chain&apos;</span>
               <span className="text-gray-300">,</span>
               {"\n"}
               <span className="text-gray-300">{"  "}milestones: [</span>
-              <span className="text-neon-green">&apos;design&apos;</span>
+              {"\n"}
+              <span className="text-gray-300">{"    "}</span>
+              <span className="text-neon-green">&apos;bill_of_lading_verified&apos;</span>
               <span className="text-gray-300">, </span>
-              <span className="text-neon-green">&apos;development&apos;</span>
-              <span className="text-gray-300">, </span>
-              <span className="text-neon-green">&apos;delivery&apos;</span>
-              <span className="text-gray-300">],</span>
+              {"\n"}
+              <span className="text-gray-300">{"    "}</span>
+              <span className="text-neon-green">&apos;customs_clearance&apos;</span>
+              <span className="text-gray-300">,</span>
+              {"\n"}
+              <span className="text-gray-300">{"    "}</span>
+              <span className="text-neon-green">&apos;port_arrival&apos;</span>
+              {"\n"}
+              <span className="text-gray-300">{"  "}]</span>
               {"\n"}
               <span className="text-gray-300">{"})"}</span>
               {"\n\n"}
               <span className="text-gray-500">
-                {"// "}Secure, trustless, 3 lines of code ✨
+                {"// "}Global commerce, architected in code 🌐
               </span>
             </code>
           </pre>

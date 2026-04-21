@@ -160,9 +160,9 @@ export default function Hero() {
 
           {/* Main heading */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-6 text-white">
-            The Future of
+            The Global
             <br />
-            <span className="gradient-text">Web3</span> Infrastructure
+            <span className="gradient-text">Operating System</span>
           </h1>
 
           {/* Subtitle */}
@@ -172,9 +172,8 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Aethyl powers the next generation of decentralized commerce with
-            secure escrow APIs, trustless settlement, and developer-first tools
-            built for scale.
+            Unified Deal Architecture and Escrow APIs for the next generation
+            of high-value global commerce.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -200,7 +199,6 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          {/* Stats */}
           <motion.div
             className="grid grid-cols-3 gap-8 mt-20 max-w-lg mx-auto"
             initial={{ opacity: 0, y: 30 }}
@@ -208,8 +206,8 @@ export default function Hero() {
             transition={{ delay: 0.9, duration: 0.6 }}
           >
             {[
-              { value: "$2B+", label: "Secured" },
-              { value: "10K+", label: "Developers" },
+              { value: "$5B+", label: "Secured" },
+              { value: "190+", label: "Countries" },
               { value: "99.9%", label: "Uptime" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
