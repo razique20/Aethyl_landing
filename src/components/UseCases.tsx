@@ -7,39 +7,27 @@ import { ShoppingCart, Briefcase, Smartphone, Globe } from "lucide-react";
 const useCases = [
   {
     icon: Globe,
-    title: "Global trade & Logistics",
+    title: "Global Logistics",
     description:
-      "Automate cross-border transactions. Release payments based on bill of lading verification, customs clearance, and port arrival triggers.",
-    features: ["Supply chain escrow", "Multi-currency", "Trade compliance"],
-    color: "from-neon-blue to-cyan-400",
+      "Automate cross-border transactions with non-custodial smart escrow triggered by real-world events.",
   },
   {
     icon: Briefcase,
     title: "Real Estate & M&A",
     description:
-      "Secure high-value asset transfers with multi-signature releases, conditional holds, and verifiable ownership verification on any ledger.",
-    features: [
-      "Conditional escrow",
-      "Large-cap settlement",
-      "Legal-ready docs",
-    ],
-    color: "from-neon-purple to-violet-400",
+      "Secure high-value asset transfers with multi-signature releases and conditional holds.",
   },
   {
     icon: Smartphone,
-    title: "Service Platforms",
+    title: "Gig Economy",
     description:
-      "Power the next generation of freelance and gig economy platforms with milestone-based rewards and instant global payouts.",
-    features: ["Milestone logic", "Identity sync", "Instant settlement"],
-    color: "from-neon-pink to-rose-400",
+      "Power freelance platforms with milestone-based rewards and instant global payouts.",
   },
   {
     icon: ShoppingCart,
-    title: "Digital Marketplaces",
+    title: "Marketplaces",
     description:
-      "Enable trustless commerce for digital IP, high-value luxury goods, and synthetic assets with built-in buyer-seller protection.",
-    features: ["IP verification", "Anti-fraud", "Global reach"],
-    color: "from-amber-400 to-orange-500",
+      "Enable trustless commerce for luxury goods with built-in buyer-seller protection.",
   },
 ];
 
@@ -48,73 +36,46 @@ export default function UseCases() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="usecases" className="relative py-32 px-6">
-      <div className="section-divider mb-32" />
-
-      <div ref={ref} className="max-w-6xl w-full mx-auto">
+    <section id="usecases" className="relative py-40 px-6 bg-secondary-bg">
+      <div ref={ref} className="max-w-7xl w-full mx-auto">
         {/* Section header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-32"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="text-sm uppercase tracking-[0.3em] text-neon-pink mb-4 block font-medium">
-            Use Cases
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
-            Built for Every Platform
+          <h2 className="apple-heading mb-8 text-white">
+            Built for Every Platform.
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Whether you&apos;re building the next marketplace, freelance hub, or
+          <p className="text-lg text-apple-gray max-w-2xl mx-auto leading-relaxed font-medium">
+            Whether you&apos;re building the next marketplace or
             on-demand service — Aethyl scales with your ambition.
           </p>
         </motion.div>
 
         {/* Use case cards */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {useCases.map((useCase, index) => {
             const Icon = useCase.icon;
             return (
               <motion.div
                 key={useCase.title}
-                className="group relative glass rounded-2xl p-8 overflow-hidden transition-all duration-500 hover:translate-y-[-4px]"
+                className="group relative bg-black rounded-[32px] p-10 overflow-hidden transition-all duration-700 hover:bg-[#1d1d1f]"
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.12, duration: 0.6 }}
+                transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
               >
-                {/* Gradient blur background */}
-                <div
-                  className={`absolute -top-20 -right-20 w-40 h-40 rounded-full bg-gradient-to-br ${useCase.color} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-700`}
-                />
-
-                <div className="relative z-10">
-                  <div className="flex items-center gap-4 mb-5">
-                    <div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${useCase.color} flex items-center justify-center opacity-80`}
-                    >
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-white">
-                      {useCase.title}
-                    </h3>
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="w-10 h-10 rounded-xl bg-[#1d1d1f] flex items-center justify-center mb-8 group-hover:bg-apple-blue transition-colors duration-500">
+                    <Icon className="w-5 h-5 text-white" />
                   </div>
-
-                  <p className="text-gray-400 leading-relaxed text-sm mb-6">
+                  <h3 className="text-lg font-semibold text-white tracking-tight mb-3">
+                    {useCase.title}
+                  </h3>
+                  <p className="text-sm text-apple-gray leading-snug font-normal">
                     {useCase.description}
                   </p>
-
-                  {/* Feature tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {useCase.features.map((feature) => (
-                      <span
-                        key={feature}
-                        className="text-xs px-3 py-1.5 rounded-full glass text-gray-300 font-medium"
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </motion.div>
             );
@@ -124,3 +85,5 @@ export default function UseCases() {
     </section>
   );
 }
+
+

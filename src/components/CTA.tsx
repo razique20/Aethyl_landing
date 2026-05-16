@@ -9,81 +9,67 @@ export default function CTA() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="relative py-32 px-6">
-      <div className="section-divider mb-32" />
-
-      <div ref={ref} className="max-w-4xl w-full mx-auto">
+    <section id="contact" className="relative py-24 md:py-40 px-6">
+      <div ref={ref} className="max-w-5xl w-full mx-auto">
         <motion.div
-          className="relative glass rounded-3xl p-12 sm:p-16 text-center overflow-hidden"
+          className="relative bg-secondary-bg rounded-[32px] md:rounded-[2.5rem] p-10 md:p-24 text-center overflow-hidden border border-white/5"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Background radial accent */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div
-              className="absolute w-[600px] h-[600px] rounded-full opacity-10"
+              className="absolute w-[600px] h-[600px] md:w-[800px] md:h-[800px] rounded-full opacity-[0.05]"
               style={{
-                background:
-                  "radial-gradient(circle, rgba(0,212,255,0.3) 0%, rgba(168,85,247,0.15) 50%, transparent 70%)",
-                top: "-200px",
+                background: "radial-gradient(circle, #0071e3 0%, transparent 70%)",
+                top: "50%",
                 left: "50%",
-                transform: "translateX(-50%)",
+                transform: "translate(-50%, -50%)",
               }}
             />
           </div>
 
           <div className="relative z-10">
-            <motion.span
-              className="text-sm uppercase tracking-[0.3em] text-neon-blue mb-6 block font-medium"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.2 }}
-            >
-              Get Started
-            </motion.span>
+            <h2 className="apple-heading mb-8 text-white">
+              Ready to Build <br className="hidden sm:block" /> the Future?
+            </h2>
 
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Ready to Build the Future?
-          </h2>
-
-            <p className="text-lg text-gray-400 max-w-xl mx-auto mb-10 leading-relaxed">
+            <p className="text-base md:text-lg text-apple-gray max-w-xl mx-auto mb-12 leading-relaxed">
               Join thousands of businesses architecting the future of global
-              commerce with Aethyl. Start building your transaction system today.
+              commerce with Aethyl and VOID. Start building today.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
               <a
                 href="#"
-                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-black overflow-hidden transition-all duration-300 hover:scale-105"
+                className="btn-pill bg-white text-black text-base px-8 py-4 font-semibold hover:bg-white/90 w-full sm:w-auto"
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink" />
-                <span className="absolute inset-0 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="flex items-center justify-center gap-2">
                   Start Building
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4" />
                 </span>
               </a>
               <a
                 href="#"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white glass transition-all duration-300 hover:scale-105 neon-border"
+                className="btn-pill border border-white/10 text-white text-base px-8 py-4 font-semibold hover:bg-white/5 w-full sm:w-auto"
               >
                 Talk to Sales
               </a>
             </div>
 
             {/* Trust signals */}
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-gray-500">
+            <div className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-[10px] text-apple-gray font-medium tracking-widest uppercase">
               <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-neon-green" />
+                <span className="w-1 h-1 rounded-full bg-apple-blue" />
                 SOC 2 Compliant
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-neon-green" />
+                <span className="w-1 h-1 rounded-full bg-apple-blue" />
                 99.9% SLA
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-neon-green" />
+                <span className="w-1 h-1 rounded-full bg-apple-blue" />
                 Free Sandbox
               </span>
             </div>
@@ -93,3 +79,5 @@ export default function CTA() {
     </section>
   );
 }
+
+
