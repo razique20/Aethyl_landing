@@ -106,7 +106,11 @@ export default function RootLayout({
       "Best web development agency in Dubai specializing in custom websites, mobile apps, CRM systems, SaaS platforms, and AI automation.",
     url: SITE_URL,
     logo: `${SITE_URL}/logo-icon.svg`,
-    sameAs: [],
+    sameAs: [
+      "https://www.linkedin.com/company/aethyl",
+      "https://twitter.com/aethyl",
+      "https://github.com/aethyl-global",
+    ],
     contactPoint: {
       "@type": "ContactPoint",
       email: "aethylglobal@gmail.com",
@@ -221,7 +225,11 @@ export default function RootLayout({
     areaServed: ["Dubai", "Abu Dhabi", "Sharjah", "UAE", "Saudi Arabia", "India"],
     priceRange: "$$",
     openingHours: "Mo-Fr 09:00-18:00",
-    sameAs: [],
+    sameAs: [
+      "https://www.linkedin.com/company/aethyl",
+      "https://twitter.com/aethyl",
+      "https://github.com/aethyl-global",
+    ],
   };
 
   const faqJsonLd = {

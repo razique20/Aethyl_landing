@@ -73,6 +73,36 @@ export default async function BlogPost({ params }: Props) {
     },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.aethyl.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://www.aethyl.com/blog",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: blog.title,
+        item: `https://www.aethyl.com/blog/${slug}`,
+      },
+    ],
+  };
+
+  const displayDate = new Date(blog.date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+  });
+
   return (
     <main className="min-h-screen bg-black">
       {/* Nav */}
@@ -103,7 +133,7 @@ export default async function BlogPost({ params }: Props) {
             {blog.tag}
           </span>
           <div className="flex items-center gap-3 text-[12px] text-corporate-gray mb-6">
-            <span>{blog.date}</span>
+            <span>{displayDate}</span>
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <span>{blog.readTime}</span>
             <span className="w-1 h-1 rounded-full bg-white/20" />
@@ -121,14 +151,23 @@ export default async function BlogPost({ params }: Props) {
 
         {/* Content */}
         <div className="space-y-6">
-          {blog.content.map((paragraph, i) => (
-            <p
-              key={i}
-              className="text-base text-corporate-gray leading-[1.8]"
-            >
-              {paragraph}
-            </p>
-          ))}
+          {blog.content.map((block, i) =>
+            block.type === "heading" ? (
+              <h2
+                key={i}
+                className="text-xl font-semibold text-white mt-10 mb-4"
+              >
+                {block.text}
+              </h2>
+            ) : (
+              <p
+                key={i}
+                className="text-base text-corporate-gray leading-[1.8]"
+              >
+                {block.text}
+              </p>
+            )
+          )}
         </div>
 
         {/* Related Posts */}
@@ -186,6 +225,10 @@ export default async function BlogPost({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
     </main>
   );

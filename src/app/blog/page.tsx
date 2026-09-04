@@ -40,7 +40,12 @@ export default function BlogPage() {
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {blogs.map((blog) => (
+          {blogs.map((blog) => {
+            const displayDate = new Date(blog.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+            });
+            return (
             <Link
               key={blog.slug}
               href={`/blog/${blog.slug}`}
@@ -57,7 +62,7 @@ export default function BlogPage() {
               </p>
               <div className="flex items-center justify-between pt-5 border-t border-white/[0.06]">
                 <div className="flex items-center gap-3 text-[11px] text-corporate-gray">
-                  <span>{blog.date}</span>
+                  <span>{displayDate}</span>
                   <span className="w-1 h-1 rounded-full bg-white/20" />
                   <span>{blog.readTime}</span>
                   <span className="w-1 h-1 rounded-full bg-white/20" />
@@ -66,7 +71,8 @@ export default function BlogPage() {
                 <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-accent transition-colors duration-300" />
               </div>
             </Link>
-          ))}
+          );
+          })}
         </div>
       </div>
     </main>
