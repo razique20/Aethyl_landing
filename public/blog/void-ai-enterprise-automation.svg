@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a0a2e"/>
+    </linearGradient>
+    <linearGradient id="glow4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg4)"/>
+  <!-- Neural network nodes -->
+  <g opacity="0.15">
+    <circle cx="200" cy="150" r="4" fill="#a855f7"/><circle cx="350" cy="120" r="3" fill="#a855f7"/>
+    <circle cx="500" cy="180" r="5" fill="#a855f7"/><circle cx="150" cy="300" r="3" fill="#6366f1"/>
+    <circle cx="400" cy="350" r="4" fill="#6366f1"/><circle cx="100" cy="450" r="3" fill="#a855f7"/>
+    <circle cx="300" cy="500" r="4" fill="#6366f1"/>
+  </g>
+  <g opacity="0.1" stroke="#a855f7" stroke-width="0.5">
+    <line x1="200" y1="150" x2="350" y2="120"/><line x1="350" y1="120" x2="500" y2="180"/>
+    <line x1="150" y1="300" x2="400" y2="350"/><line x1="200" y1="150" x2="150" y2="300"/>
+  </g>
+  <g opacity="0.15">
+    <circle cx="1000" cy="130" r="3" fill="#a855f7"/><circle cx="1050" cy="200" r="4" fill="#6366f1"/>
+    <circle cx="1100" cy="350" r="3" fill="#a855f7"/><circle cx="950" cy="400" r="4" fill="#6366f1"/>
+    <circle cx="1080" cy="480" r="3" fill="#a855f7"/>
+  </g>
+  <g opacity="0.1" stroke="#6366f1" stroke-width="0.5">
+    <line x1="1000" y1="130" x2="1050" y2="200"/><line x1="1050" y1="200" x2="1100" y2="350"/>
+    <line x1="950" y1="400" x2="1080" y2="480"/>
+  </g>
+  <!-- Central AI brain -->
+  <circle cx="600" cy="260" r="80" fill="none" stroke="url(#glow4)" stroke-width="2" opacity="0.6"/>
+  <circle cx="600" cy="260" r="60" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.3"/>
+  <circle cx="600" cy="260" r="40" fill="#a855f7" opacity="0.08"/>
+  <!-- Brain icon -->
+  <text x="600" y="275" text-anchor="middle" fill="#a855f7" font-size="40">🤖</text>
+  <!-- Agent lines radiating out -->
+  <g stroke="#a855f7" stroke-width="1" opacity="0.3" stroke-dasharray="4,4">
+    <line x1="540" y1="260" x2="350" y2="200"/>
+    <line x1="660" y1="260" x2="850" y2="200"/>
+    <line x1="600" y1="200" x2="600" y2="100"/>
+    <line x1="560" y1="310" x2="400" y2="420"/>
+    <line x1="640" y1="310" x2="800" y2="420"/>
+  </g>
+  <!-- Agent cards -->
+  <rect x="250" y="150" width="160" height="80" rx="10" fill="#1a1a2e" stroke="#a855f7" stroke-width="1" opacity="0.8"/>
+  <text x="330" y="180" text-anchor="middle" fill="#a855f7" font-family="system-ui" font-size="12" font-weight="600">📅 Scheduling</text>
+  <text x="330" y="200" text-anchor="middle" fill="#555" font-family="system-ui" font-size="10">Auto book &amp; follow up</text>
+  <rect x="790" y="150" width="160" height="80" rx="10" fill="#1a1a2e" stroke="#6366f1" stroke-width="1" opacity="0.8"/>
+  <text x="870" y="180" text-anchor="middle" fill="#6366f1" font-family="system-ui" font-size="12" font-weight="600">💬 Customer Service</text>
+  <text x="870" y="200" text-anchor="middle" fill="#555" font-family="system-ui" font-size="10">Tier 1 &amp; 2 support</text>
+  <rect x="250" y="380" width="160" height="80" rx="10" fill="#1a1a2e" stroke="#a855f7" stroke-width="1" opacity="0.8"/>
+  <text x="330" y="410" text-anchor="middle" fill="#a855f7" font-family="system-ui" font-size="12" font-weight="600">📊 Data Entry</text>
+  <text x="330" y="430" text-anchor="middle" fill="#555" font-family="system-ui" font-size="10">60-70% reduction</text>
+  <rect x="790" y="380" width="160" height="80" rx="10" fill="#1a1a2e" stroke="#6366f1" stroke-width="1" opacity="0.8"/>
+  <text x="870" y="410" text-anchor="middle" fill="#6366f1" font-family="system-ui" font-size="12" font-weight="600">⚡ Operations</text>
+  <text x="870" y="430" text-anchor="middle" fill="#555" font-family="system-ui" font-size="10">Multi-system sync</text>
+  <!-- Result badge -->
+  <rect x="500" y="390" width="200" height="40" rx="20" fill="url(#glow4)" opacity="0.9"/>
+  <text x="600" y="415" text-anchor="middle" fill="white" font-family="system-ui" font-size="14" font-weight="700">40% Faster Response</text>
+  <!-- Title -->
+  <text x="600" y="530" text-anchor="middle" fill="white" font-family="system-ui" font-size="28" font-weight="700">Void AI Enterprise Automation</text>
+  <text x="600" y="565" text-anchor="middle" fill="#666" font-family="system-ui" font-size="16">Autonomous agents that transform operations</text>
+</svg>

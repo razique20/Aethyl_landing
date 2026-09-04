@@ -49,8 +49,17 @@ export default function BlogPage() {
             <Link
               key={blog.slug}
               href={`/blog/${blog.slug}`}
-              className="group rounded-3xl border border-white/[0.06] bg-secondary-bg p-10 transition-all duration-500 hover:bg-[#1d1d1f] hover:border-white/[0.12]"
+              className="group rounded-3xl border border-white/[0.06] bg-secondary-bg overflow-hidden transition-all duration-500 hover:bg-[#1d1d1f] hover:border-white/[0.12]"
             >
+              <div className="h-48 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-10">
               <span className="inline-block px-3 py-1 rounded-lg bg-accent/10 text-accent text-[11px] font-semibold tracking-wide mb-5">
                 {blog.tag}
               </span>
@@ -69,6 +78,7 @@ export default function BlogPage() {
                   <span>{blog.author}</span>
                 </div>
                 <ArrowUpRight className="w-4 h-4 text-white/30 group-hover:text-accent transition-colors duration-300" />
+              </div>
               </div>
             </Link>
           );

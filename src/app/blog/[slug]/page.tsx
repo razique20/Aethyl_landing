@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: "Aethyl",
       images: [
         {
-          url: "/og-image.png",
+          url: blog.image,
           width: 1200,
           height: 630,
           alt: blog.title,
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: blog.title,
       description: blog.excerpt,
-      images: ["/og-image.png"],
+      images: [blog.image],
     },
   };
 }
@@ -139,6 +139,16 @@ export default async function BlogPost({ params }: Props) {
             <span className="w-1 h-1 rounded-full bg-white/20" />
             <span>{blog.author}</span>
           </div>
+        </div>
+
+        {/* Hero Image */}
+        <div className="mb-12 rounded-2xl overflow-hidden border border-white/[0.06]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={blog.image}
+            alt={blog.title}
+            className="w-full h-auto"
+          />
         </div>
 
         {/* Title */}

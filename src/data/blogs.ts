@@ -8,6 +8,7 @@ export interface Blog {
   tag: string;
   title: string;
   excerpt: string;
+  image: string;
   date: string;
   readTime: string;
   author: string;
@@ -21,6 +22,7 @@ export const blogs: Blog[] = [
     title: "Why Custom Websites Outperform Templates for Growing Businesses",
     excerpt:
       "Template sites limit your brand and SEO potential. Discover why custom-built websites with Next.js and headless CMS deliver 3× faster load times and higher conversion rates.",
+    image: "/blog/custom-websites-vs-templates.svg",
     date: "2026-08-01T00:00:00Z",
     readTime: "8 min read",
     author: "Aethyl Team",
@@ -50,6 +52,7 @@ export const blogs: Blog[] = [
     title: "Cross-Platform Mobile Apps in 2026: React Native vs Flutter",
     excerpt:
       "Choosing the right framework for your mobile application. We break down performance, developer experience, and time-to-market for both stacks.",
+    image: "/blog/react-native-vs-flutter.svg",
     date: "2026-07-15T00:00:00Z",
     readTime: "10 min read",
     author: "Aethyl Team",
@@ -78,6 +81,7 @@ export const blogs: Blog[] = [
     title: "Building a Custom CRM That Your Team Will Actually Use",
     excerpt:
       "Off-the-shelf CRMs force your workflow into someone else's mold. Learn how a tailored CRM with AI automation can cut admin time by 40%.",
+    image: "/blog/custom-crm-development.svg",
     date: "2026-07-01T00:00:00Z",
     readTime: "9 min read",
     author: "Aethyl Team",
@@ -106,6 +110,7 @@ export const blogs: Blog[] = [
     title: "How Void AI Agents Are Transforming Enterprise Operations",
     excerpt:
       "Autonomous AI agents that handle scheduling, data entry, and customer routing — without human intervention. See how Void AI powers the next generation of business automation.",
+    image: "/blog/void-ai-enterprise-automation.svg",
     date: "2026-06-15T00:00:00Z",
     readTime: "10 min read",
     author: "Aethyl Team",
@@ -134,6 +139,7 @@ export const blogs: Blog[] = [
     title: "From MVP to Scale: The Complete SaaS Launch Playbook",
     excerpt:
       "A step-by-step guide to shipping your SaaS product — from validating your idea and building an MVP to acquiring your first 100 paying customers.",
+    image: "/blog/saas-launch-playbook.svg",
     date: "2026-06-01T00:00:00Z",
     readTime: "12 min read",
     author: "Aethyl Team",
@@ -165,6 +171,7 @@ export const blogs: Blog[] = [
     title: "Headless CMS vs Traditional CMS: Which Is Right for Your Project?",
     excerpt:
       "Headless architecture gives you freedom, but comes with trade-offs. We compare Contentful, Sanity, Strapi, and WordPress headless for different project sizes.",
+    image: "/blog/headless-cms-comparison.svg",
     date: "2026-05-15T00:00:00Z",
     readTime: "9 min read",
     author: "Aethyl Team",
@@ -195,6 +202,7 @@ export const blogs: Blog[] = [
     title: "How Much Does It Cost to Build a Mobile App in 2026?",
     excerpt:
       "A transparent breakdown of mobile app development costs — from simple MVPs to full-featured enterprise apps. Budget ranges, hidden costs, and how to save.",
+    image: "/blog/mobile-app-development-cost-2026.svg",
     date: "2026-05-01T00:00:00Z",
     readTime: "8 min read",
     author: "Aethyl Team",
@@ -223,6 +231,7 @@ export const blogs: Blog[] = [
     title: "CI/CD Pipelines for Startups: Ship Faster Without Breaking Things",
     excerpt:
       "Setting up GitHub Actions, Vercel, and automated testing so your team can deploy with confidence — even with a small engineering team.",
+    image: "/blog/cicd-pipelines-for-startups.svg",
     date: "2026-04-15T00:00:00Z",
     readTime: "10 min read",
     author: "Aethyl Team",

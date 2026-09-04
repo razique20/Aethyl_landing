@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg6)"/>
+  <!-- CMS boxes -->
+  <rect x="100" y="120" width="240" height="180" rx="12" fill="#111" stroke="#22c55e" stroke-width="1.5" opacity="0.8"/>
+  <text x="220" y="170" text-anchor="middle" fill="#22c55e" font-family="system-ui" font-size="22" font-weight="700">Contentful</text>
+  <text x="220" y="200" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">Enterprise Standard</text>
+  <rect x="130" y="225" width="180" height="24" rx="4" fill="#22c55e" opacity="0.1"/>
+  <rect x="130" y="225" width="140" height="24" rx="4" fill="#22c55e" opacity="0.2"/>
+  <text x="145" y="241" fill="#22c55e" font-family="system-ui" font-size="10" font-weight="600">API Design</text>
+  <rect x="130" y="257" width="180" height="24" rx="4" fill="#22c55e" opacity="0.1"/>
+  <rect x="130" y="257" width="160" height="24" rx="4" fill="#22c55e" opacity="0.15"/>
+
+  <rect x="380" y="120" width="240" height="180" rx="12" fill="#111" stroke="#f59e0b" stroke-width="1.5" opacity="0.8"/>
+  <text x="500" y="170" text-anchor="middle" fill="#f59e0b" font-family="system-ui" font-size="22" font-weight="700">Sanity</text>
+  <text x="500" y="200" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">Developer's Dream</text>
+  <rect x="410" y="225" width="180" height="24" rx="4" fill="#f59e0b" opacity="0.1"/>
+  <rect x="410" y="225" width="150" height="24" rx="4" fill="#f59e0b" opacity="0.2"/>
+  <text x="425" y="241" fill="#f59e0b" font-family="system-ui" font-size="10" font-weight="600">Custom Studio</text>
+  <rect x="410" y="257" width="180" height="24" rx="4" fill="#f59e0b" opacity="0.1"/>
+  <rect x="410" y="257" width="170" height="24" rx="4" fill="#f59e0b" opacity="0.15"/>
+
+  <rect x="660" y="120" width="240" height="180" rx="12" fill="#111" stroke="#6366f1" stroke-width="1.5" opacity="0.8"/>
+  <text x="780" y="170" text-anchor="middle" fill="#6366f1" font-family="system-ui" font-size="22" font-weight="700">Strapi</text>
+  <text x="780" y="200" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">Open Source</text>
+  <rect x="690" y="225" width="180" height="24" rx="4" fill="#6366f1" opacity="0.1"/>
+  <rect x="690" y="225" width="120" height="24" rx="4" fill="#6366f1" opacity="0.2"/>
+  <text x="705" y="241" fill="#6366f1" font-family="system-ui" font-size="10" font-weight="600">Self-Hosted</text>
+  <rect x="690" y="257" width="180" height="24" rx="4" fill="#6366f1" opacity="0.1"/>
+  <rect x="690" y="257" width="130" height="24" rx="4" fill="#6366f1" opacity="0.15"/>
+
+  <rect x="940" y="120" width="240" height="180" rx="12" fill="#111" stroke="#8b5cf6" stroke-width="1.5" opacity="0.8"/>
+  <text x="1060" y="170" text-anchor="middle" fill="#8b5cf6" font-family="system-ui" font-size="22" font-weight="700">WP Headless</text>
+  <text x="1060" y="200" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">Pragmatic Choice</text>
+  <rect x="970" y="225" width="180" height="24" rx="4" fill="#8b5cf6" opacity="0.1"/>
+  <rect x="970" y="225" width="100" height="24" rx="4" fill="#8b5cf6" opacity="0.2"/>
+  <text x="985" y="241" fill="#8b5cf6" font-family="system-ui" font-size="10" font-weight="600">Familiar UI</text>
+  <rect x="970" y="257" width="180" height="24" rx="4" fill="#8b5cf6" opacity="0.1"/>
+  <rect x="970" y="257" width="140" height="24" rx="4" fill="#8b5cf6" opacity="0.15"/>
+
+  <!-- Arrows connecting to frontend -->
+  <g stroke="#444" stroke-width="1" opacity="0.3" stroke-dasharray="4,4">
+    <line x1="220" y1="300" x2="600" y2="380"/>
+    <line x1="500" y1="300" x2="600" y2="380"/>
+    <line x1="780" y1="300" x2="600" y2="380"/>
+    <line x1="1060" y1="300" x2="600" y2="380"/>
+  </g>
+
+  <!-- Frontend box -->
+  <rect x="440" y="370" width="320" height="100" rx="12" fill="#111" stroke="#333" stroke-width="1"/>
+  <text x="600" y="405" text-anchor="middle" fill="white" font-family="system-ui" font-size="16" font-weight="700">⚡ Next.js Frontend</text>
+  <text x="600" y="430" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">API → Website → Mobile → Any Channel</text>
+  <rect x="470" y="440" width="260" height="20" rx="4" fill="#22c55e" opacity="0.1"/>
+  <rect x="470" y="440" width="200" height="20" rx="4" fill="#22c55e" opacity="0.15"/>
+  <text x="600" y="454" text-anchor="middle" fill="#22c55e" font-family="system-ui" font-size="10" font-weight="600">Multi-Channel Delivery</text>
+
+  <!-- Title -->
+  <text x="600" y="530" text-anchor="middle" fill="white" font-family="system-ui" font-size="28" font-weight="700">Headless CMS Comparison</text>
+  <text x="600" y="565" text-anchor="middle" fill="#666" font-family="system-ui" font-size="16">Which one is right for your project?</text>
+</svg>
