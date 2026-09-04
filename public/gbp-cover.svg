@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 576" width="1024" height="576">
+  <defs>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00C9A7"/>
+      <stop offset="100%" stop-color="#00E5C0"/>
+    </linearGradient>
+    <linearGradient id="fadeRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00C9A7" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#00C9A7" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glowLeft" cx="30%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#00C9A7" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowRight" cx="85%" cy="40%" r="30%">
+      <stop offset="0%" stop-color="#00C9A7" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="576" fill="#000000"/>
+
+  <!-- Ambient glows -->
+  <rect width="1024" height="576" fill="url(#fadeRight)"/>
+  <circle cx="300" cy="288" r="300" fill="url(#glowLeft)"/>
+  <circle cx="850" cy="200" r="250" fill="url(#glowRight)"/>
+
+  <!-- Grid dots (subtle tech pattern) -->
+  <g opacity="0.06" fill="#00C9A7">
+    <circle cx="80" cy="80" r="1.5"/><circle cx="120" cy="80" r="1.5"/><circle cx="160" cy="80" r="1.5"/>
+    <circle cx="200" cy="80" r="1.5"/><circle cx="240" cy="80" r="1.5"/><circle cx="280" cy="80" r="1.5"/>
+    <circle cx="80" cy="120" r="1.5"/><circle cx="120" cy="120" r="1.5"/><circle cx="160" cy="120" r="1.5"/>
+    <circle cx="200" cy="120" r="1.5"/><circle cx="240" cy="120" r="1.5"/><circle cx="280" cy="120" r="1.5"/>
+    <circle cx="80" cy="160" r="1.5"/><circle cx="120" cy="160" r="1.5"/><circle cx="160" cy="160" r="1.5"/>
+    <circle cx="200" cy="160" r="1.5"/><circle cx="240" cy="160" r="1.5"/><circle cx="280" cy="160" r="1.5"/>
+    <circle cx="80" cy="200" r="1.5"/><circle cx="120" cy="200" r="1.5"/><circle cx="160" cy="200" r="1.5"/>
+    <circle cx="200" cy="200" r="1.5"/><circle cx="240" cy="200" r="1.5"/><circle cx="280" cy="200" r="1.5"/>
+    <circle cx="80" cy="240" r="1.5"/><circle cx="120" cy="240" r="1.5"/><circle cx="160" cy="240" r="1.5"/>
+    <circle cx="200" cy="240" r="1.5"/><circle cx="240" cy="240" r="1.5"/><circle cx="280" cy="240" r="1.5"/>
+    <circle cx="80" cy="280" r="1.5"/><circle cx="120" cy="280" r="1.5"/><circle cx="160" cy="280" r="1.5"/>
+    <circle cx="200" cy="280" r="1.5"/><circle cx="240" cy="280" r="1.5"/><circle cx="280" cy="280" r="1.5"/>
+    <circle cx="80" cy="320" r="1.5"/><circle cx="120" cy="320" r="1.5"/><circle cx="160" cy="320" r="1.5"/>
+    <circle cx="200" cy="320" r="1.5"/><circle cx="240" cy="320" r="1.5"/><circle cx="280" cy="320" r="1.5"/>
+    <circle cx="80" cy="360" r="1.5"/><circle cx="120" cy="360" r="1.5"/><circle cx="160" cy="360" r="1.5"/>
+    <circle cx="200" cy="360" r="1.5"/><circle cx="240" cy="360" r="1.5"/><circle cx="280" cy="360" r="1.5"/>
+    <circle cx="80" cy="400" r="1.5"/><circle cx="120" cy="400" r="1.5"/><circle cx="160" cy="400" r="1.5"/>
+    <circle cx="200" cy="400" r="1.5"/><circle cx="240" cy="400" r="1.5"/><circle cx="280" cy="400" r="1.5"/>
+    <circle cx="80" cy="440" r="1.5"/><circle cx="120" cy="440" r="1.5"/><circle cx="160" cy="440" r="1.5"/>
+    <circle cx="200" cy="440" r="1.5"/><circle cx="240" cy="440" r="1.5"/><circle cx="280" cy="440" r="1.5"/>
+    <circle cx="80" cy="480" r="1.5"/><circle cx="120" cy="480" r="1.5"/><circle cx="160" cy="480" r="1.5"/>
+    <circle cx="200" cy="480" r="1.5"/><circle cx="240" cy="480" r="1.5"/><circle cx="280" cy="480" r="1.5"/>
+  </g>
+
+  <!-- Hexagon icon (left side) -->
+  <g transform="translate(160, 178) scale(2)">
+    <path d="M60 10L100 33V77L60 100L20 77V33Z"
+          stroke="url(#accent)" stroke-width="2.5" fill="none"/>
+    <line x1="60" y1="55" x2="60" y2="10" stroke="url(#accent)" stroke-width="2"/>
+    <line x1="60" y1="55" x2="100" y2="77" stroke="url(#accent)" stroke-width="2"/>
+    <line x1="60" y1="55" x2="20" y2="77" stroke="url(#accent)" stroke-width="2"/>
+    <circle cx="60" cy="10" r="3" fill="#00C9A7"/>
+    <circle cx="100" cy="77" r="3" fill="#00C9A7"/>
+    <circle cx="20" cy="77" r="3" fill="#00C9A7"/>
+    <circle cx="60" cy="55" r="4" fill="url(#accent)"/>
+  </g>
+
+  <!-- Company name -->
+  <text x="420" y="250" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="72" font-weight="700" fill="#ffffff" letter-spacing="-1">Aethyl</text>
+
+  <!-- Accent line -->
+  <rect x="420" y="270" width="80" height="3" rx="2" fill="url(#accent)" opacity="0.8"/>
+
+  <!-- Tagline -->
+  <text x="420" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="22" font-weight="400" fill="#86868b" letter-spacing="3">TECHNOLOGIES</text>
+
+  <!-- Services -->
+  <text x="420" y="370" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="18" fill="#86868b" opacity="0.7">
+    <tspan fill="#00C9A7">●</tspan> Web Development  <tspan fill="#00C9A7">●</tspan> Mobile Apps  <tspan fill="#00C9A7">●</tspan> CRM Systems  <tspan fill="#00C9A7">●</tspan> SaaS Platforms  <tspan fill="#00C9A7">●</tspan> AI Automation
+  </text>
+
+  <!-- Location -->
+  <text x="420" y="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="15" fill="#86868b" opacity="0.5" letter-spacing="1">DUBAI, UAE</text>
+
+  <!-- Subtle bottom border -->
+  <rect x="0" y="572" width="1024" height="4" fill="url(#accent)" opacity="0.3"/>
+</svg>

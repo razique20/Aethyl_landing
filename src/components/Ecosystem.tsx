@@ -34,7 +34,7 @@ export default function Ecosystem() {
   return (
     <section id="ecosystem" className="relative py-24 md:py-40 px-6 bg-black">
       <div ref={ref} className="max-w-7xl w-full mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 md:gap-24 items-center">
           {/* Content side */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -45,12 +45,12 @@ export default function Ecosystem() {
               The Offrion <br />
               <span className="gradient-text">Engine.</span>
             </h2>
-            <p className="text-lg text-apple-gray mb-12 md:mb-16 leading-relaxed font-medium">
+            <p className="text-base sm:text-lg text-apple-gray mb-10 sm:mb-12 md:mb-16 leading-relaxed font-medium">
               Offrion is the premier implementation of our Deal Architecture, 
               monetizing every transaction through automated commissions.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-8 md:gap-12">
+            <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
               {steps.map((step, index) => (
                 <motion.div
                   key={step.title}

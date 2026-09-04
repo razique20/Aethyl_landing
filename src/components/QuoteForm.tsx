@@ -72,7 +72,7 @@ export default function QuoteForm() {
   return (
     <section
       id="quote"
-      className="relative py-24 md:py-40 px-6 bg-secondary-bg overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-40 px-5 sm:px-6 bg-secondary-bg overflow-hidden"
     >
       {/* Background accent */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-[0.04] pointer-events-none"
@@ -90,7 +90,7 @@ export default function QuoteForm() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="accent-line mb-8" style={{ width: 40 }} />
-            <h2 className="text-[36px] md:text-[48px] font-bold leading-[1.05] tracking-[-0.02em] text-white mb-6">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[48px] font-bold leading-[1.05] tracking-[-0.02em] text-white mb-6">
               Get a Project Quote.
             </h2>
             <p className="text-base md:text-lg text-corporate-gray leading-relaxed mb-10 max-w-md">
@@ -167,10 +167,10 @@ export default function QuoteForm() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="rounded-3xl border border-white/[0.06] bg-black p-8 md:p-10 space-y-6"
+                className="rounded-2xl sm:rounded-3xl border border-white/[0.06] bg-black p-6 sm:p-8 md:p-10 space-y-5 sm:space-y-6"
               >
                 {/* Name & Email row */}
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[11px] font-medium text-corporate-gray uppercase tracking-widest mb-2">
                       Name
@@ -180,7 +180,7 @@ export default function QuoteForm() {
                       type="text"
                       required
                       placeholder="John Doe"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-corporate-gray/50 focus:outline-none focus:border-accent/50 transition-colors"
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-corporate-gray/50 focus:outline-none focus:border-accent/50 transition-colors min-h-[48px]"
                     />
                   </div>
                   <div>
@@ -192,13 +192,13 @@ export default function QuoteForm() {
                       type="email"
                       required
                       placeholder="john@company.com"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-corporate-gray/50 focus:outline-none focus:border-accent/50 transition-colors"
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-corporate-gray/50 focus:outline-none focus:border-accent/50 transition-colors min-h-[48px]"
                     />
                   </div>
                 </div>
 
                 {/* Company & Phone row */}
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[11px] font-medium text-corporate-gray uppercase tracking-widest mb-2">
                       Company
@@ -207,7 +207,7 @@ export default function QuoteForm() {
                       name="company"
                       type="text"
                       placeholder="Acme Inc."
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-corporate-gray/50 focus:outline-none focus:border-accent/50 transition-colors"
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-corporate-gray/50 focus:outline-none focus:border-accent/50 transition-colors min-h-[48px]"
                     />
                   </div>
                   <div>
@@ -218,7 +218,7 @@ export default function QuoteForm() {
                       name="phone"
                       type="tel"
                       placeholder="+1 (555) 123-4567"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-corporate-gray/50 focus:outline-none focus:border-accent/50 transition-colors"
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white placeholder:text-corporate-gray/50 focus:outline-none focus:border-accent/50 transition-colors min-h-[48px]"
                     />
                   </div>
                 </div>
@@ -257,8 +257,7 @@ export default function QuoteForm() {
                 <div>
                   <label className="block text-[11px] font-medium text-corporate-gray uppercase tracking-widest mb-2">
                     Budget Range
-                  </label>
-                  <select name="budget" className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white focus:outline-none focus:border-accent/50 transition-colors appearance-none cursor-pointer">
+                  </label>                    <select name="budget" className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-sm text-white focus:outline-none focus:border-accent/50 transition-colors appearance-none cursor-pointer min-h-[48px]">
                     <option value="" className="bg-black text-corporate-gray">
                       Select a range
                     </option>
@@ -291,7 +290,7 @@ export default function QuoteForm() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full btn-accent py-4 text-[15px] font-semibold gap-2 disabled:opacity-50"
+                  className="w-full btn-accent py-4 text-[15px] font-semibold gap-2 disabled:opacity-50 min-h-[52px]"
                 >
                   <Send className="w-4 h-4" />
                   {submitting ? "Submitting..." : "Submit Quote Request"}

@@ -21,7 +21,7 @@ export default function Blogs() {
   };
 
   return (
-    <section id="blog" className="relative py-24 md:py-40 bg-black overflow-hidden">
+    <section id="blog" className="relative py-16 sm:py-24 md:py-40 bg-black overflow-hidden">
       <div ref={ref} className="max-w-7xl w-full mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -74,7 +74,7 @@ export default function Blogs() {
               <Link
                 key={blog.slug}
                 href={`/blog/${blog.slug}`}
-                className="flex-none w-[340px] snap-start group rounded-3xl border border-white/[0.06] bg-secondary-bg p-8 transition-all duration-500 hover:bg-[#1d1d1f] hover:border-white/[0.12] cursor-pointer block"
+                className="flex-none w-[min(340px,80vw)] snap-start group rounded-2xl sm:rounded-3xl border border-white/[0.06] bg-secondary-bg p-6 sm:p-8 transition-all duration-500 hover:bg-[#1d1d1f] hover:border-white/[0.12] cursor-pointer block"
               >
                 {/* Tag */}
                 <span className="inline-block px-3 py-1 rounded-lg bg-accent/10 text-accent text-[11px] font-semibold tracking-wide mb-5">

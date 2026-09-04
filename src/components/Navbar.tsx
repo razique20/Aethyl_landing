@@ -27,21 +27,21 @@ export default function Navbar() {
       {/* Ad Banner */}
       {bannerVisible && (
         <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-accent/20 via-accent/10 to-accent/20 border-b border-accent/20">
-          <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 py-3 px-6 text-center">
-            <p className="text-sm font-medium text-white">
+          <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 sm:gap-3 py-2.5 sm:py-3 px-10 sm:px-6 text-center">
+            <p className="text-xs sm:text-sm font-medium text-white">
               🔥 Custom Websites starting at just{' '}
               <span className="font-bold text-accent">1,500 AED</span>
             </p>
             <a
               href="#quote"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-accent hover:text-white transition-colors"
             >
               Get Started
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
             <button
               onClick={() => setBannerVisible(false)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors"
+              className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors p-2 -m-2"
               aria-label="Close banner"
             >
               <X className="w-4 h-4" />
@@ -61,13 +61,13 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="w-full flex items-center justify-between px-8 sm:px-12">
+        <div className="w-full flex items-center justify-between px-4 sm:px-8 md:px-12">
           {/* Logo / Name */}
           <div className="flex-none flex items-center gap-4">
-            <a href="#hero" className="text-lg font-semibold text-white tracking-tight hover:text-apple-gray transition-colors">
+            <a href="#hero" className="text-base sm:text-lg font-semibold text-white tracking-tight hover:text-apple-gray transition-colors">
               Aethyl
             </a>
-            <span className="hidden lg:block text-[10px] uppercase tracking-[0.2em] text-apple-gray border-l border-white/10 pl-4 py-1">
+            <span className="hidden xl:block text-[10px] uppercase tracking-[0.2em] text-apple-gray border-l border-white/10 pl-4 py-1">
               The Global Operating System.
             </span>
           </div>
@@ -89,7 +89,7 @@ export default function Navbar() {
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden text-white w-10 h-10 flex items-center justify-center rounded-full"
+              className="md:hidden text-white w-11 h-11 flex items-center justify-center rounded-full"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -113,7 +113,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-3xl font-medium text-white/60 hover:text-white transition-colors"
+                className="text-2xl sm:text-3xl font-medium text-white/60 hover:text-white transition-colors py-3"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}

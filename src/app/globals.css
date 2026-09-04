@@ -84,6 +84,35 @@ body {
   animation: float 5s ease-in-out infinite;
 }
 
+/* Mobile touch optimizations */
+@media (max-width: 640px) {
+  /* Increase touch targets */
+  a, button, input, select, textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent text overflow */
+  h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Smoother scrolling on iOS */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent horizontal overflow */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Better select styling on mobile */
+  select {
+    background-image: none;
+  }
+}
+
 /* Apple-style Gradient Text */
 .gradient-text {
   background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);

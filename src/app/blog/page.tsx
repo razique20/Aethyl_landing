@@ -16,7 +16,7 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen bg-black">
       {/* Nav */}
-      <nav className="w-full px-6 py-5">
+      <nav className="w-full px-4 sm:px-6 py-4 sm:py-5">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-lg font-semibold text-white tracking-tight hover:text-apple-gray transition-colors">
             Aethyl
@@ -27,19 +27,19 @@ export default function BlogPage() {
         </div>
       </nav>
 
-      <div className="max-w-6xl mx-auto px-6 pt-16 pb-32">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-32">
         {/* Header */}
-        <div className="mb-20">
+        <div className="mb-12 sm:mb-16 md:mb-20">
           <div className="accent-line mb-8" style={{ width: 40 }} />
-          <h1 className="corp-heading text-white mb-6">Blog.</h1>
-          <p className="text-lg text-corporate-gray max-w-xl leading-relaxed">
+          <h1 className="corp-heading text-white mb-4 sm:mb-6">Blog.</h1>
+          <p className="text-base sm:text-lg text-corporate-gray max-w-xl leading-relaxed">
             Thoughts on web development, mobile apps, AI automation, and
             building products that scale.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
           {blogs.map((blog) => {
             const displayDate = new Date(blog.date).toLocaleDateString("en-US", {
               year: "numeric",
@@ -49,9 +49,9 @@ export default function BlogPage() {
             <Link
               key={blog.slug}
               href={`/blog/${blog.slug}`}
-              className="group rounded-3xl border border-white/[0.06] bg-secondary-bg overflow-hidden transition-all duration-500 hover:bg-[#1d1d1f] hover:border-white/[0.12]"
+              className="group rounded-2xl sm:rounded-3xl border border-white/[0.06] bg-secondary-bg overflow-hidden transition-all duration-500 hover:bg-[#1d1d1f] hover:border-white/[0.12]"
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-40 sm:h-48 overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={blog.image}
@@ -59,14 +59,14 @@ export default function BlogPage() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <div className="p-10">
+              <div className="p-6 sm:p-8 md:p-10">
               <span className="inline-block px-3 py-1 rounded-lg bg-accent/10 text-accent text-[11px] font-semibold tracking-wide mb-5">
                 {blog.tag}
               </span>
               <h2 className="text-xl font-semibold text-white mb-3 leading-snug tracking-tight group-hover:text-accent transition-colors duration-300">
                 {blog.title}
               </h2>
-              <p className="text-sm text-corporate-gray leading-relaxed mb-8">
+              <p className="text-sm text-corporate-gray leading-relaxed mb-5 sm:mb-6 md:mb-8">
                 {blog.excerpt}
               </p>
               <div className="flex items-center justify-between pt-5 border-t border-white/[0.06]">

@@ -106,7 +106,7 @@ export default async function BlogPost({ params }: Props) {
   return (
     <main className="min-h-screen bg-black">
       {/* Nav */}
-      <nav className="w-full px-6 py-5">
+      <nav className="w-full px-4 sm:px-6 py-4 sm:py-5">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-lg font-semibold text-white tracking-tight hover:text-apple-gray transition-colors">
             Aethyl
@@ -117,18 +117,18 @@ export default async function BlogPost({ params }: Props) {
         </div>
       </nav>
 
-      <article className="max-w-3xl mx-auto px-6 pt-16 pb-32">
+      <article className="max-w-3xl mx-auto px-5 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-32">
         {/* Back link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-sm text-corporate-gray hover:text-white transition-colors mb-16"
+          className="inline-flex items-center gap-2 text-sm text-corporate-gray hover:text-white transition-colors mb-10 sm:mb-16"
         >
           <ArrowLeft className="w-4 h-4" />
           All Articles
         </Link>
 
         {/* Meta */}
-        <div className="mb-10">
+        <div className="mb-6 sm:mb-10">
           <span className="inline-block px-3 py-1 rounded-lg bg-accent/10 text-accent text-[11px] font-semibold tracking-wide mb-5">
             {blog.tag}
           </span>
@@ -142,7 +142,7 @@ export default async function BlogPost({ params }: Props) {
         </div>
 
         {/* Hero Image */}
-        <div className="mb-12 rounded-2xl overflow-hidden border border-white/[0.06]">
+        <div className="mb-8 sm:mb-12 rounded-xl sm:rounded-2xl overflow-hidden border border-white/[0.06]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={blog.image}
@@ -152,12 +152,12 @@ export default async function BlogPost({ params }: Props) {
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-[44px] font-bold text-white leading-[1.1] tracking-[-0.02em] mb-12">
+        <h1 className="text-[26px] sm:text-3xl md:text-[44px] font-bold text-white leading-[1.1] tracking-[-0.02em] mb-8 sm:mb-12">
           {blog.title}
         </h1>
 
         {/* Divider */}
-        <div className="accent-line mb-12" style={{ width: 40 }} />
+        <div className="accent-line mb-8 sm:mb-12" style={{ width: 40 }} />
 
         {/* Content */}
         <div className="space-y-6">
@@ -193,7 +193,7 @@ export default async function BlogPost({ params }: Props) {
           if (related.length === 0) return null;
 
           return (
-            <div className="mt-20 pt-12 border-t border-white/[0.06]">
+            <div className="mt-14 sm:mt-20 pt-8 sm:pt-12 border-t border-white/[0.06]">
               <h2 className="text-xl font-semibold text-white mb-8">
                 Related Articles
               </h2>

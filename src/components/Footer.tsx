@@ -20,10 +20,10 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="relative pt-24 md:pt-32 pb-8 px-6 border-t border-border bg-secondary-bg">
+    <footer className="relative pt-16 sm:pt-24 md:pt-32 pb-8 px-5 sm:px-6 border-t border-border bg-secondary-bg">
       <div className="max-w-7xl w-full mx-auto">
         {/* Top section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16 md:mb-20">
           {/* Logo & description */}
           <div className="col-span-2">
             <div className="flex items-center gap-2.5 mb-6">

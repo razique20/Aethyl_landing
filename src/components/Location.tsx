@@ -33,7 +33,7 @@ export default function Location() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="relative py-24 md:py-40 px-6 bg-secondary-bg">
+    <section id="contact" className="relative py-16 sm:py-24 md:py-40 px-5 sm:px-6 bg-secondary-bg">
       <div ref={ref} className="max-w-7xl w-full mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left: Location info */}
@@ -43,7 +43,7 @@ export default function Location() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="accent-line mb-8" style={{ width: 40 }} />
-            <h2 className="text-[36px] md:text-[48px] font-bold leading-[1.05] tracking-[-0.02em] text-white mb-6">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[48px] font-bold leading-[1.05] tracking-[-0.02em] text-white mb-6">
               Web Development Agency in Dubai.
             </h2>
             <p className="text-base md:text-lg text-corporate-gray leading-relaxed mb-10 max-w-md">
@@ -93,12 +93,12 @@ export default function Location() {
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            <div className="rounded-3xl border border-white/[0.06] bg-black p-8 md:p-10">
+            <div className="rounded-2xl sm:rounded-3xl border border-white/[0.06] bg-black p-6 sm:p-8 md:p-10">
               <h3 className="text-lg font-bold text-white mb-8">
                 Get in Touch
               </h3>
 
-              <div className="space-y-6">
+              <div className="space-y-5 sm:space-y-6">
                 {contactDetails.map((detail, i) => {
                   const Icon = detail.icon;
                   return (

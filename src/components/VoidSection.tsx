@@ -32,12 +32,12 @@ export default function VoidSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="void" className="relative py-40 px-6 bg-black overflow-hidden">
+    <section id="void" className="relative py-20 sm:py-32 md:py-40 px-5 sm:px-6 bg-black overflow-hidden">
       {/* Background glow for VOID */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-apple-blue/5 rounded-full blur-[120px] opacity-50" />
 
       <div ref={ref} className="max-w-7xl w-full mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-24 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 sm:gap-20 md:gap-24 items-center">
           {/* Content side */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -51,17 +51,17 @@ export default function VoidSection() {
               </span>
             </div>
             
-            <h2 className="corp-heading mb-10 text-white">
+            <h2 className="corp-heading mb-8 sm:mb-10 text-white">
               VOID: The Neural <br />
               <span className="text-apple-gray">Agency.</span>
             </h2>
             
-            <p className="text-lg text-apple-gray mb-12 leading-relaxed font-medium">
+            <p className="text-base sm:text-lg text-apple-gray mb-8 sm:mb-12 leading-relaxed font-medium">
               A high-fidelity AI operative platform designed for businesses that require 
               an invisible, infallible, and infinite workforce.
             </p>
 
-            <div className="flex flex-wrap gap-4 mb-16">
+            <div className="flex flex-wrap gap-3 sm:gap-4 mb-10 sm:mb-16">
               <div className="px-5 py-2.5 rounded-xl bg-secondary-bg border border-white/5 text-white text-xs font-medium">
                 Sub-100ms Response
               </div>
@@ -79,11 +79,11 @@ export default function VoidSection() {
           </motion.div>
 
           {/* Grid side */}
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
             {capabilities.map((cap, index) => (
               <motion.div
                 key={cap.title}
-                className="p-8 rounded-[32px] bg-secondary-bg border border-white/5 hover:bg-[#1d1d1f] transition-all duration-700 group"
+                className="p-6 sm:p-7 md:p-8 rounded-2xl sm:rounded-[32px] bg-secondary-bg border border-white/5 hover:bg-[#1d1d1f] transition-all duration-700 group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}

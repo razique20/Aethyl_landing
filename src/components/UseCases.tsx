@@ -36,7 +36,7 @@ export default function UseCases() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="usecases" className="relative py-40 px-6 bg-secondary-bg">
+    <section id="usecases" className="relative py-20 sm:py-32 md:py-40 px-5 sm:px-6 bg-secondary-bg">
       <div ref={ref} className="max-w-7xl w-full mx-auto">
         {/* Section header */}
         <motion.div
@@ -56,13 +56,13 @@ export default function UseCases() {
         </motion.div>
 
         {/* Use case cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {useCases.map((useCase, index) => {
             const Icon = useCase.icon;
             return (
               <motion.div
                 key={useCase.title}
-                className="group relative bg-black rounded-[32px] p-10 overflow-hidden transition-all duration-700 hover:bg-[#1d1d1f]"
+                className="group relative bg-black rounded-2xl sm:rounded-[32px] p-6 sm:p-8 md:p-10 overflow-hidden transition-all duration-700 hover:bg-[#1d1d1f]"
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}

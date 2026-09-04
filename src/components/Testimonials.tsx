@@ -9,7 +9,7 @@ export default function Testimonials() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-28 md:py-40 bg-secondary-bg overflow-hidden">
+    <section className="relative py-16 sm:py-28 md:py-40 bg-secondary-bg overflow-hidden">
       <div ref={ref} className="max-w-7xl w-full mx-auto px-6">
         {/* Header */}
         <div className="mb-16 md:mb-24">

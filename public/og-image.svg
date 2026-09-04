@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00C9A7"/>
+      <stop offset="100%" stop-color="#00E5C0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#00C9A7" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#000000"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Hexagon icon (centered) -->
+  <g transform="translate(560, 120) scale(2.5)">
+    <path d="M24 4L40 14V34L24 44L8 34V14Z"
+          stroke="url(#accent)" stroke-width="2" fill="none"/>
+    <line x1="24" y1="24" x2="24" y2="4" stroke="url(#accent)" stroke-width="1.5"/>
+    <line x1="24" y1="24" x2="40" y2="34" stroke="url(#accent)" stroke-width="1.5"/>
+    <line x1="24" y1="24" x2="8" y2="34" stroke="url(#accent)" stroke-width="1.5"/>
+    <circle cx="24" cy="4" r="2.5" fill="#00C9A7"/>
+    <circle cx="40" cy="34" r="2.5" fill="#00C9A7"/>
+    <circle cx="8" cy="34" r="2.5" fill="#00C9A7"/>
+    <circle cx="24" cy="24" r="3" fill="url(#accent)"/>
+  </g>
+
+  <!-- Company name -->
+  <text x="600" y="330" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="72" font-weight="700" fill="#ffffff" letter-spacing="-1">Aethyl</text>
+
+  <!-- Accent line -->
+  <rect x="540" y="350" width="120" height="3" rx="2" fill="url(#accent)"/>
+
+  <!-- Tagline -->
+  <text x="600" y="400" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="22" font-weight="400" fill="#86868b" letter-spacing="4">TECHNOLOGIES</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="460" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="28" font-weight="500" fill="#ffffff" opacity="0.9">
+    Website Development · Mobile Apps · CRM · SaaS · AI Automation
+  </text>
+
+  <!-- Location -->
+  <text x="600" y="510" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-size="18" fill="#86868b" opacity="0.6" letter-spacing="3">DUBAI, UAE</text>
+
+  <!-- Bottom accent bar -->
+  <rect x="0" y="626" width="1200" height="4" fill="url(#accent)" opacity="0.4"/>
+</svg>

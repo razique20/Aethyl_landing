@@ -18,11 +18,11 @@ export default function CTA() {
   const glowOpacity = useTransform(scrollYProgress, [0, 1], [0, 0.08]);
 
   return (
-    <section id="contact" className="relative py-24 md:py-44 px-6 bg-background overflow-hidden">
+    <section id="contact" className="relative py-16 sm:py-24 md:py-44 px-5 sm:px-6 bg-background overflow-hidden">
       <div ref={containerRef} className="max-w-6xl w-full mx-auto">
         <motion.div
           ref={ref}
-          className="relative rounded-3xl md:rounded-[2.5rem] p-10 md:p-24 text-center overflow-hidden border border-border"
+          className="relative rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] p-8 sm:p-12 md:p-24 text-center overflow-hidden border border-border"
           style={{
             background:
               "linear-gradient(135deg, rgba(161,0,255,0.08) 0%, rgba(17,17,24,0.9) 50%, rgba(161,0,255,0.04) 100%)",
@@ -63,7 +63,7 @@ export default function CTA() {
             />
 
             <motion.p
-              className="text-base md:text-lg text-corporate-gray max-w-xl mx-auto mb-12 leading-relaxed"
+              className="text-sm sm:text-base md:text-lg text-corporate-gray max-w-xl mx-auto mb-8 sm:mb-12 leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{
