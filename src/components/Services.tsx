@@ -7,18 +7,18 @@ import { Shield, Zap, Cpu } from "lucide-react";
 const services = [
   {
     icon: Shield,
-    title: "Secure Escrow",
-    description: "Enterprise-grade non-custodial escrow APIs with multi-signature security.",
+    title: "Custom Website Development",
+    description: "High-performance custom websites built with Next.js, React, and Tailwind CSS. From business sites to enterprise platforms — engineered for conversion and SEO.",
   },
   {
     icon: Zap,
-    title: "Instant Settlement",
-    description: "Global payouts in seconds, not days. Automated and trustless.",
+    title: "Mobile App Development",
+    description: "Cross-platform mobile applications built with React Native and Flutter. iOS and Android from a single codebase — faster delivery, lower cost.",
   },
   {
     icon: Cpu,
-    title: "Neural AI Operatives",
-    description: "Deploy autonomous VOID agents powered by Groq LPU for sub-100ms business logic execution.",
+    title: "AI-Powered Automation",
+    description: "Void AI agents for enterprise workflow automation. Autonomous scheduling, data entry, and customer routing — powered by Groq LPU for sub-100ms execution.",
   },
 ];
 
@@ -35,11 +35,12 @@ export default function Services() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="apple-heading mb-8 text-white">
-            Architecture for Trust.
+          <div className="accent-line mx-auto mb-8" style={{ width: 40 }} />
+          <h2 className="corp-heading mb-8 text-white">
+            Our Development Services.
           </h2>
           <p className="text-lg text-apple-gray max-w-2xl mx-auto leading-relaxed font-medium">
-            Powerful APIs and SDKs built for modern commerce.
+            Full-service web development, mobile app development, and AI automation — serving clients in Dubai, UAE, and globally.
           </p>
         </motion.div>
 

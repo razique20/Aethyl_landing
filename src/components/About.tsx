@@ -7,21 +7,21 @@ import { Target, Eye, Layers } from "lucide-react";
 const pillars = [
   {
     icon: Target,
-    title: "Mission",
+    title: "Our Mission",
     description:
-      "To provide the world's most secure and automated transaction infrastructure, enabling businesses to bridge the gap between traditional commerce and digital evolution.",
+      "To be the best web development agency in Dubai, delivering custom websites, mobile apps, and enterprise software that helps businesses scale faster and operate smarter.",
   },
   {
     icon: Eye,
-    title: "Vision",
+    title: "Our Vision",
     description:
-      "A global economy where high-value transactions are executed with mathematical certainty — independent of borders, bureaucracy, or doubt.",
+      "A global economy where every business has access to world-class digital infrastructure — custom websites, mobile applications, and AI automation — regardless of size or location.",
   },
   {
     icon: Layers,
-    title: "Core Offerings",
+    title: "What We Build",
     description:
-      "Deals Architecture for complex workflows, Escrow APIs for secure settlement, and the VOID AI platform for autonomous neural operations.",
+      "Custom website development with Next.js and React, cross-platform mobile applications with React Native and Flutter, CRM systems, SaaS platforms, and Void AI-powered enterprise automation.",
   },
 ];
 
@@ -39,12 +39,12 @@ export default function About() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="apple-heading mb-8 text-white">
-            Building the Trust Layer.
+          <div className="accent-line mx-auto mb-8" style={{ width: 40 }} />
+          <h2 className="corp-heading mb-8 text-white">
+            About Aethyl Technologies.
           </h2>
           <p className="text-lg text-apple-gray max-w-2xl mx-auto leading-relaxed font-medium">
-            We&apos;re engineering the foundational infrastructure that powers secure,
-            transparent, and scalable global commerce.
+            We are a leading web development agency in Dubai specializing in custom website development, mobile app development, CRM systems, and AI-powered enterprise automation.
           </p>
         </motion.div>
 

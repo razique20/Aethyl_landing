@@ -41,7 +41,7 @@ export default function Ecosystem() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="apple-heading mb-8 text-white">
+            <h2 className="corp-heading mb-8 text-white">
               The Offrion <br />
               <span className="gradient-text">Engine.</span>
             </h2>

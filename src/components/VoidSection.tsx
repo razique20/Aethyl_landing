@@ -51,7 +51,7 @@ export default function VoidSection() {
               </span>
             </div>
             
-            <h2 className="apple-heading mb-10 text-white">
+            <h2 className="corp-heading mb-10 text-white">
               VOID: The Neural <br />
               <span className="text-apple-gray">Agency.</span>
             </h2>

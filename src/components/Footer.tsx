@@ -1,76 +1,56 @@
 "use client";
 
-import { Globe, MessageCircle, Users, Send } from "lucide-react";
-
 const footerLinks = {
   Platform: [
-    { label: "Offrion", href: "#ecosystem" },
-    { label: "VOID AI", href: "#void" },
-    { label: "Escrow APIs", href: "#services" },
+    { label: "Void AI System", href: "#void" },
+    { label: "Offrion Deals", href: "#ecosystem" },
+    { label: "Enterprise OS", href: "#services" },
+    { label: "Mobile Application", href: "#services" },
   ],
-  Resources: [
-    { label: "Documentation", href: "#" },
-    { label: "API Reference", href: "#" },
-    { label: "Status Page", href: "#" },
+  Solutions: [
+    { label: "Custom SaaS", href: "#services" },
+    { label: "Landing Platforms", href: "#usecases" },
+    { label: "Developer Tools", href: "#services" },
   ],
   Company: [
+    { label: "About Us", href: "#about" },
     { label: "Contact", href: "#contact" },
-    { label: "Careers", href: "#" },
-  ],
-  Legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
   ],
 };
 
-const socialLinks = [
-  { icon: Globe, href: "#", label: "Web" },
-  { icon: Send, href: "#", label: "Telegram" },
-];
-
 export default function Footer() {
   return (
-    <footer className="relative pt-32 pb-16 px-6 border-t border-white/5 bg-black">
+    <footer className="relative pt-24 md:pt-32 pb-8 px-6 border-t border-border bg-secondary-bg">
       <div className="max-w-7xl w-full mx-auto">
         {/* Top section */}
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-12 mb-24">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
           {/* Logo & description */}
           <div className="col-span-2">
-            <div className="text-xl font-semibold text-white mb-6 tracking-tight">Aethyl</div>
-            <p className="text-xs text-apple-gray leading-relaxed mb-8 max-w-xs font-normal">
-              The Global Operating System for autonomous, high-value commerce. 
-              Powered by AI neural agencies and trustless settlement infrastructure.
-            </p>
-            {/* Social links */}
-            <div className="flex items-center gap-4">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-apple-gray hover:text-white transition-all duration-300 border border-white/5 bg-secondary-bg hover:bg-white/5"
-                  >
-                    <Icon className="w-3.5 h-3.5" />
-                  </a>
-                );
-              })}
+            <div className="flex items-center gap-2.5 mb-6">
+              <img src="/logo-icon.svg" alt="Aethyl" className="w-9 h-9" />
+              <span className="text-lg font-bold text-white tracking-tight">
+                Aethyl
+              </span>
             </div>
+            <p className="text-sm text-corporate-gray leading-relaxed mb-4 max-w-xs font-normal">
+              The enterprise operating system for autonomous business
+              infrastructure. Powered by Void AI and Offrion deal architecture.
+            </p>
+
           </div>
 
           {/* Link columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-[10px] font-bold text-white uppercase tracking-[0.2em] mb-6">
+              <h4 className="text-[11px] font-bold text-white uppercase tracking-widest mb-6">
                 {category}
               </h4>
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-xs text-apple-gray hover:text-white transition-colors duration-300 font-normal"
+                      className="text-sm text-corporate-gray hover:text-white transition-colors duration-300 font-normal"
                     >
                       {link.label}
                     </a>
@@ -82,20 +62,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-10 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="text-[10px] text-apple-gray font-medium uppercase tracking-widest">
-            © {new Date().getFullYear()} Aethyl. All rights reserved.
+        <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-6">
+          <p className="text-xs text-corporate-gray font-medium">
+            © {new Date().getFullYear()} Aethyl Technologies. All rights
+            reserved.
           </p>
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-apple-blue animate-pulse" />
-            <p className="text-[10px] text-apple-gray font-medium uppercase tracking-widest">
-              Secured by Aethyl Network.
-            </p>
-          </div>
         </div>
       </div>
     </footer>
   );
 }
-
-

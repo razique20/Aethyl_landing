@@ -45,7 +45,8 @@ export default function UseCases() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="apple-heading mb-8 text-white">
+          <div className="accent-line mx-auto mb-8" style={{ width: 40 }} />
+          <h2 className="corp-heading mb-8 text-white">
             Built for Every Platform.
           </h2>
           <p className="text-lg text-apple-gray max-w-2xl mx-auto leading-relaxed font-medium">
