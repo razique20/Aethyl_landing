@@ -17,21 +17,36 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const blog = getBlogBySlug(slug);
   if (!blog) return {};
 
+  const canonicalUrl = `https://www.aethyl.com/blog/${slug}`;
+
   return {
     title: `${blog.title} — Aethyl Blog`,
     description: blog.excerpt,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: blog.title,
       description: blog.excerpt,
+      url: canonicalUrl,
       type: "article",
       publishedTime: blog.date,
       authors: [blog.author],
       siteName: "Aethyl",
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: blog.title,
       description: blog.excerpt,
+      images: ["/og-image.png"],
     },
   };
 }
@@ -115,6 +130,46 @@ export default async function BlogPost({ params }: Props) {
             </p>
           ))}
         </div>
+
+        {/* Related Posts */}
+        {(() => {
+          const sameTag = blogs.filter(
+            (b) => b.slug !== slug && b.tag === blog.tag
+          );
+          const otherRecent = blogs.filter(
+            (b) => b.slug !== slug && b.tag !== blog.tag
+          );
+          const related = [...sameTag, ...otherRecent].slice(0, 3);
+
+          if (related.length === 0) return null;
+
+          return (
+            <div className="mt-20 pt-12 border-t border-white/[0.06]">
+              <h2 className="text-xl font-semibold text-white mb-8">
+                Related Articles
+              </h2>
+              <div className="grid gap-4">
+                {related.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="group rounded-2xl border border-white/[0.06] bg-secondary-bg p-6 transition-all duration-300 hover:bg-[#1d1d1f] hover:border-white/[0.12]"
+                  >
+                    <span className="inline-block px-2.5 py-0.5 rounded-md bg-accent/10 text-accent text-[10px] font-semibold tracking-wide mb-3">
+                      {post.tag}
+                    </span>
+                    <h3 className="text-sm font-semibold text-white leading-snug group-hover:text-accent transition-colors duration-300 mb-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-xs text-corporate-gray leading-relaxed line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* CTA */}
         <div className="mt-20 pt-12 border-t border-white/[0.06] text-center">

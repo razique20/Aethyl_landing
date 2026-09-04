@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Expert insights on custom website development, mobile apps, CRM systems, SaaS platforms, and AI-powered enterprise automation.",
   alternates: {
-    canonical: "https://aethyl.com/blog",
+    canonical: "https://www.aethyl.com/blog",
   },
 };
 
