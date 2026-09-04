@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogs } from "@/data/blogs";
 
-const BASE_URL = "https://aethyl.com";
+const BASE_URL = "https://www.aethyl.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogPages = blogs.map((blog) => ({
