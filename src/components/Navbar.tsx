@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "What We Build", href: "#whatwbuild" },
+  { label: "Services", href: "#services", external: false },
+  { label: "What We Build", href: "#whatwbuild", external: false },
   { label: "VOID", href: "https://void.aethyl.com", external: true },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "#contact", external: false },
 ];
 
 export default function Navbar() {
