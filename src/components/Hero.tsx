@@ -125,26 +125,6 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* Trust line */}
-            <motion.div
-              className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] sm:text-[11px] text-corporate-gray font-medium"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              <span className="flex items-center gap-2">
-                <span className="w-1 h-1 rounded-full bg-accent" />
-                SOC 2 Ready
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="w-1 h-1 rounded-full bg-accent" />
-                99.9% Uptime
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="w-1 h-1 rounded-full bg-accent" />
-                Free Sandbox
-              </span>
-            </motion.div>
           </div>
 
           {/* Right: Service grid */}
@@ -182,32 +162,7 @@ export default function Hero() {
               );
             })}
 
-            {/* Stats card */}
-            <motion.div
-              className="col-span-2 p-4 sm:p-5 rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.03] to-transparent"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 1,
-                duration: 0.7,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-[11px] text-corporate-gray font-medium uppercase tracking-widest mb-1">
-                    Active Projects
-                  </p>
-                  <p className="text-2xl font-bold text-white">40+</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-[11px] text-corporate-gray font-medium uppercase tracking-widest mb-1">
-                    Response Time
-                  </p>
-                  <p className="text-2xl font-bold text-accent">&lt;100ms</p>
-                </div>
-              </div>
-            </motion.div>
+
           </motion.div>
         </div>
       </div>

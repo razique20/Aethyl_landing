@@ -7,7 +7,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 const navLinks = [
   { label: "Services", href: "#services", external: false },
   { label: "What We Build", href: "#whatwbuild", external: false },
-  { label: "VOID", href: "https://void.aethyl.com", external: true },
+  { label: "VOID", href: "#void", external: false },
   { label: "Contact", href: "#contact", external: false },
 ];
 

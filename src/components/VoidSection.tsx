@@ -2,30 +2,9 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Brain, MessageSquare, ShieldAlert, FileText, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
 
-const capabilities = [
-  {
-    icon: Brain,
-    title: "Neural Memory",
-    description: "Persistent longitudinal context across multi-day conversations and channels.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Mission Control",
-    description: "Real-time Human-in-the-Loop takeover for high-stakes business environments.",
-  },
-  {
-    icon: FileText,
-    title: "Rapid Ingestion",
-    description: "Train operatives in seconds using URLs, PDFs, DOCX, or CSVs.",
-  },
-  {
-    icon: ShieldAlert,
-    title: "System Guard",
-    description: "Autonomous monitoring that alerts you via WhatsApp when anomalies are detected.",
-  },
-];
+
 
 export default function VoidSection() {
   const ref = useRef(null);
@@ -80,24 +59,21 @@ export default function VoidSection() {
             </a>
           </motion.div>
 
-          {/* Grid side */}
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
-            {capabilities.map((cap, index) => (
-              <motion.div
-                key={cap.title}
-                className="p-6 sm:p-7 md:p-8 rounded-2xl sm:rounded-[32px] bg-secondary-bg border border-white/5 hover:bg-[#1d1d1f] transition-all duration-700 group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center mb-6 group-hover:bg-apple-blue transition-colors duration-500">
-                  <cap.icon className="w-4 h-4 text-white" />
-                </div>
-                <h3 className="text-base font-semibold text-white mb-2 tracking-tight">{cap.title}</h3>
-                <p className="text-xs text-apple-gray leading-snug font-normal">{cap.description}</p>
-              </motion.div>
-            ))}
-          </div>
+          {/* Visual side */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="rounded-[32px] md:rounded-[40px] border border-white/5 relative z-10 overflow-hidden shadow-2xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/void-dashboard.png"
+                alt="Void AI Fleet Overview - Autonomous agent management dashboard"
+                className="w-full h-auto"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
