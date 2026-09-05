@@ -142,6 +142,7 @@ export default function Location() {
                     "CRM Development",
                     "SaaS Platforms",
                     "AI Automation",
+                    "Warehouse Dashboards",
                     "Custom Software",
                   ].map((keyword) => (
                     <span

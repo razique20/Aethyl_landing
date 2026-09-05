@@ -21,7 +21,7 @@ const pillars = [
     icon: Layers,
     title: "What We Build",
     description:
-      "Custom website development with Next.js and React, cross-platform mobile applications with React Native and Flutter, CRM systems, SaaS platforms, and Void AI-powered enterprise automation.",
+      "Custom website development with Next.js and React, cross-platform mobile applications with React Native and Flutter, CRM systems, SaaS platforms, warehouse management dashboards, and Void AI-powered enterprise automation.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function About() {
             About Aethyl Global.
           </h2>
           <p className="text-lg text-apple-gray max-w-2xl mx-auto leading-relaxed font-medium">
-            We are a leading web development agency in Dubai specializing in custom website development, mobile app development, CRM systems, and AI-powered enterprise automation.
+            We are a leading web development agency in Dubai specializing in custom website development, mobile app development, CRM systems, warehouse management dashboards, and AI-powered enterprise automation.
           </p>
         </motion.div>
 

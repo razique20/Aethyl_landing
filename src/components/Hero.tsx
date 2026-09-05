@@ -9,6 +9,7 @@ import {
   Layout,
   Wrench,
   ArrowRight,
+  LayoutDashboard,
 } from "lucide-react";
 
 const services = [
@@ -17,7 +18,7 @@ const services = [
   { icon: Cpu, label: "Void AI Agents" },
   { icon: Code, label: "SaaS Platforms" },
   { icon: Layout, label: "Custom Websites" },
-  { icon: Wrench, label: "Developer Tools" },
+  { icon: LayoutDashboard, label: "Warehouse Dashboards" },
 ];
 
 export default function Hero() {
@@ -94,8 +95,8 @@ export default function Hero() {
               }}
             >
               The best web development agency in Dubai. We build custom websites,
-              mobile applications, CRM systems, and SaaS platforms — engineered
-              to power modern business.
+              mobile applications, CRM systems, SaaS platforms, and warehouse
+              management dashboards — engineered to power modern business.
             </motion.p>
 
             {/* CTA Buttons */}

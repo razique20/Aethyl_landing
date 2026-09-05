@@ -9,6 +9,7 @@ const footerLinks = {
   ],
   Solutions: [
     { label: "Custom SaaS", href: "#services" },
+    { label: "Warehouse Dashboards", href: "#services" },
     { label: "Landing Platforms", href: "#usecases" },
     { label: "Developer Tools", href: "#services" },
   ],

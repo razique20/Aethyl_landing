@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Expert insights on custom website development, mobile apps, CRM systems, SaaS platforms, and AI-powered enterprise automation.",
+    "Expert insights on custom website development, mobile apps, CRM systems, SaaS platforms, warehouse dashboards, and AI-powered enterprise automation.",
   alternates: {
     canonical: "https://www.aethyl.com/blog",
   },

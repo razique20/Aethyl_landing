@@ -11,6 +11,8 @@ import {
   Code,
   Layout,
   Wrench,
+  Phone,
+  LayoutDashboard,
 } from "lucide-react";
 
 const serviceOptions = [
@@ -19,6 +21,7 @@ const serviceOptions = [
   { icon: Cpu, label: "Void AI Agents" },
   { icon: Code, label: "SaaS Platform" },
   { icon: Layout, label: "Custom Website" },
+  { icon: LayoutDashboard, label: "Warehouse Dashboard" },
   { icon: Wrench, label: "Developer Tools" },
 ];
 
@@ -295,6 +298,14 @@ export default function QuoteForm() {
                   <Send className="w-4 h-4" />
                   {submitting ? "Submitting..." : "Submit Quote Request"}
                 </button>
+
+                <a
+                  href="tel:+971547400553"
+                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl border border-white/[0.12] bg-white/[0.03] text-[15px] font-semibold text-white hover:bg-white/[0.06] hover:border-white/[0.2] transition-all duration-300 min-h-[52px]"
+                >
+                  <Phone className="w-4 h-4" />
+                  Call Us: +971 54 740 0553
+                </a>
 
                 <p className="text-[11px] text-corporate-gray text-center">
                   We typically respond within 24 hours. No spam, ever.

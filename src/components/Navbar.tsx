@@ -17,8 +17,16 @@ export default function Navbar() {
   const [bannerVisible, setBannerVisible] = useState(true);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
+    let lastScroll = 0;
+    const onScroll = () => {
+      const currentScroll = window.scrollY;
+      setScrolled(currentScroll > 50);
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        setBannerVisible(false);
+      }
+      lastScroll = currentScroll;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 

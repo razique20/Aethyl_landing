@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Aethyl",
   },
   description:
-    "Aethyl is the best web development agency in Dubai specializing in custom website development, mobile app development (React Native & Flutter), CRM systems, SaaS platforms, and AI-powered enterprise automation. Get a free quote today.",
+    "Aethyl is the best web development agency in Dubai specializing in custom website development, mobile app development (React Native & Flutter), CRM systems, SaaS platforms, warehouse management dashboards, and AI-powered enterprise automation. Get a free quote today.",
   keywords: [
     "website development Dubai",
     "web development agency Dubai",
@@ -42,6 +42,9 @@ export const metadata: Metadata = {
     "enterprise software development",
     "AI automation Dubai",
     "Void AI agents",
+    "warehouse dashboard development",
+    "warehouse management software",
+    "inventory management dashboard",
     "developer tools",
     "custom software development UAE",
     "landing page development",
@@ -56,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Aethyl | Best Website Development, Mobile App & CRM Agency in Dubai",
     description:
-      "Custom website development, mobile apps, SaaS platforms, and AI-powered enterprise automation. Get a free quote today.",
+      "Custom website development, mobile apps, SaaS platforms, warehouse dashboards, and AI-powered enterprise automation. Get a free quote today.",
     url: SITE_URL,
     siteName: "Aethyl",
     locale: "en_US",
@@ -74,7 +77,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aethyl | Best Website Development, Mobile App & CRM Agency in Dubai",
     description:
-      "Custom website development, mobile apps, SaaS platforms, and AI-powered enterprise automation.",
+      "Custom website development, mobile apps, SaaS platforms, warehouse dashboards, and AI-powered enterprise automation.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -103,7 +106,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: "Aethyl Global",
     description:
-      "Best web development agency in Dubai specializing in custom websites, mobile apps, CRM systems, SaaS platforms, and AI automation.",
+      "Best web development agency in Dubai specializing in custom websites, mobile apps, CRM systems, SaaS platforms, warehouse dashboards, and AI automation.",
     url: SITE_URL,
     logo: `${SITE_URL}/logo-icon.svg`,
     sameAs: [
@@ -185,6 +188,14 @@ export default function RootLayout({
             description: "Void AI agents for enterprise workflow automation.",
           },
         },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Warehouse Dashboard Development",
+            description: "Custom warehouse management dashboards to replace Excel-based operations.",
+          },
+        },
       ],
     },
   };
@@ -195,7 +206,7 @@ export default function RootLayout({
     name: "Aethyl Global",
     url: SITE_URL,
     description:
-      "Best web development agency in Dubai for custom websites, mobile apps, CRM, and SaaS platforms.",
+      "Best web development agency in Dubai for custom websites, mobile apps, CRM, SaaS platforms, and warehouse dashboards.",
     potentialAction: {
       "@type": "SearchAction",
       target: `${SITE_URL}/search?q={search_term_string}`,
@@ -257,7 +268,7 @@ export default function RootLayout({
         name: "What services does Aethyl offer?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Aethyl offers custom website development, mobile app development (React Native & Flutter), CRM system development, SaaS platform engineering, AI-powered enterprise automation with Void AI, and custom developer tools.",
+          text:      "Aethyl offers custom website development, mobile app development (React Native & Flutter), CRM system development, SaaS platform engineering, warehouse management dashboards, AI-powered enterprise automation with Void AI, and custom developer tools.",
         },
       },
       {

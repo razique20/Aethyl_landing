@@ -38,13 +38,13 @@
   <!-- Tagline -->
   <text x="600" y="400" text-anchor="middle"
         font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
-        font-size="22" font-weight="400" fill="#86868b" letter-spacing="4">TECHNOLOGIES</text>
+        font-size="22" font-weight="400" fill="#86868b" letter-spacing="4">GLOBAL</text>
 
   <!-- Subtitle -->
   <text x="600" y="460" text-anchor="middle"
         font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
         font-size="28" font-weight="500" fill="#ffffff" opacity="0.9">
-    Website Development · Mobile Apps · CRM · SaaS · AI Automation
+    Website Development · Mobile Apps · CRM · SaaS · Warehouse Dashboards · AI Automation
   </text>
 
   <!-- Location -->

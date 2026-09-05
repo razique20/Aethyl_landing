@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code, Layout, Wrench, ArrowRight } from "lucide-react";
+import { Code, Layout, Wrench, ArrowRight, LayoutDashboard } from "lucide-react";
 
 const offerings = [
   {
@@ -18,6 +18,13 @@ const offerings = [
     description:
       "End-to-end product engineering for SaaS startups and enterprises. Auth, billing, dashboards, APIs — the full stack, delivered fast.",
     tags: ["TypeScript", "PostgreSQL", "Stripe"],
+  },
+  {
+    icon: LayoutDashboard,
+    title: "Warehouse Dashboards",
+    description:
+      "Replace Excel-based warehouse management with real-time dashboards. Inventory tracking, order management, and operational analytics — custom-built for your workflow.",
+    tags: ["Real-time Data", "Inventory", "Analytics"],
   },
   {
     icon: Wrench,

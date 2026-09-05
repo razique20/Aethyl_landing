@@ -18,7 +18,7 @@ const faqs = [
   {
     question: "What services does Aethyl offer?",
     answer:
-      "Aethyl is a full-service development agency in Dubai offering custom website development, mobile app development (React Native & Flutter), CRM system development, SaaS platform engineering, AI-powered enterprise automation with Void AI, and custom developer tools.",
+      "Aethyl is a full-service development agency in Dubai offering custom website development, mobile app development (React Native & Flutter), CRM system development, SaaS platform engineering, warehouse management dashboards, AI-powered enterprise automation with Void AI, and custom developer tools.",
   },
   {
     question: "How long does it take to build a custom website?",
@@ -61,7 +61,7 @@ export default function FAQ() {
           </h2>
           <p className="text-base text-corporate-gray max-w-xl mx-auto leading-relaxed">
             Everything you need to know about our web development, mobile app,
-            and CRM services in Dubai.
+            CRM, and warehouse dashboard services in Dubai.
           </p>
         </motion.div>
 

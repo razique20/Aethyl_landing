@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Shield, Zap, Cpu } from "lucide-react";
+import { Shield, Zap, Cpu, LayoutDashboard } from "lucide-react";
 
 const services = [
   {
@@ -19,6 +19,11 @@ const services = [
     icon: Cpu,
     title: "AI-Powered Automation",
     description: "Void AI agents for enterprise workflow automation. Autonomous scheduling, data entry, and customer routing — powered by Groq LPU for sub-100ms execution.",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "Warehouse Dashboard Systems",
+    description: "Custom warehouse management dashboards for businesses transitioning from Excel. Real-time inventory tracking, order management, and operational analytics — built to replace spreadsheets.",
   },
 ];
 

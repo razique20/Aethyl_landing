@@ -74,12 +74,12 @@
 
   <!-- Tagline -->
   <text x="420" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
-        font-size="22" font-weight="400" fill="#86868b" letter-spacing="3">TECHNOLOGIES</text>
+        font-size="22" font-weight="400" fill="#86868b" letter-spacing="3">GLOBAL</text>
 
   <!-- Services -->
   <text x="420" y="370" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
         font-size="18" fill="#86868b" opacity="0.7">
-    <tspan fill="#00C9A7">●</tspan> Web Development  <tspan fill="#00C9A7">●</tspan> Mobile Apps  <tspan fill="#00C9A7">●</tspan> CRM Systems  <tspan fill="#00C9A7">●</tspan> SaaS Platforms  <tspan fill="#00C9A7">●</tspan> AI Automation
+    <tspan fill="#00C9A7">●</tspan> Web Development  <tspan fill="#00C9A7">●</tspan> Mobile Apps  <tspan fill="#00C9A7">●</tspan> CRM Systems  <tspan fill="#00C9A7">●</tspan> SaaS Platforms  <tspan fill="#00C9A7">●</tspan> Warehouse Dashboards  <tspan fill="#00C9A7">●</tspan> AI Automation
   </text>
 
   <!-- Location -->
