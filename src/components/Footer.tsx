@@ -64,7 +64,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="text-xs text-corporate-gray font-medium">
-            © {new Date().getFullYear()} Aethyl Technologies. All rights
+            © {new Date().getFullYear()} Aethyl Global. All rights
             reserved.
           </p>
         </div>

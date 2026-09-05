@@ -47,7 +47,7 @@ export default function Location() {
               Web Development Agency in Dubai.
             </h2>
             <p className="text-base md:text-lg text-corporate-gray leading-relaxed mb-10 max-w-md">
-              Aethyl Technologies is a full-service web development agency based
+              Aethyl Global is a full-service web development agency based
               in Dubai, UAE. We serve clients across the Middle East, India, and
               globally — delivering custom websites, mobile apps, and enterprise
               software.

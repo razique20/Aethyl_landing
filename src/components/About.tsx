@@ -41,7 +41,7 @@ export default function About() {
         >
           <div className="accent-line mx-auto mb-8" style={{ width: 40 }} />
           <h2 className="corp-heading mb-8 text-white">
-            About Aethyl Technologies.
+            About Aethyl Global.
           </h2>
           <p className="text-lg text-apple-gray max-w-2xl mx-auto leading-relaxed font-medium">
             We are a leading web development agency in Dubai specializing in custom website development, mobile app development, CRM systems, and AI-powered enterprise automation.

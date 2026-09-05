@@ -50,9 +50,9 @@ export const metadata: Metadata = {
     "Next.js development",
     "React development",
   ],
-  authors: [{ name: "Aethyl Technologies" }],
-  creator: "Aethyl Technologies",
-  publisher: "Aethyl Technologies",
+  authors: [{ name: "Aethyl Global" }],
+  creator: "Aethyl Global",
+  publisher: "Aethyl Global",
   openGraph: {
     title: "Aethyl | Best Website Development, Mobile App & CRM Agency in Dubai",
     description:
@@ -101,7 +101,7 @@ export default function RootLayout({
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Aethyl Technologies",
+    name: "Aethyl Global",
     description:
       "Best web development agency in Dubai specializing in custom websites, mobile apps, CRM systems, SaaS platforms, and AI automation.",
     url: SITE_URL,
@@ -192,7 +192,7 @@ export default function RootLayout({
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Aethyl Technologies",
+    name: "Aethyl Global",
     url: SITE_URL,
     description:
       "Best web development agency in Dubai for custom websites, mobile apps, CRM, and SaaS platforms.",
@@ -206,7 +206,7 @@ export default function RootLayout({
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Aethyl Technologies",
+    name: "Aethyl Global",
     description:
       "Best web development agency in Dubai specializing in custom websites, mobile apps, and enterprise software.",
     url: SITE_URL,
@@ -281,7 +281,7 @@ export default function RootLayout({
         name: "What is the best web development agency in Dubai?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Aethyl Technologies is a leading web development agency in Dubai specializing in custom website development, mobile apps, SaaS platforms, and enterprise automation. We deliver MVPs in 2–4 weeks with transparent pricing starting from 1,500 AED.",
+          text: "Aethyl Global is a leading web development agency in Dubai specializing in custom website development, mobile apps, SaaS platforms, and enterprise automation. We deliver MVPs in 2–4 weeks with transparent pricing starting from 1,500 AED.",
         },
       },
     ],

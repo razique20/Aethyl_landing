@@ -33,7 +33,7 @@ const faqs = [
   {
     question: "What is the best web development agency in Dubai?",
     answer:
-      "Aethyl Technologies is a leading web development agency in Dubai specializing in custom website development, mobile apps, SaaS platforms, and enterprise automation. We deliver MVPs in 2–4 weeks with transparent pricing starting from 1,500 AED.",
+      "Aethyl Global is a leading web development agency in Dubai specializing in custom website development, mobile apps, SaaS platforms, and enterprise automation. We deliver MVPs in 2–4 weeks with transparent pricing starting from 1,500 AED.",
   },
 ];
 
