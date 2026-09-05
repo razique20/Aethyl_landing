@@ -71,7 +71,9 @@ export default function VoidSection() {
             </div>
 
             <a
-              href="#"
+              href="https://void.aethyl.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-pill bg-white text-black px-8 py-3 hover:bg-white/90 text-sm"
             >
               Deploy Operative

@@ -2,20 +2,20 @@
 
 const footerLinks = {
   Platform: [
-    { label: "Void AI System", href: "#void" },
-    { label: "Offrion Deals", href: "#ecosystem" },
-    { label: "Enterprise OS", href: "#services" },
-    { label: "Mobile Application", href: "#services" },
+    { label: "Void AI System", href: "https://void.aethyl.com", external: true },
+    { label: "Offrion Deals", href: "#ecosystem", external: false },
+    { label: "Enterprise OS", href: "#services", external: false },
+    { label: "Mobile Application", href: "#services", external: false },
   ],
   Solutions: [
-    { label: "Custom SaaS", href: "#services" },
-    { label: "Warehouse Dashboards", href: "#services" },
-    { label: "Landing Platforms", href: "#usecases" },
-    { label: "Developer Tools", href: "#services" },
+    { label: "Custom SaaS", href: "#services", external: false },
+    { label: "Warehouse Dashboards", href: "#services", external: false },
+    { label: "Landing Platforms", href: "#usecases", external: false },
+    { label: "Developer Tools", href: "#services", external: false },
   ],
   Company: [
-    { label: "About Us", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "About Us", href: "#about", external: false },
+    { label: "Contact", href: "#contact", external: false },
   ],
 };
 
@@ -51,6 +51,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
+                      {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       className="text-sm text-corporate-gray hover:text-white transition-colors duration-300 font-normal"
                     >
                       {link.label}

@@ -7,7 +7,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "What We Build", href: "#whatwbuild" },
-  { label: "VOID", href: "#void" },
+  { label: "VOID", href: "https://void.aethyl.com", external: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -89,6 +89,7 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
+                  {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className="text-[12px] font-medium text-white/80 hover:text-white transition-colors duration-300 tracking-wide uppercase"
                 >
                   {link.label}
@@ -117,11 +118,11 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-          >
-            {navLinks.map((link, i) => (
+          >              {navLinks.map((link, i) => (
               <motion.a
                 key={link.label}
                 href={link.href}
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 onClick={() => setMobileOpen(false)}
                 className="text-2xl sm:text-3xl font-medium text-white/60 hover:text-white transition-colors py-3"
                 initial={{ opacity: 0, y: 20 }}
