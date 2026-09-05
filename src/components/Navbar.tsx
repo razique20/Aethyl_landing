@@ -23,6 +23,8 @@ export default function Navbar() {
       setScrolled(currentScroll > 50);
       if (currentScroll > lastScroll && currentScroll > 100) {
         setBannerVisible(false);
+      } else if (currentScroll < 50) {
+        setBannerVisible(true);
       }
       lastScroll = currentScroll;
     };
