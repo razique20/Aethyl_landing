@@ -21,29 +21,28 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="relative pt-16 sm:pt-24 md:pt-32 pb-8 px-5 sm:px-6 border-t border-border bg-secondary-bg">
-      <div className="max-w-7xl w-full mx-auto">
+    <footer className="relative pt-16 sm:pt-24 pb-8 px-6 border-t border-white/[0.06] bg-black">
+      <div className="max-w-[1200px] w-full mx-auto">
         {/* Top section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16 md:mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-12 sm:mb-16">
           {/* Logo & description */}
           <div className="col-span-2">
-            <div className="flex items-center gap-2.5 mb-6">
-              <img src="/logo-icon.svg" alt="Aethyl" className="w-9 h-9" />
-              <span className="text-lg font-bold text-white tracking-tight">
+            <div className="flex items-center gap-2.5 mb-5">
+              <img src="/logo-icon.svg" alt="Aethyl" className="w-8 h-8" />
+              <span className="text-[15px] font-semibold text-white tracking-tight">
                 Aethyl
               </span>
             </div>
-            <p className="text-sm text-corporate-gray leading-relaxed mb-4 max-w-xs font-normal">
+            <p className="text-[13px] text-[#888] leading-relaxed max-w-xs">
               The enterprise operating system for autonomous business
               infrastructure. Powered by Void AI and Offrion deal architecture.
             </p>
-
           </div>
 
           {/* Link columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-[11px] font-bold text-white uppercase tracking-widest mb-6">
+              <h4 className="text-[11px] font-bold text-white uppercase tracking-widest mb-5">
                 {category}
               </h4>
               <ul className="space-y-3">
@@ -51,8 +50,10 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="text-sm text-corporate-gray hover:text-white transition-colors duration-300 font-normal"
+                      {...(link.external
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                      className="text-[13px] text-[#888] hover:text-white transition-colors duration-300"
                     >
                       {link.label}
                     </a>
@@ -64,10 +65,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="text-xs text-corporate-gray font-medium">
-            © {new Date().getFullYear()} Aethyl Global. All rights
-            reserved.
+        <div className="pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[12px] text-[#666]">
+            © {new Date().getFullYear()} Aethyl Global. All rights reserved.
           </p>
         </div>
       </div>

@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { Plus } from "lucide-react";
 
 const faqs = [
   {
@@ -43,34 +43,31 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section
-      id="faq"
-      className="relative py-24 md:py-40 px-6 bg-secondary-bg"
-    >
-      <div ref={ref} className="max-w-3xl w-full mx-auto">
+    <section id="faq" className="relative py-24 sm:py-32 md:py-40 px-6 bg-black">
+      <div ref={ref} className="max-w-[720px] w-full mx-auto">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-14"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="accent-line mx-auto mb-8" style={{ width: 40 }} />
-          <h2 className="corp-heading text-white mb-4">
+          <div className="accent-line mx-auto mb-6" style={{ width: 40 }} />
+          <h2 className="framer-subheading text-white mb-4">
             Frequently Asked Questions.
           </h2>
-          <p className="text-base text-corporate-gray max-w-xl mx-auto leading-relaxed">
+          <p className="text-base text-[#888] max-w-lg mx-auto leading-relaxed">
             Everything you need to know about our web development, mobile app,
             CRM, and warehouse dashboard services in Dubai.
           </p>
         </motion.div>
 
         {/* FAQ items */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           {faqs.map((faq, i) => (
             <motion.div
               key={i}
-              className="rounded-2xl border border-white/[0.06] bg-black overflow-hidden"
+              className="rounded-[16px] border border-white/[0.06] bg-[rgba(255,255,255,0.02)] overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{
@@ -81,30 +78,32 @@ export default function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left min-h-[56px]"
+                className="w-full flex items-center justify-between px-6 py-5 text-left min-h-[60px] group"
               >
-                <span className="text-sm font-semibold text-white pr-4">
+                <span className="text-[15px] font-medium text-white/90 pr-4 group-hover:text-white transition-colors">
                   {faq.question}
                 </span>
-                <ChevronDown
-                  className={`w-4 h-4 text-white/40 flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === i ? "rotate-180" : ""
+                <Plus
+                  className={`w-4 h-4 text-[#666] flex-shrink-0 transition-transform duration-300 ${
+                    openIndex === i ? "rotate-45" : ""
                   }`}
                 />
               </button>
-              <motion.div
-                initial={false}
-                animate={{
-                  height: openIndex === i ? "auto" : 0,
-                  opacity: openIndex === i ? 1 : 0,
-                }}
-                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="overflow-hidden"
-              >
-                <p className="px-6 pb-5 text-sm text-corporate-gray leading-relaxed">
-                  {faq.answer}
-                </p>
-              </motion.div>
+              <AnimatePresence>
+                {openIndex === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <p className="px-6 pb-5 text-[14px] text-[#888] leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>

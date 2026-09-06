@@ -12,9 +12,6 @@ interface CountUpProps {
   className?: string;
 }
 
-/**
- * Animated counter that counts up from 0 when in view (Accenture-style).
- */
 export default function CountUp({
   end,
   decimals = 0,

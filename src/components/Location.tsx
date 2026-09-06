@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 const locations = [
@@ -33,20 +33,20 @@ export default function Location() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="relative py-16 sm:py-24 md:py-40 px-5 sm:px-6 bg-secondary-bg">
-      <div ref={ref} className="max-w-7xl w-full mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+    <section id="location" className="relative py-24 sm:py-32 md:py-40 px-6 bg-[#0a0a0a]">
+      <div ref={ref} className="max-w-[1200px] w-full mx-auto">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20">
           {/* Left: Location info */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="accent-line mb-8" style={{ width: 40 }} />
-            <h2 className="text-[28px] sm:text-[36px] md:text-[48px] font-bold leading-[1.05] tracking-[-0.02em] text-white mb-6">
+            <div className="accent-line mb-6" style={{ width: 40 }} />
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-bold leading-[1.05] tracking-[-0.025em] text-white mb-5">
               Web Development Agency in Dubai.
             </h2>
-            <p className="text-base md:text-lg text-corporate-gray leading-relaxed mb-10 max-w-md">
+            <p className="text-base text-[#888] leading-relaxed mb-10 max-w-md">
               Aethyl Global is a full-service web development agency based
               in Dubai, UAE. We serve clients across the Middle East, India, and
               globally — delivering custom websites, mobile apps, and enterprise
@@ -54,7 +54,7 @@ export default function Location() {
             </p>
 
             {/* Locations */}
-            <div className="space-y-6 mb-12">
+            <div className="space-y-5">
               {locations.map((location, i) => (
                 <motion.div
                   key={location.city}
@@ -74,7 +74,7 @@ export default function Location() {
                     <p className="text-sm font-semibold text-white mb-1">
                       {location.city}, {location.country}
                     </p>
-                    <p className="text-xs text-corporate-gray leading-relaxed">
+                    <p className="text-[13px] text-[#888] leading-relaxed">
                       {location.description}
                     </p>
                   </div>
@@ -87,18 +87,14 @@ export default function Location() {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{
-              duration: 1,
-              delay: 0.2,
-              ease: [0.16, 1, 0.3, 1],
-            }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="rounded-2xl sm:rounded-3xl border border-white/[0.06] bg-black p-6 sm:p-8 md:p-10">
-              <h3 className="text-lg font-bold text-white mb-8">
+            <div className="rounded-[20px] border border-white/[0.06] bg-[rgba(255,255,255,0.02)] p-7 sm:p-8">
+              <h3 className="text-lg font-bold text-white mb-7">
                 Get in Touch
               </h3>
 
-              <div className="space-y-5 sm:space-y-6">
+              <div className="space-y-5">
                 {contactDetails.map((detail, i) => {
                   const Icon = detail.icon;
                   return (
@@ -115,10 +111,10 @@ export default function Location() {
                       }}
                     >
                       <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0 group-hover:border-accent/30 transition-colors">
-                        <Icon className="w-4 h-4 text-white/60 group-hover:text-accent transition-colors" />
+                        <Icon className="w-4 h-4 text-white/50 group-hover:text-accent transition-colors" />
                       </div>
                       <div>
-                        <p className="text-[11px] text-corporate-gray uppercase tracking-widest mb-1">
+                        <p className="text-[11px] text-[#666] uppercase tracking-widest mb-1">
                           {detail.label}
                         </p>
                         <p className="text-sm text-white font-medium">
@@ -131,8 +127,8 @@ export default function Location() {
               </div>
 
               {/* Keywords */}
-              <div className="mt-10 pt-8 border-t border-white/[0.06]">
-                <p className="text-[11px] text-corporate-gray uppercase tracking-widest mb-4">
+              <div className="mt-8 pt-6 border-t border-white/[0.06]">
+                <p className="text-[11px] text-[#666] uppercase tracking-widest mb-4">
                   Our Services
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -147,7 +143,7 @@ export default function Location() {
                   ].map((keyword) => (
                     <span
                       key={keyword}
-                      className="px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-[11px] text-corporate-gray font-medium"
+                      className="px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-[11px] text-[#888] font-medium"
                     >
                       {keyword}
                     </span>

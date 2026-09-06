@@ -11,10 +11,6 @@ interface AnimatedTextProps {
   once?: boolean;
 }
 
-/**
- * Staggered word-by-word reveal animation (Accenture-style).
- * Words slide up and fade in one after another.
- */
 export default function AnimatedText({
   text,
   className = "",
@@ -29,14 +25,14 @@ export default function AnimatedText({
   return (
     <Tag ref={ref} className={className} aria-label={text}>
       {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden mr-[0.3em]">
+        <span key={i} className="inline-block overflow-hidden mr-[0.25em]">
           <motion.span
             className="inline-block"
             initial={{ y: "110%", opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
             transition={{
-              duration: 0.7,
-              delay: delay + i * 0.08,
+              duration: 0.6,
+              delay: delay + i * 0.06,
               ease: [0.16, 1, 0.3, 1],
             }}
           >
