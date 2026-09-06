@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
   <defs>
     <linearGradient id="g1" x1="8" y1="6" x2="40" y2="42">
-      <stop offset="0%" stop-color="#00C9A7"/>
-      <stop offset="100%" stop-color="#00E5C0"/>
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#6c5ce7"/>
     </linearGradient>
   </defs>
   <!-- Hexagon outline -->
@@ -12,9 +12,9 @@
   <line x1="24" y1="24" x2="40" y2="34" stroke="url(#g1)" stroke-width="2"/>
   <line x1="24" y1="24" x2="8" y2="34" stroke="url(#g1)" stroke-width="2"/>
   <!-- Vertex dots -->
-  <circle cx="24" cy="4" r="2.5" fill="#00C9A7"/>
-  <circle cx="40" cy="34" r="2.5" fill="#00C9A7"/>
-  <circle cx="8" cy="34" r="2.5" fill="#00C9A7"/>
+  <circle cx="24" cy="4" r="2.5" fill="#6c5ce7"/>
+  <circle cx="40" cy="34" r="2.5" fill="#6c5ce7"/>
+  <circle cx="8" cy="34" r="2.5" fill="#6c5ce7"/>
   <!-- Center node -->
   <circle cx="24" cy="24" r="3" fill="url(#g1)"/>
 </svg>

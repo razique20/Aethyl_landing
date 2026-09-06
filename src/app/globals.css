@@ -318,6 +318,31 @@ body {
   transform: translateY(0);
 }
 
+.btn-ghost {
+  border-radius: 12px;
+  padding: 12px 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: #888;
+  background: transparent;
+  gap: 8px;
+}
+
+.btn-ghost:hover {
+  color: #ededed;
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-1px);
+}
+
+.btn-ghost:active {
+  transform: translateY(0);
+}
+
 /* Pill badge */
 .pill-badge {
   display: inline-flex;

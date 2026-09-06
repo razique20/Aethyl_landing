@@ -51,14 +51,20 @@ export default function VoidSection() {
               </div>
             </div>
 
-            <a
-              href="https://void.aethyl.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary px-8 py-3.5 text-[15px]"
-            >
-              Deploy Operative
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="mailto:aethylglobal@gmail.com?subject=Free%20Demo%20Request%20-%20Void%20AI&body=Hello,%0A%0AI%20am%20interested%20in%20a%20free%20demo%20of%20Void%20AI%20platform.%20Please%20share%20more%20details%20and%20schedule%20a%20demo%20at%20your%20earliest%20convenience.%0A%0AName:%20%0ACompany:%20%0AWebsite:%20%0ANotes:%20%0A"                className="btn-primary px-8 py-3.5 text-[15px]"
+              >
+                Free Demo
+              </a>
+              <a
+                href="mailto:aethylglobal@gmail.com?subject=Investment%20or%20Partnership%20Opportunity%20-%20Void%20AI&body=Hello,%0A%0AI%20am%20interested%20in%20exploring%20investment%20or%20partnership%20opportunities%20with%20Aethyl%20platforms.%20I%20would%20like%20to%20discuss%20how%20we%20can%20work%20together.%0A%0AName:%20%0ACompany:%20%0ARole:%20%0AInvestment%20Interest:%20%0ANotes:%20%0A"                className="btn-secondary px-8 py-3.5 text-[15px]"
+              >
+                Investor / Partner
+              </a>
+            </div>
+
+            
           </motion.div>
 
           {/* Visual side */}
