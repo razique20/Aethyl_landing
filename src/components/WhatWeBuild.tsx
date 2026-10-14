@@ -2,40 +2,56 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useCallback } from "react";
-import { Code, Layout, Wrench, LayoutDashboard, ArrowRight } from "lucide-react";
+import { Bot, Share2, LayoutDashboard, Smartphone, Boxes, Wrench, ArrowRight } from "lucide-react";
 
 const offerings = [
   {
-    icon: Layout,
-    title: "Custom Websites",
+    icon: Bot,
+    title: "Void AI",
     description:
-      "High-performance, pixel-perfect websites built with modern frameworks. From corporate presence to interactive showcases — engineered for conversion.",
-    tags: ["Next.js", "React", "Tailwind CSS"],
-    color: "#6c5ce7",
+      "Autonomous agents for scheduling, data entry, customer routing and reporting — the automation layer of the Aethyl operating system.",
+    tags: ["AI Agents", "Groq LPU", "Sub-100ms"],
+    color: "#6d5ae6",
   },
   {
-    icon: Code,
-    title: "SaaS Platforms",
+    icon: Share2,
+    title: "Offrion Engine",
     description:
-      "End-to-end product engineering for SaaS startups and enterprises. Auth, billing, dashboards, APIs — the full stack, delivered fast.",
-    tags: ["TypeScript", "PostgreSQL", "Stripe"],
-    color: "#4f46e5",
+      "The deal network: partners integrate once, offers distribute across endpoints, users claim them and commissions settle instantly.",
+    tags: ["Deal Network", "API", "Commissions"],
+    color: "#0fa968",
   },
   {
     icon: LayoutDashboard,
-    title: "Warehouse Dashboards",
+    title: "Operations Dashboards",
     description:
-      "Replace Excel-based warehouse management with real-time dashboards. Inventory tracking, order management, and operational analytics — custom-built for your workflow.",
-    tags: ["Real-time Data", "Inventory", "Analytics"],
-    color: "#10b981",
+      "Warehouse, inventory and operational dashboards replacing Excel-based workflows with real-time tracking and analytics.",
+    tags: ["Real-time", "Inventory", "Analytics"],
+    color: "#17b9d4",
+  },
+  {
+    icon: Smartphone,
+    title: "Web & Mobile Apps",
+    description:
+      "Production websites, React Native and Flutter apps, shipped fast on the same platform your network and automation live on.",
+    tags: ["Next.js", "React Native", "Flutter"],
+    color: "#0ea5e9",
+  },
+  {
+    icon: Boxes,
+    title: "CRM & SaaS Platforms",
+    description:
+      "Auth, billing, dashboards and APIs for platforms that need to scale — engineered as long-lived products, not one-off builds.",
+    tags: ["TypeScript", "PostgreSQL", "Billing"],
+    color: "#0fa968",
   },
   {
     icon: Wrench,
     title: "Developer Tools",
     description:
-      "Custom SDKs, APIs, and CLI tools that accelerate your team. Built to integrate seamlessly with your existing infrastructure.",
-    tags: ["REST APIs", "SDKs", "Automation"],
-    color: "#8b5cf6",
+      "SDKs, REST APIs and CLI tooling that plug Aethyl into the systems your team already runs, without a migration.",
+    tags: ["REST APIs", "SDKs", "Webhooks"],
+    color: "#6d5ae6",
   },
 ];
 
@@ -63,26 +79,28 @@ function OfferingCard({
     <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className="spotlight-card group relative rounded-[20px] border border-white/[0.06] bg-[rgba(255,255,255,0.02)] p-8 sm:p-10 transition-all duration-500 hover:border-white/[0.12] hover:bg-[rgba(255,255,255,0.04)]"
+      className="spotlight-card card group p-7 sm:p-8 flex flex-col h-full"
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{
-        delay: index * 0.12,
+        delay: (index % 3) * 0.1,
         duration: 0.8,
         ease: [0.16, 1, 0.3, 1],
       }}
     >
-      <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-all duration-500"
-        style={{ background: `${offering.color}12` }}
-      >
-        <Icon className="w-5 h-5" style={{ color: offering.color }} />
+      <div className="flex items-center gap-4 mb-5">
+        <div
+          className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-500"
+          style={{ background: `${offering.color}1A` }}
+        >
+          <Icon className="w-5 h-5" style={{ color: offering.color }} />
+        </div>
+        <h3 className="text-lg font-bold text-ink tracking-[-0.02em]">
+          {offering.title}
+        </h3>
       </div>
 
-      <h3 className="text-lg font-semibold text-white mb-3 tracking-tight">
-        {offering.title}
-      </h3>
-      <p className="text-[14px] text-[#888] leading-relaxed mb-6">
+      <p className="text-[14px] text-corporate-gray leading-relaxed mb-6 flex-1">
         {offering.description}
       </p>
 
@@ -91,7 +109,7 @@ function OfferingCard({
         {offering.tags.map((tag) => (
           <span
             key={tag}
-            className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-[11px] text-[#999] font-medium tracking-wide"
+            className="px-3 py-1.5 rounded-full bg-ink/[0.04] border border-ink/[0.08] text-[11px] text-corporate-gray font-medium tracking-wide"
           >
             {tag}
           </span>
@@ -106,27 +124,36 @@ export default function WhatWeBuild() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="whatwbuild" className="relative py-24 sm:py-32 md:py-40 px-6 bg-black">
-      <div ref={ref} className="max-w-[1200px] w-full mx-auto">
+    <section id="whatwbuild" className="relative py-24 sm:py-32 md:py-40 px-6 bg-white">
+      <div ref={ref} className="max-w-[1240px] w-full mx-auto">
         {/* Section header */}
         <motion.div
-          className="text-center mb-20"
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14 sm:mb-16"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="accent-line mx-auto mb-6" style={{ width: 40 }} />
-          <h2 className="framer-subheading text-white mb-5">
-            What We Build.
-          </h2>
-          <p className="text-base text-[#888] max-w-2xl mx-auto leading-relaxed">
-            Beyond infrastructure — we ship production-ready digital products.
-            From first commit to launch day.
-          </p>
+          <div className="max-w-[640px]">
+            <div className="eyebrow mb-6">The catalogue</div>
+            <h2 className="framer-subheading text-ink mb-5">
+              One integration,
+              <br />
+              <span className="display-italic">a growing catalogue.</span>
+            </h2>
+            <p className="text-base sm:text-lg text-corporate-gray leading-relaxed">
+              Everything Aethyl Global already operates, composable by default.
+              Scope your next system into the package you have — no
+              re-integration, no second contract.
+            </p>
+          </div>
+          <a href="#quote" className="btn-secondary shrink-0 self-start sm:self-auto">
+            See all modules
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </motion.div>
 
         {/* Offering cards */}
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {offerings.map((offering, index) => (
             <OfferingCard
               key={offering.title}
@@ -136,25 +163,6 @@ export default function WhatWeBuild() {
             />
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="text-sm text-[#888] mb-6">
-            Have a project in mind? We&apos;ll scope it, build it, and launch it.
-          </p>
-          <a
-            href="#contact"
-            className="btn-primary px-8 py-3.5 text-sm font-semibold"
-          >
-            Start a Project
-            <ArrowRight className="w-4 h-4" />
-          </a>
-        </motion.div>
       </div>
     </section>
   );

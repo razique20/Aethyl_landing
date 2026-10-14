@@ -21,8 +21,8 @@ export default function Blogs() {
   };
 
   return (
-    <section id="blog" className="relative py-24 sm:py-32 md:py-40 bg-black overflow-hidden">
-      <div ref={ref} className="max-w-[1200px] w-full mx-auto px-6">
+    <section id="blog" className="relative py-24 sm:py-32 md:py-40 bg-cloud overflow-hidden">
+      <div ref={ref} className="max-w-[1240px] w-full mx-auto px-6">
         {/* Header */}
         <motion.div
           className="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-6"
@@ -31,13 +31,13 @@ export default function Blogs() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div>
-            <div className="accent-line mb-6" style={{ width: 40 }} />
-            <h2 className="framer-subheading text-white mb-3">
-              Latest Insights.
+            <div className="eyebrow mb-6">In the field</div>
+            <h2 className="framer-subheading text-ink mb-3">
+              Latest insights.
             </h2>
-            <p className="text-base text-[#888] max-w-md leading-relaxed">
-              Thoughts on web development, mobile apps, AI automation, and
-              building products that scale.
+            <p className="text-base text-corporate-gray max-w-md leading-relaxed">
+              Notes on networks, automation, and building software that keeps
+              running long after launch.
             </p>
           </div>
 
@@ -45,14 +45,14 @@ export default function Blogs() {
           <div className="flex gap-2">
             <button
               onClick={() => scroll("left")}
-              className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/25 transition-all"
+              className="w-11 h-11 rounded-full border border-ink/15 flex items-center justify-center text-ink/50 hover:text-ink hover:border-ink/40 transition-all"
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/25 transition-all"
+              className="w-11 h-11 rounded-full border border-ink/15 flex items-center justify-center text-ink/50 hover:text-ink hover:border-ink/40 transition-all"
               aria-label="Scroll right"
             >
               <ChevronRight className="w-4 h-4" />
@@ -75,31 +75,36 @@ export default function Blogs() {
               <Link
                 key={blog.slug}
                 href={`/blog/${blog.slug}`}
-                className="flex-none w-[min(340px,80vw)] snap-start group rounded-[20px] border border-white/[0.06] bg-[rgba(255,255,255,0.02)] p-6 sm:p-7 transition-all duration-500 hover:border-white/[0.12] hover:bg-[rgba(255,255,255,0.04)] cursor-pointer block"
+                className="flex-none w-[min(340px,80vw)] snap-start group card p-6 sm:p-7 block"
               >
                 {/* Tag */}
-                <span className="inline-block px-3 py-1 rounded-lg bg-accent/10 text-accent text-[11px] font-semibold tracking-wide mb-5">
+                <span className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-[11px] font-semibold tracking-wide mb-5">
                   {blog.tag}
                 </span>
 
                 {/* Title */}
-                <h3 className="text-[16px] font-semibold text-white mb-3 leading-snug tracking-tight group-hover:text-accent transition-colors duration-300">
+                <h3 className="text-[16px] font-bold text-ink mb-3 leading-snug tracking-[-0.02em] group-hover:text-accent transition-colors duration-300">
                   {blog.title}
                 </h3>
 
                 {/* Excerpt */}
-                <p className="text-[13px] text-[#888] leading-relaxed mb-6 line-clamp-3">
+                <p className="text-[13px] text-corporate-gray leading-relaxed mb-6 line-clamp-3">
                   {blog.excerpt}
                 </p>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-white/[0.06]">
-                  <div className="flex items-center gap-3 text-[11px] text-[#666]">
-                    <span>{blog.date}</span>
-                    <span className="w-1 h-1 rounded-full bg-white/20" />
+                <div className="flex items-center justify-between pt-4 border-t border-ink/[0.08]">
+                  <div className="flex items-center gap-3 text-[11px] text-corporate-gray">
+                    <span>
+                      {new Date(blog.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                      })}
+                    </span>
+                    <span className="w-1 h-1 rounded-full bg-ink/20" />
                     <span>{blog.readTime}</span>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-white/20 group-hover:text-accent transition-colors duration-300" />
+                  <ArrowUpRight className="w-4 h-4 text-ink/30 group-hover:text-accent transition-colors duration-300" />
                 </div>
               </Link>
             ))}

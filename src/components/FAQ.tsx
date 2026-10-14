@@ -6,68 +6,75 @@ import { Plus } from "lucide-react";
 
 const faqs = [
   {
-    question: "How much does website development cost in Dubai?",
+    question: "What is Aethyl Global?",
     answer:
-      "Custom website development in Dubai starts from 1,500 AED for basic business websites. SaaS platforms and complex web applications range from 15,000 to 75,000+ AED depending on features, integrations, and complexity. We offer transparent pricing with no hidden fees.",
+      "Aethyl Global is an operating system company. We build the networks businesses connect through, the automation that runs them, and the software our clients already depend on — as one platform with one integration. Void AI, the Offrion engine and our operations dashboards are products we run, not one-off projects.",
   },
   {
-    question: "How much does it cost to build a mobile app in 2026?",
+    question: "What can I build on Aethyl?",
     answer:
-      "Mobile app development costs range from 15,000–30,000 AED for an MVP, 30,000–75,000 AED for mid-complexity apps with real-time features, and 75,000–200,000+ AED for enterprise-grade applications. We use React Native and Flutter to build cross-platform apps that run on both iOS and Android, reducing costs by up to 40%.",
+      "Three systems. Networks — connect partners, platforms and marketplaces through Offrion so offers distribute and commissions settle automatically. Automation — Void AI agents that run scheduling, data entry, routing and reporting. Existing products — dashboards, CRM, SaaS platforms and mobile apps built and operated on the same operating system.",
   },
   {
-    question: "What services does Aethyl offer?",
+    question: "Do I have to take the whole platform?",
     answer:
-      "Aethyl is a full-service development agency in Dubai offering custom website development, mobile app development (React Native & Flutter), CRM system development, SaaS platform engineering, warehouse management dashboards, AI-powered enterprise automation with Void AI, and custom developer tools.",
+      "No. Each system is adopted separately, so you can start with one. Aethyl runs one onboarding, one automation layer and one product catalogue across all of them, so adding a second system is an API enablement rather than a second integration — and it is packaged as one program on one agreement.",
   },
   {
-    question: "How long does it take to build a custom website?",
+    question: "How does the Offrion network layer work?",
     answer:
-      "A standard business website takes 2–4 weeks. A SaaS platform takes 4–8 weeks. Complex enterprise applications take 6–10 weeks. We follow an agile methodology with weekly demos so you can see progress and provide feedback throughout the process.",
+      "Partners integrate the Offrion API once. Deals are distributed dynamically across every connected endpoint, end-users claim them through your own interface with Aethyl securing the flow, and each partner claims its commission the moment a deal completes.",
   },
   {
-    question: "Do you build mobile apps for both iOS and Android?",
+    question: "How does Void AI automation work?",
     answer:
-      "Yes, we build cross-platform mobile applications using React Native and Flutter that run on both iOS and Android from a single codebase. This approach delivers native-quality performance while reducing development time and cost significantly.",
+      "Void AI agents operate inside your existing tools with sub-100ms responses powered by Groq LPU. Every action is bounded by your policy, logged for review, and can require human approval — so automation accelerates the work without taking the decision away from you.",
   },
   {
-    question: "What is the best web development agency in Dubai?",
+    question: "How do I get started?",
     answer:
-      "Aethyl Global is a leading web development agency in Dubai specializing in custom website development, mobile apps, SaaS platforms, and enterprise automation. We deliver MVPs in 2–4 weeks with transparent pricing starting from 1,500 AED.",
+      "Talk to our team, see a live demo of the platform, then start with a scoped rollout. Typical first deployments — a network integration, an automation workflow or a product build — go live in 2 to 4 weeks, with larger platforms shipping in 6 to 10 weeks.",
+  },
+  {
+    question: "Where is Aethyl Global based?",
+    answer:
+      "Aethyl Global operates from Dubai, United Arab Emirates, and works with clients across the Middle East, India, Europe and the Americas across every time zone. Contact us at aethylglobal@gmail.com or +971 54 740 0553.",
   },
 ];
 
 export default function FAQ() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-24 sm:py-32 md:py-40 px-6 bg-black">
-      <div ref={ref} className="max-w-[720px] w-full mx-auto">
+    <section id="faq" className="relative py-24 sm:py-32 md:py-40 px-6 bg-cloud">
+      <div ref={ref} className="max-w-[900px] w-full mx-auto">
         {/* Header */}
         <motion.div
-          className="text-center mb-14"
+          className="mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="accent-line mx-auto mb-6" style={{ width: 40 }} />
-          <h2 className="framer-subheading text-white mb-4">
-            Frequently Asked Questions.
+          <div className="eyebrow mb-6">FAQ</div>
+          <h2 className="framer-subheading text-ink mb-4">
+            Frequently asked
+            <br />
+            <span className="display-italic">questions.</span>
           </h2>
-          <p className="text-base text-[#888] max-w-lg mx-auto leading-relaxed">
-            Everything you need to know about our web development, mobile app,
-            CRM, and warehouse dashboard services in Dubai.
+          <p className="text-base text-corporate-gray max-w-lg leading-relaxed">
+            Everything you need to know about the Aethyl Global operating
+            system, its network and its automation layers.
           </p>
         </motion.div>
 
         {/* FAQ items */}
-        <div className="space-y-2">
+        <div className="border-t border-ink/10">
           {faqs.map((faq, i) => (
             <motion.div
               key={i}
-              className="rounded-[16px] border border-white/[0.06] bg-[rgba(255,255,255,0.02)] overflow-hidden"
+              className="border-b border-ink/10"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{
@@ -78,14 +85,19 @@ export default function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left min-h-[60px] group"
+                className="w-full flex items-center justify-between gap-6 py-6 text-left min-h-[64px] group"
               >
-                <span className="text-[15px] font-medium text-white/90 pr-4 group-hover:text-white transition-colors">
-                  {faq.question}
+                <span className="flex items-baseline gap-5 sm:gap-8">
+                  <span className="eyebrow shrink-0 tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[16px] sm:text-[18px] font-bold text-ink tracking-[-0.02em] group-hover:text-accent transition-colors">
+                    {faq.question}
+                  </span>
                 </span>
                 <Plus
-                  className={`w-4 h-4 text-[#666] flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === i ? "rotate-45" : ""
+                  className={`w-5 h-5 text-ink/40 flex-shrink-0 transition-transform duration-300 ${
+                    openIndex === i ? "rotate-45 text-accent" : ""
                   }`}
                 />
               </button>
@@ -98,7 +110,7 @@ export default function FAQ() {
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="px-6 pb-5 text-[14px] text-[#888] leading-relaxed">
+                    <p className="pb-7 pl-[52px] sm:pl-[76px] pr-8 text-[15px] text-corporate-gray leading-relaxed">
                       {faq.answer}
                     </p>
                   </motion.div>

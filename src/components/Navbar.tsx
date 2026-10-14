@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "What We Build", href: "#whatwbuild" },
-  { label: "VOID AI", href: "#void" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact", href: "#contact" },
+  { label: "Platform", href: "#services" },
+  { label: "Products", href: "#whatwbuild" },
+  { label: "Automation", href: "#void" },
+  { label: "Network", href: "#ecosystem" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export default function Navbar() {
@@ -26,28 +26,39 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Announcement bar */}
+      <div className="w-full bg-accent-blue text-white text-[11px] sm:text-[12px] font-medium tracking-wide text-center px-4 py-2">
+        Aethyl Global is now the operating system for networks &amp;
+        automation.{" "}
+        <a href="#contact" className="underline underline-offset-2 hover:opacity-80 transition-opacity">
+          Talk to us
+        </a>
+      </div>
+
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "py-3"
-            : "py-5"
+        style={{ top: scrolled ? 0 : 36 }}
+        className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? "py-2" : "py-3 sm:py-4"
         }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
           <div
-            className={`flex items-center justify-between rounded-2xl px-6 py-3 transition-all duration-500 ${
+            className={`flex items-center justify-between rounded-[28px] px-5 sm:px-7 py-3 transition-all duration-500 ${
               scrolled
-                ? "bg-[rgba(10,10,10,0.8)] backdrop-blur-xl border border-white/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.5)]"
-                : "bg-transparent"
+                ? "bg-ink shadow-[0_10px_40px_-20px_rgba(11,13,14,0.6)]"
+                : "bg-ink"
             }`}
           >
             {/* Logo */}
-            <a href="#hero" className="flex items-center">
-              <span className="text-[15px] font-semibold text-white tracking-tight">
+            <a href="#hero" className="flex items-baseline gap-2 shrink-0">
+              <span className="text-[16px] font-extrabold text-white tracking-[-0.02em] uppercase">
                 Aethyl
+              </span>
+              <span className="text-[9px] font-medium text-white/50 uppercase tracking-[0.2em] hidden sm:inline">
+                Global
               </span>
             </a>
 
@@ -57,7 +68,7 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="px-4 py-2 text-[13px] font-medium text-[#888] hover:text-white transition-colors duration-300 rounded-lg hover:bg-white/[0.04]"
+                  className="px-4 py-2 text-[13px] font-medium text-white/70 hover:text-white transition-colors duration-300 rounded-full hover:bg-white/10"
                 >
                   {link.label}
                 </a>
@@ -65,16 +76,23 @@ export default function Navbar() {
             </div>
 
             {/* CTA + Mobile */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <a
+                href="#contact"
+                className="hidden sm:inline-flex btn-secondary text-white text-[11px] px-5 py-2.5"
+              >
+                Talk to us
+              </a>
               <a
                 href="#quote"
-                className="hidden sm:inline-flex btn-primary text-[13px] px-5 py-2.5"
+                className="hidden sm:inline-flex btn-mint text-[11px] px-5 py-2.5"
               >
-                Get a Quote
+                Get Started
+                <ArrowRight className="w-3.5 h-3.5" />
               </a>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="md:hidden text-white w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/[0.06] transition-colors"
+                className="md:hidden text-white w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 transition-colors"
                 aria-label="Toggle menu"
               >
                 {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -88,7 +106,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 md:hidden"
+            className="fixed inset-0 z-40 bg-ink flex flex-col items-center justify-center gap-8 md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -99,7 +117,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="text-3xl font-semibold text-white/50 hover:text-white transition-colors py-2"
+                className="text-3xl font-semibold text-white/60 hover:text-white transition-colors py-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
@@ -110,12 +128,12 @@ export default function Navbar() {
             <motion.a
               href="#quote"
               onClick={() => setMobileOpen(false)}
-              className="btn-primary text-base px-8 py-3.5 mt-4"
+              className="btn-mint text-xs px-8 py-4 mt-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
-              Get a Quote
+              Get Started
             </motion.a>
           </motion.div>
         )}

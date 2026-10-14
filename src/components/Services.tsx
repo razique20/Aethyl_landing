@@ -2,36 +2,32 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useCallback } from "react";
-import { Shield, Zap, Cpu, LayoutDashboard } from "lucide-react";
+import { Network, Zap, Boxes, ArrowRight } from "lucide-react";
 
 const services = [
   {
-    icon: Shield,
-    title: "Custom Website Development",
+    icon: Network,
+    eyebrow: "Networks",
+    title: "Build the network layer",
     description:
-      "High-performance custom websites built with Next.js, React, and Tailwind CSS. From business sites to enterprise platforms — engineered for conversion and SEO.",
-    color: "#6c5ce7",
+      "Connect partners, platforms and marketplaces into one deal network. Offrion distributes offers across your API endpoints, end users claim them through your interface, and every commission settles automatically.",
+    color: "#17b9d4",
   },
   {
     icon: Zap,
-    title: "Mobile App Development",
+    eyebrow: "Automation",
+    title: "Automate the operations",
     description:
-      "Cross-platform mobile applications built with React Native and Flutter. iOS and Android from a single codebase — faster delivery, lower cost.",
-    color: "#06b6d4",
+      "Void AI agents run the repetitive work end to end — scheduling, data entry, customer routing, reconciliation and reporting — on Groq LPU inference with sub-100ms responses and human-in-the-loop controls.",
+    color: "#0fa968",
   },
   {
-    icon: Cpu,
-    title: "AI-Powered Automation",
+    icon: Boxes,
+    eyebrow: "Existing products",
+    title: "Run what already works",
     description:
-      "Void AI agents for enterprise workflow automation. Autonomous scheduling, data entry, and customer routing — powered by Groq LPU for sub-100ms execution.",
-    color: "#8b5cf6",
-  },
-  {
-    icon: LayoutDashboard,
-    title: "Warehouse Dashboard Systems",
-    description:
-      "Custom warehouse management dashboards for businesses transitioning from Excel. Real-time inventory tracking, order management, and operational analytics.",
-    color: "#10b981",
+      "Dashboards, CRM, SaaS platforms and mobile apps we already build and operate — warehouse management, inventory analytics and enterprise tooling, delivered on the same operating system.",
+    color: "#6d5ae6",
   },
 ];
 
@@ -59,7 +55,7 @@ function ServiceCard({
     <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className="spotlight-card group relative rounded-[20px] border border-white/[0.06] bg-[rgba(255,255,255,0.02)] p-8 sm:p-10 transition-all duration-500 hover:border-white/[0.12] hover:bg-[rgba(255,255,255,0.04)] flex flex-col items-center text-center"
+      className="spotlight-card card group p-8 sm:p-10 flex flex-col"
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{
@@ -69,15 +65,17 @@ function ServiceCard({
       }}
     >
       <div
-        className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500"
-        style={{ background: `${service.color}12` }}
+        className="w-14 h-14 rounded-2xl flex items-center justify-center mb-7 transition-all duration-500"
+        style={{ background: `${service.color}1A` }}
       >
         <Icon className="w-6 h-6" style={{ color: service.color }} />
       </div>
-      <h3 className="text-lg font-semibold text-white tracking-tight mb-3">
+
+      <div className="eyebrow mb-3">{service.eyebrow}</div>
+      <h3 className="text-[22px] sm:text-2xl font-bold text-ink tracking-[-0.03em] mb-4 leading-tight">
         {service.title}
       </h3>
-      <p className="text-[14px] text-[#888] leading-relaxed">
+      <p className="text-[14px] sm:text-[15px] text-corporate-gray leading-relaxed">
         {service.description}
       </p>
     </motion.div>
@@ -89,25 +87,28 @@ export default function Services() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="relative py-24 sm:py-32 md:py-40 px-6 bg-black">
-      <div ref={ref} className="max-w-[1200px] w-full mx-auto">
+    <section id="services" className="relative py-24 sm:py-32 md:py-40 px-6 bg-cloud">
+      <div ref={ref} className="max-w-[1240px] w-full mx-auto">
         <motion.div
-          className="text-center mb-20"
+          className="max-w-[760px] mb-14 sm:mb-20"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="accent-line mx-auto mb-6" style={{ width: 40 }} />
-          <h2 className="framer-subheading text-white mb-5">
-            Our Development Services.
+          <div className="eyebrow mb-6">What you can build</div>
+          <h2 className="framer-subheading text-ink mb-6">
+            Three systems.
+            <br />
+            <span className="display-italic">One integration.</span>
           </h2>
-          <p className="text-base text-[#888] max-w-2xl mx-auto leading-relaxed">
-            Full-service web development, mobile app development, and AI
-            automation — serving clients in Dubai, UAE, and globally.
+          <p className="text-base sm:text-lg text-corporate-gray leading-relaxed">
+            Take the network, the automation, or the software you run today.
+            Start with one, add the others as an API enablement — never a second
+            integration, never a second contract.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {services.map((service, index) => (
             <ServiceCard
               key={service.title}
@@ -120,41 +121,61 @@ export default function Services() {
 
         {/* Code snippet preview */}
         <motion.div
-          className="mt-16 rounded-[20px] border border-white/[0.06] bg-[rgba(255,255,255,0.02)] p-8 sm:p-10 overflow-hidden relative"
+          className="mt-12 sm:mt-16 rounded-[28px] border border-ink/10 bg-ink p-8 sm:p-10 overflow-hidden relative"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="flex items-center gap-3 mb-8">
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-white/10" />
-              <div className="w-3 h-3 rounded-full bg-white/10" />
-              <div className="w-3 h-3 rounded-full bg-white/10" />
+          <div className="flex items-center justify-between gap-3 mb-8 flex-wrap">
+            <div className="flex items-center gap-3">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-white/15" />
+                <div className="w-3 h-3 rounded-full bg-white/15" />
+                <div className="w-3 h-3 rounded-full bg-white/15" />
+              </div>
+              <span className="ml-2 text-xs text-white/40 font-mono tracking-widest uppercase">
+                aethyl.js
+              </span>
             </div>
-            <span className="ml-2 text-xs text-[#666] font-mono tracking-widest uppercase">
-              Aethyl.js
+            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-mint">
+              One API · every module
             </span>
           </div>
           <pre className="text-sm sm:text-base font-mono overflow-x-auto leading-relaxed">
             <code className="text-white/80">
-              <span className="text-accent">const</span>
-              <span className="text-white"> deal = </span>
-              <span className="text-accent">await</span>
-              <span className="text-white"> Aethyl.deals.create({"{"}</span>
+              <span className="text-mint">const</span>
+              <span className="text-white"> network = </span>
+              <span className="text-mint">await</span>
+              <span className="text-white"> Aethyl.connect({"{"}</span>
               {"\n"}
-              <span className="text-white">{"  "}type: </span>
-              <span className="text-[#888]">&apos;cross_border_trade&apos;</span>
+              <span className="text-white">{"  "}modules: [</span>
+              <span className="text-white/60">&apos;network&apos;</span>
+              <span className="text-white">, </span>
+              <span className="text-white/60">&apos;automation&apos;</span>
+              <span className="text-white">, </span>
+              <span className="text-white/60">&apos;products&apos;</span>
+              <span className="text-white">],</span>
+              {"\n"}
+              <span className="text-white">{"  "}automation: </span>
+              <span className="text-white/60">&apos;void-ai&apos;</span>
               <span className="text-white">,</span>
               {"\n"}
-              <span className="text-white">{"  "}escrow: {"{"} amount: </span>
-              <span className="text-white font-bold">250000</span>
-              <span className="text-white">, currency: </span>
-              <span className="text-[#888]">&apos;USD&apos;</span>
+              <span className="text-white">{"  "}settlement: {"{"} mode: </span>
+              <span className="text-white/60">&apos;instant&apos;</span>
               <span className="text-white"> {"}"}</span>
               {"\n"}
               <span className="text-white">{"})"}</span>
             </code>
           </pre>
+          <div className="mt-8">
+            <a
+              href="#quote"
+              className="btn-mint text-[11px] px-6 py-3"
+            >
+              Request API Access
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

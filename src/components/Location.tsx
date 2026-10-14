@@ -1,24 +1,24 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useCallback } from "react";
+import { useRef } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 const locations = [
   {
     city: "Dubai",
     country: "United Arab Emirates",
-    description: "Our headquarters in the heart of Dubai's tech district.",
+    description: "Where Aethyl Global builds and operates the platform.",
   },
   {
     city: "Abu Dhabi",
     country: "United Arab Emirates",
-    description: "Serving enterprises across the UAE capital.",
+    description: "Rollouts and on-site deployments across the UAE capital.",
   },
   {
     city: "Remote",
     country: "Global",
-    description: "Working with clients worldwide across all time zones.",
+    description: "Networks, automation and products running in every time zone.",
   },
 ];
 
@@ -33,8 +33,8 @@ export default function Location() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="location" className="relative py-24 sm:py-32 md:py-40 px-6 bg-[#0a0a0a]">
-      <div ref={ref} className="max-w-[1200px] w-full mx-auto">
+    <section id="location" className="relative py-24 sm:py-32 md:py-40 px-6 bg-cloud">
+      <div ref={ref} className="max-w-[1240px] w-full mx-auto">
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20">
           {/* Left: Location info */}
           <motion.div
@@ -42,15 +42,16 @@ export default function Location() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="accent-line mb-6" style={{ width: 40 }} />
-            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-bold leading-[1.05] tracking-[-0.025em] text-white mb-5">
-              Web Development Agency in Dubai.
+            <div className="eyebrow mb-6">Where we are</div>
+            <h2 className="text-[28px] sm:text-[38px] md:text-[46px] font-extrabold leading-[1.02] tracking-[-0.035em] text-ink mb-5">
+              Built in Dubai.
+              <br />
+              <span className="display-italic">Running worldwide.</span>
             </h2>
-            <p className="text-base text-[#888] leading-relaxed mb-10 max-w-md">
-              Aethyl Global is a full-service web development agency based
-              in Dubai, UAE. We serve clients across the Middle East, India, and
-              globally — delivering custom websites, mobile apps, and enterprise
-              software.
+            <p className="text-base text-corporate-gray leading-relaxed mb-10 max-w-md">
+              Aethyl Global is an operating system company based in Dubai, UAE.
+              We deploy networks, automation and software for clients across the
+              Middle East, India, Europe and the Americas.
             </p>
 
             {/* Locations */}
@@ -67,14 +68,14 @@ export default function Location() {
                     ease: [0.16, 1, 0.3, 1],
                   }}
                 >
-                  <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <MapPin className="w-4 h-4 text-accent" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-white mb-1">
+                    <p className="text-sm font-semibold text-ink mb-1">
                       {location.city}, {location.country}
                     </p>
-                    <p className="text-[13px] text-[#888] leading-relaxed">
+                    <p className="text-[13px] text-corporate-gray leading-relaxed">
                       {location.description}
                     </p>
                   </div>
@@ -89,9 +90,9 @@ export default function Location() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="rounded-[20px] border border-white/[0.06] bg-[rgba(255,255,255,0.02)] p-7 sm:p-8">
-              <h3 className="text-lg font-bold text-white mb-7">
-                Get in Touch
+            <div className="card p-7 sm:p-8 h-full">
+              <h3 className="text-lg font-bold text-ink mb-7">
+                Get in touch
               </h3>
 
               <div className="space-y-5">
@@ -110,14 +111,14 @@ export default function Location() {
                         ease: [0.16, 1, 0.3, 1],
                       }}
                     >
-                      <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0 group-hover:border-accent/30 transition-colors">
-                        <Icon className="w-4 h-4 text-white/50 group-hover:text-accent transition-colors" />
+                      <div className="w-10 h-10 rounded-full bg-ink/[0.04] border border-ink/10 flex items-center justify-center flex-shrink-0 group-hover:border-accent/50 transition-colors">
+                        <Icon className="w-4 h-4 text-ink/50 group-hover:text-accent transition-colors" />
                       </div>
                       <div>
-                        <p className="text-[11px] text-[#666] uppercase tracking-widest mb-1">
+                        <p className="text-[11px] text-corporate-gray uppercase tracking-widest mb-1">
                           {detail.label}
                         </p>
-                        <p className="text-sm text-white font-medium">
+                        <p className="text-sm text-ink font-medium">
                           {detail.value}
                         </p>
                       </div>
@@ -127,23 +128,23 @@ export default function Location() {
               </div>
 
               {/* Keywords */}
-              <div className="mt-8 pt-6 border-t border-white/[0.06]">
-                <p className="text-[11px] text-[#666] uppercase tracking-widest mb-4">
-                  Our Services
+              <div className="mt-8 pt-6 border-t border-ink/[0.08]">
+                <p className="text-[11px] text-corporate-gray uppercase tracking-widest mb-4">
+                  What we run
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    "Website Development Dubai",
-                    "Mobile App Development",
-                    "CRM Development",
-                    "SaaS Platforms",
+                    "Network Infrastructure",
                     "AI Automation",
-                    "Warehouse Dashboards",
-                    "Custom Software",
+                    "Void AI Agents",
+                    "Offrion Deal Engine",
+                    "Operations Dashboards",
+                    "CRM & SaaS",
+                    "Mobile Apps",
                   ].map((keyword) => (
                     <span
                       key={keyword}
-                      className="px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06] text-[11px] text-[#888] font-medium"
+                      className="px-3 py-1.5 rounded-full bg-white border border-ink/[0.08] text-[11px] text-corporate-gray font-medium"
                     >
                       {keyword}
                     </span>

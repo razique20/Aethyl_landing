@@ -2,29 +2,29 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useCallback } from "react";
-import { Target, Eye, Layers } from "lucide-react";
+import { Layers, Network, Zap } from "lucide-react";
 
 const pillars = [
   {
-    icon: Target,
-    title: "Our Mission",
-    description:
-      "To be the best web development agency in Dubai, delivering custom websites, mobile apps, and enterprise software that helps businesses scale faster and operate smarter.",
-    color: "#6c5ce7",
-  },
-  {
-    icon: Eye,
-    title: "Our Vision",
-    description:
-      "A global economy where every business has access to world-class digital infrastructure — custom websites, mobile applications, and AI automation — regardless of size or location.",
-    color: "#4f46e5",
-  },
-  {
     icon: Layers,
-    title: "What We Build",
+    title: "One operating system",
     description:
-      "Custom website development with Next.js and React, cross-platform mobile applications with React Native and Flutter, CRM systems, SaaS platforms, warehouse management dashboards, and Void AI-powered enterprise automation.",
-    color: "#818cf8",
+      "Aethyl Global is not a development agency. We are an operating system company: the network layer, the automation layer and the software layer run as one platform, under one contract, with one integration.",
+    color: "#0fa968",
+  },
+  {
+    icon: Network,
+    title: "Networks we build",
+    description:
+      "Partner endpoints, marketplaces and platforms connected through the Offrion network — deals distributed across APIs, claimed by end users and settled with commissions paid out automatically.",
+    color: "#17b9d4",
+  },
+  {
+    icon: Zap,
+    title: "Automation we run",
+    description:
+      "Void AI agents operate the busywork around the clock — scheduling, data entry, routing and reporting — with sub-100ms responses on Groq LPU, plugged straight into the systems you already use.",
+    color: "#6d5ae6",
   },
 ];
 
@@ -54,7 +54,7 @@ function PillarCard({
     <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className="spotlight-card group relative rounded-[20px] border border-white/[0.06] bg-[rgba(255,255,255,0.02)] p-8 sm:p-10 transition-all duration-500 hover:border-white/[0.12] hover:bg-[rgba(255,255,255,0.04)]"
+      className="spotlight-card card group p-8 sm:p-10"
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{
@@ -64,16 +64,16 @@ function PillarCard({
       }}
     >
       <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-all duration-500"
-        style={{ background: `${pillar.color}12` }}
+        className="w-12 h-12 rounded-full flex items-center justify-center mb-6 transition-all duration-500"
+        style={{ background: `${pillar.color}1A` }}
       >
         <Icon className="w-5 h-5" style={{ color: pillar.color }} />
       </div>
 
-      <h3 className="text-xl font-semibold text-white mb-3 tracking-tight">
+      <h3 className="text-xl font-bold text-ink mb-3 tracking-[-0.02em]">
         {pillar.title}
       </h3>
-      <p className="text-[14px] text-[#888] leading-relaxed">
+      <p className="text-[14px] text-corporate-gray leading-relaxed">
         {pillar.description}
       </p>
     </motion.div>
@@ -85,28 +85,33 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="relative py-24 sm:py-32 md:py-40 px-6 bg-black">
-      <div ref={ref} className="max-w-[1200px] w-full mx-auto">
+    <section id="about" className="relative py-24 sm:py-32 md:py-40 px-6 bg-white">
+      <div ref={ref} className="max-w-[1240px] w-full mx-auto">
         {/* Section header */}
         <motion.div
-          className="text-center mb-20"
+          className="grid lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 items-end mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="accent-line mx-auto mb-6" style={{ width: 40 }} />
-          <h2 className="framer-subheading text-white mb-5">
-            About Aethyl Global.
-          </h2>
-          <p className="text-base text-[#888] max-w-2xl mx-auto leading-relaxed">
-            We are a leading web development agency in Dubai specializing in
-            custom website development, mobile app development, CRM systems,
-            warehouse management dashboards, and AI-powered enterprise automation.
+          <div>
+            <div className="eyebrow mb-6">About Aethyl Global</div>
+            <h2 className="framer-subheading text-ink">
+              Not an agency.
+              <br />
+              <span className="display-italic">An operating system.</span>
+            </h2>
+          </div>
+          <p className="text-base sm:text-[17px] text-corporate-gray leading-relaxed max-w-xl">
+            We used to ship websites and apps. Today Aethyl Global builds the
+            networks businesses connect through, the automation that keeps them
+            running, and the products we already operate — Void AI, the Offrion
+            deal engine, and the dashboards our clients run their days on.
           </p>
         </motion.div>
 
         {/* Pillar cards */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
           {pillars.map((pillar, index) => (
             <PillarCard
               key={pillar.title}
