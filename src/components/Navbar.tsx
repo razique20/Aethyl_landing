@@ -1,143 +1,151 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ChevronDown, Menu, X } from "lucide-react";
+import Logo from "./Logo";
+import ServiceIcon from "./ServiceIcon";
+import { buttonVariants, cn } from "./ui";
+import { services } from "@/data/services";
+import { AUDIT_CTA } from "@/lib/site";
 
-const navLinks = [
-  { label: "Platform", href: "#services" },
-  { label: "Products", href: "#whatwbuild" },
-  { label: "Automation", href: "#void" },
-  { label: "Network", href: "#ecosystem" },
-  { label: "FAQ", href: "#faq" },
+const links = [
+  { label: "Products", href: "/#products" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Close the mobile menu on navigation (state reset during render).
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setOpen(false);
+  }
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 20);
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [open]);
+
+  const linkClass = (href: string) =>
+    cn(
+      "rounded-md px-3 py-2 text-sm transition-colors hover:text-foreground",
+      pathname === href ? "text-foreground" : "text-muted-foreground"
+    );
 
   return (
-    <>
-      {/* Announcement bar */}
-      <div className="w-full bg-accent-blue text-white text-[11px] sm:text-[12px] font-medium tracking-wide text-center px-4 py-2">
-        Aethyl Global is now the operating system for networks &amp;
-        automation.{" "}
-        <a href="#contact" className="underline underline-offset-2 hover:opacity-80 transition-opacity">
-          Talk to us
-        </a>
+    <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-xl">
+      <div className="container-page flex h-16 items-center gap-6">
+        <Logo />
+
+        <nav aria-label="Main" className="hidden md:block">
+          <ul className="flex items-center">
+            {/* Services menu: opens on hover or keyboard focus, no JS needed */}
+            <li className="group relative">
+              <Link
+                href="/services"
+                className={cn(linkClass("/services"), "inline-flex items-center gap-1")}
+              >
+                Services
+                <ChevronDown
+                  className="size-3.5 transition-transform group-hover:rotate-180 group-focus-within:rotate-180"
+                  aria-hidden="true"
+                />
+              </Link>
+              <div className="invisible absolute left-0 top-full pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <ul className="grid w-[520px] grid-cols-2 gap-1 rounded-xl border bg-popover p-2 shadow-2xl shadow-black/40">
+                  {services.map((s) => (
+                    <li key={s.slug}>
+                      <Link
+                        href={`/services/${s.slug}`}
+                        className="flex gap-3 rounded-lg p-3 transition-colors hover:bg-accent"
+                      >
+                        <ServiceIcon name={s.icon} className="mt-0.5 size-4 shrink-0 text-teal" />
+                        <span>
+                          <span className="block text-sm font-medium">{s.name}</span>
+                          <span className="mt-1 line-clamp-2 block text-[13px] leading-snug text-muted-foreground">
+                            {s.highlights[0]}
+                          </span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+            {links.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className={linkClass(l.href)}>
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="ml-auto flex items-center gap-2">
+          <Link
+            href={AUDIT_CTA.href}
+            className={buttonVariants({ variant: "audit", size: "sm" })}
+          >
+            <span className="sm:hidden">Free audit</span>
+            <span className="hidden sm:inline">{AUDIT_CTA.label}</span>
+          </Link>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className={buttonVariants({ variant: "ghost", size: "sm", className: "md:hidden" })}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+          >
+            {open ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
-      <motion.nav
-        style={{ top: scrolled ? 0 : 36 }}
-        className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "py-2" : "py-3 sm:py-4"
-        }`}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
-          <div
-            className={`flex items-center justify-between rounded-[28px] px-5 sm:px-7 py-3 transition-all duration-500 ${
-              scrolled
-                ? "bg-ink shadow-[0_10px_40px_-20px_rgba(11,13,14,0.6)]"
-                : "bg-ink"
-            }`}
-          >
-            {/* Logo */}
-            <a href="#hero" className="flex items-baseline gap-2 shrink-0">
-              <span className="text-[16px] font-extrabold text-white tracking-[-0.02em] uppercase">
-                Aethyl
-              </span>
-              <span className="text-[9px] font-medium text-white/50 uppercase tracking-[0.2em] hidden sm:inline">
-                Global
-              </span>
-            </a>
-
-            {/* Desktop Links */}
-            <div className="hidden md:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="px-4 py-2 text-[13px] font-medium text-white/70 hover:text-white transition-colors duration-300 rounded-full hover:bg-white/10"
-                >
-                  {link.label}
-                </a>
+      {open && (
+        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto bg-background md:hidden">
+          <nav aria-label="Mobile" className="container-page py-4">
+            <p className="px-1 pb-2 pt-2 text-xs font-medium text-subtle">Services</p>
+            <ul className="mb-4">
+              {services.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`/services/${s.slug}`}
+                    className="flex items-center gap-3 rounded-md px-1 py-3 text-base"
+                  >
+                    <ServiceIcon name={s.icon} className="size-4 text-teal" />
+                    {s.name}
+                  </Link>
+                </li>
               ))}
-            </div>
-
-            {/* CTA + Mobile */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              <a
-                href="#contact"
-                className="hidden sm:inline-flex btn-secondary text-white text-[11px] px-5 py-2.5"
-              >
-                Talk to us
-              </a>
-              <a
-                href="#quote"
-                className="hidden sm:inline-flex btn-mint text-[11px] px-5 py-2.5"
-              >
-                Get Started
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-              <button
-                onClick={() => setMobileOpen(!mobileOpen)}
-                className="md:hidden text-white w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 transition-colors"
-                aria-label="Toggle menu"
-              >
-                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
-          </div>
-        </div>
-      </motion.nav>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            className="fixed inset-0 z-40 bg-ink flex flex-col items-center justify-center gap-8 md:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {navLinks.map((link, i) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-3xl font-semibold text-white/60 hover:text-white transition-colors py-2"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              >
-                {link.label}
-              </motion.a>
-            ))}
-            <motion.a
-              href="#quote"
-              onClick={() => setMobileOpen(false)}
-              className="btn-mint text-xs px-8 py-4 mt-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            </ul>
+            <ul className="border-t pt-2">
+              {[{ label: "All services", href: "/services" }, ...links].map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="block rounded-md px-1 py-3 text-base">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={AUDIT_CTA.href}
+              className={buttonVariants({ variant: "audit", size: "lg", className: "mt-6 w-full" })}
             >
-              Get Started
-            </motion.a>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+              {AUDIT_CTA.label}
+            </Link>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 }

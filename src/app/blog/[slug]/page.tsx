@@ -1,14 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { blogs, getBlogBySlug } from "@/data/blogs";
-import type { Metadata } from "next";
+import { BlogRow } from "@/components/BlogTeaser";
+import { Badge, buttonVariants } from "@/components/ui";
+import JsonLd from "@/components/JsonLd";
+import { AUDIT_CTA, SITE_NAME, SITE_URL } from "@/lib/site";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
+export const dynamicParams = false;
+
+export function generateStaticParams() {
   return blogs.map((blog) => ({ slug: blog.slug }));
 }
 
@@ -16,37 +22,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const blog = getBlogBySlug(slug);
   if (!blog) return {};
-
-  const canonicalUrl = `https://www.aethyl.com/blog/${slug}`;
+  const path = `/blog/${slug}`;
 
   return {
-    title: `${blog.title} — Aethyl Global Blog`,
+    title: blog.title,
     description: blog.excerpt,
-    alternates: {
-      canonical: canonicalUrl,
-    },
+    alternates: { canonical: path },
     openGraph: {
       title: blog.title,
       description: blog.excerpt,
-      url: canonicalUrl,
+      url: path,
       type: "article",
       publishedTime: blog.date,
       authors: [blog.author],
-      siteName: "Aethyl Global",
-      images: [
-        {
-          url: blog.image,
-          width: 1200,
-          height: 630,
-          alt: blog.title,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title: blog.title,
       description: blog.excerpt,
-      images: [blog.image],
     },
   };
 }
@@ -54,201 +47,105 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPost({ params }: Props) {
   const { slug } = await params;
   const blog = getBlogBySlug(slug);
-
   if (!blog) notFound();
 
-  const jsonLd = {
+  const url = `${SITE_URL}/blog/${slug}`;
+  const displayDate = new Date(blog.date).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const related = [
+    ...blogs.filter((b) => b.slug !== slug && b.tag === blog.tag),
+    ...blogs.filter((b) => b.slug !== slug && b.tag !== blog.tag),
+  ].slice(0, 3);
+
+  const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: blog.title,
     description: blog.excerpt,
     datePublished: blog.date,
-    author: {
-      "@type": "Organization",
-      name: blog.author,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Aethyl Global",
-    },
+    dateModified: blog.date,
+    mainEntityOfPage: url,
+    image: `${SITE_URL}${blog.image}`,
+    author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    publisher: { "@id": `${SITE_URL}/#organization` },
   };
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.aethyl.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Blog",
-        item: "https://www.aethyl.com/blog",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: blog.title,
-        item: `https://www.aethyl.com/blog/${slug}`,
-      },
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: blog.title, item: url },
     ],
   };
 
-  const displayDate = new Date(blog.date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-  });
-
   return (
-    <main className="min-h-screen bg-white text-ink">
-      {/* Nav */}
-      <nav className="w-full px-4 sm:px-6 py-4 sm:py-5 border-b border-ink/[0.08]">
-        <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-baseline gap-2">
-            <span className="text-[16px] font-extrabold text-ink tracking-[-0.02em] uppercase">
-              Aethyl
-            </span>
-            <span className="text-[9px] font-medium text-ink/50 uppercase tracking-[0.2em]">
-              Global
-            </span>
-          </Link>
-          <Link
-            href="/"
-            className="text-[12px] font-medium text-corporate-gray hover:text-ink transition-colors uppercase tracking-wide"
-          >
-            Home
-          </Link>
-        </div>
-      </nav>
-
-      <article className="max-w-3xl mx-auto px-5 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-32">
-        {/* Back link */}
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-sm text-corporate-gray hover:text-ink transition-colors mb-10 sm:mb-16"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          All Articles
+    <>
+      <article className="container-page max-w-3xl pb-20 pt-10 sm:pt-14">
+        <Link href="/blog" className={buttonVariants({ variant: "ghost", size: "sm", className: "-ml-3 mb-10" })}>
+          <ArrowLeft aria-hidden="true" />
+          All articles
         </Link>
 
-        {/* Meta */}
-        <div className="mb-6 sm:mb-10">
-          <span className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-[11px] font-semibold tracking-wide mb-5">
-            {blog.tag}
-          </span>
-          <div className="flex items-center gap-3 text-[12px] text-corporate-gray mb-6">
-            <span>{displayDate}</span>
-            <span className="w-1 h-1 rounded-full bg-ink/20" />
-            <span>{blog.readTime}</span>
-            <span className="w-1 h-1 rounded-full bg-ink/20" />
-            <span>{blog.author}</span>
-          </div>
-        </div>
+        <header className="mb-10">
+          <Badge>{blog.tag}</Badge>
+          <h1 className="mt-5 text-3xl font-semibold leading-[1.1] tracking-[-0.035em] text-balance sm:text-5xl">
+            {blog.title}
+          </h1>
+          <p className="mt-5 text-sm text-subtle">
+            <time dateTime={blog.date}>{displayDate}</time> · {blog.readTime} · {blog.author}
+          </p>
+        </header>
 
-        {/* Hero Image */}
-        <div className="mb-8 sm:mb-12 rounded-xl sm:rounded-2xl overflow-hidden border border-ink/[0.08]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={blog.image}
-            alt={blog.title}
-            className="w-full h-auto"
-          />
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={blog.image}
+          alt=""
+          width={1200}
+          height={630}
+          className="mb-12 h-auto w-full rounded-xl border"
+        />
 
-        {/* Title */}
-        <h1 className="text-[26px] sm:text-3xl md:text-[44px] font-extrabold text-ink leading-[1.05] tracking-[-0.03em] mb-8 sm:mb-12">
-          {blog.title}
-        </h1>
-
-        {/* Divider */}
-        <div className="accent-line mb-8 sm:mb-12" style={{ width: 40 }} />
-
-        {/* Content */}
-        <div className="space-y-6">
+        <div className="prose-article">
           {blog.content.map((block, i) =>
-            block.type === "heading" ? (
-              <h2
-                key={i}
-                className="text-xl font-bold text-ink mt-10 mb-4 tracking-[-0.02em]"
-              >
-                {block.text}
-              </h2>
-            ) : (
-              <p
-                key={i}
-                className="text-base text-corporate-gray leading-[1.8]"
-              >
-                {block.text}
-              </p>
-            )
+            block.type === "heading" ? <h2 key={i}>{block.text}</h2> : <p key={i}>{block.text}</p>
           )}
         </div>
 
-        {/* Related Posts */}
-        {(() => {
-          const sameTag = blogs.filter(
-            (b) => b.slug !== slug && b.tag === blog.tag
-          );
-          const otherRecent = blogs.filter(
-            (b) => b.slug !== slug && b.tag !== blog.tag
-          );
-          const related = [...sameTag, ...otherRecent].slice(0, 3);
-
-          if (related.length === 0) return null;
-
-          return (
-            <div className="mt-14 sm:mt-20 pt-8 sm:pt-12 border-t border-ink/[0.08]">
-              <h2 className="text-xl font-bold text-ink mb-8 tracking-[-0.02em]">
-                Related Articles
-              </h2>
-              <div className="grid gap-4">
-                {related.map((post) => (
-                  <Link
-                    key={post.slug}
-                    href={`/blog/${post.slug}`}
-                    className="group card p-6"
-                  >
-                    <span className="inline-block px-2.5 py-0.5 rounded-full bg-accent/10 text-accent text-[10px] font-semibold tracking-wide mb-3">
-                      {post.tag}
-                    </span>
-                    <h3 className="text-sm font-bold text-ink leading-snug group-hover:text-accent transition-colors duration-300 mb-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-xs text-corporate-gray leading-relaxed line-clamp-2">
-                      {post.excerpt}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          );
-        })()}
-
-        {/* CTA */}
-        <div className="mt-20 pt-12 border-t border-ink/[0.08] text-center">
-          <p className="text-sm text-corporate-gray mb-6">
-            Have a network to connect or an operation to automate? Let&apos;s
-            talk.
+        <aside className="mt-16 rounded-xl border bg-card p-6 sm:p-8">
+          <h2 className="text-xl font-semibold tracking-tight">Planning something similar?</h2>
+          <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+            Book a free 30-minute audit with our team. We&apos;ll look at how you work
+            today and tell you what&apos;s worth building first.
           </p>
-          <Link href="/#quote" className="btn-primary px-8 py-4 text-[11px]">
-            Get Started
+          <Link href={AUDIT_CTA.href} className={buttonVariants({ variant: "audit", className: "mt-5" })}>
+            {AUDIT_CTA.label}
+            <ArrowRight aria-hidden="true" />
           </Link>
-        </div>
+        </aside>
       </article>
 
-      {/* JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-    </main>
+      {related.length > 0 && (
+        <section className="pb-20">
+          <div className="container-page max-w-3xl">
+            <h2 className="text-lg font-semibold tracking-tight">Related articles</h2>
+            <ul className="mt-4 divide-y border-y">
+              {related.map((b) => (
+                <li key={b.slug}>
+                  <BlogRow blog={b} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      <JsonLd data={[articleJsonLd, breadcrumbJsonLd]} />
+    </>
   );
 }
