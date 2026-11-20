@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   description:
     "Aethyl Global is a software studio building custom dashboards, CRM systems, mobile apps and automation for growing businesses around the world.",
   applicationName: SITE_NAME,
+  verification: {
+    google: "fKp-8EqALDkxPwe7Ds1cgwg6BGEWOoUNfEtkpCrS0-I",
+  },
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
