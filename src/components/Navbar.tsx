@@ -11,7 +11,6 @@ import { services } from "@/data/services";
 import { AUDIT_CTA } from "@/lib/site";
 
 const links = [
-  { label: "Products", href: "/#products" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
