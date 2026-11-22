@@ -3,7 +3,6 @@ import Hero from "@/components/home/Hero";
 import ServicesBento from "@/components/ServicesBento";
 import About from "@/components/home/About";
 import Process from "@/components/Process";
-import Products from "@/components/home/Products";
 import Marquee from "@/components/home/Marquee";
 import BlogTeaser from "@/components/BlogTeaser";
 import FAQList, { faqJsonLd } from "@/components/FAQList";
@@ -29,7 +28,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "What does Aethyl Global do?",
-    a: "Aethyl Global is a software studio. We build custom dashboards, CRM systems, mobile apps and automation for growing businesses around the world, and we run our own products, Void AI and Offrion.",
+    a: "Aethyl Global is a software studio. We build custom dashboards, CRM systems, mobile apps and automation for growing businesses around the world.",
   },
   {
     q: "What happens in the free 30-minute audit?",
@@ -83,13 +82,12 @@ export default function Home() {
       <ServicesBento />
       <About />
       <Process />
-      <Products />
       <section id="faq" className="border-t py-24 sm:py-32">
         <div className="container-page grid gap-14 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <SectionHeading
               label="FAQ"
-              index="05"
+              index="04"
               title={
                 <>
                   Questions, <em>answered</em>
@@ -109,7 +107,7 @@ export default function Home() {
           <FAQList faqs={faqs} />
         </div>
       </section>
-      <BlogTeaser index="06" />
+      <BlogTeaser index="05" />
       <AuditCTA />
       <JsonLd data={[businessJsonLd, faqJsonLd(faqs)]} />
     </>

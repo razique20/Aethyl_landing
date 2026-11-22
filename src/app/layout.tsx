@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SoundToggle from "@/components/SoundToggle";
 import RevealObserver from "@/components/RevealObserver";
+import MobileCTA from "@/components/MobileCTA";
 import JsonLd from "@/components/JsonLd";
 import { CONTACT, SAME_AS, SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -108,6 +109,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <SoundToggle className="fixed bottom-4 left-4 z-50 bg-background/85 shadow-sm backdrop-blur-md sm:bottom-6 sm:left-6" />
+        <MobileCTA />
         <RevealObserver />
         <JsonLd data={[organizationJsonLd, websiteJsonLd]} />
       </body>

@@ -16,7 +16,6 @@ const columns = [
     links: [
       { label: "About", href: "/#studio" },
       { label: "Process", href: "/#process" },
-      { label: "Products", href: "/#products" },
       { label: "Journal", href: "/blog" },
       { label: "Contact", href: "/contact" },
     ],
@@ -26,7 +25,6 @@ const columns = [
     links: [
       { label: "LinkedIn", href: CONTACT.linkedin },
       { label: "X / Twitter", href: CONTACT.x },
-      { label: "Void AI", href: "https://void.aethyl.com" },
     ],
   },
 ];

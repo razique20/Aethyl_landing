@@ -79,7 +79,7 @@ export const services: Service[] = [
         a: "Yes. Dashboards are built as responsive web apps, so they work on desktop, tablet and phone without installing anything.",
       },
     ],
-    relatedPosts: ["custom-crm-development", "void-ai-enterprise-automation"],
+    relatedPosts: ["custom-crm-development", "saas-launch-playbook"],
   },
   {
     slug: "crm-development",
@@ -216,7 +216,7 @@ export const services: Service[] = [
     ],
     intro: [
       "Every business has work that follows the same steps every time: copying data between systems, sending the same reports, routing enquiries, scheduling. It is slow, error-prone and rarely anyone's favourite job.",
-      "We automate those processes with integrations and AI agents — including Void AI, the automation platform we build and run ourselves — with every action logged and approval steps wherever you want a person to decide.",
+      "We automate those processes with integrations and AI agents with every action logged and approval steps wherever you want a person to decide.",
     ],
     deliverables: [
       {
@@ -241,7 +241,7 @@ export const services: Service[] = [
       "Reports are compiled manually every week",
       "Enquiries wait in an inbox until someone routes them",
     ],
-    stack: ["Void AI", "REST APIs", "Webhooks", "Node.js", "PostgreSQL"],
+    stack: ["AI agents", "REST APIs", "Webhooks", "Node.js", "PostgreSQL"],
     faqs: [
       {
         q: "What kinds of tasks can be automated?",
@@ -251,12 +251,8 @@ export const services: Service[] = [
         q: "Is AI automation safe for our business data?",
         a: "Agents only get access to the systems and actions you approve, every action is logged, and sensitive steps can require a person to approve before anything happens.",
       },
-      {
-        q: "What is Void AI?",
-        a: "Void AI is the AI agent platform built and operated by Aethyl Global. We use it to power automation for clients, and you can see it at void.aethyl.com.",
-      },
     ],
-    relatedPosts: ["void-ai-enterprise-automation", "cicd-pipelines-for-startups"],
+    relatedPosts: ["cicd-pipelines-for-startups", "custom-crm-development"],
   },
 ];
 

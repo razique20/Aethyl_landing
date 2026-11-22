@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Logo from "./Logo";
 import { buttonVariants, cn } from "./ui";
 import { services } from "@/data/services";
 import { AUDIT_CTA, CONTACT } from "@/lib/site";
+import { haptic } from "@/lib/haptics";
 
 const links = [
   { label: "Studio", href: "/#studio" },
@@ -16,8 +17,15 @@ const links = [
   { label: "Contact", href: "/contact" },
 ];
 
+const mobileLinks = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  ...links,
+];
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const progress = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   // Home opens on a dark hero, so the bar starts dark and turns light on scroll.
@@ -38,7 +46,12 @@ export default function Navbar() {
   }, [open]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12);
+      // Mobile reading-progress line, updated without re-rendering.
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (progress.current) progress.current.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -54,6 +67,8 @@ export default function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 transition-[background-color,border-color,color] duration-500",
+        // Phones: no bar at all, just floating circular buttons (revlient-style).
+        "max-md:border-b-0 max-md:!bg-transparent max-md:backdrop-blur-none",
         overHero
           ? "theme-dark border-b border-transparent !bg-transparent"
           : scrolled || open
@@ -61,8 +76,22 @@ export default function Navbar() {
             : "border-b border-transparent bg-background"
       )}
     >
-      <div className="container-page flex h-[72px] items-center gap-8">
-        <Logo />
+      <div
+        ref={progress}
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-teal md:hidden"
+      />
+      <div className="container-page relative z-10 flex h-[72px] items-center gap-8">
+        <Logo className="max-md:hidden" />
+        <Link
+          href="/"
+          aria-label="Aethyl Global — home"
+          className="flex size-12 items-center justify-center rounded-full bg-[#08090c] text-white shadow-lg shadow-black/15 ring-1 ring-white/15 transition-transform active:scale-90 md:hidden"
+        >
+          <span className="text-[22px] font-light leading-none tracking-[-0.06em]" aria-hidden="true">
+            ag.
+          </span>
+        </Link>
 
         <nav aria-label="Main" className="hidden md:block">
           <ul className="flex items-center gap-7">
@@ -103,61 +132,110 @@ export default function Navbar() {
         </nav>
 
         <div className="ml-auto flex items-center gap-3">
-          <Link href={AUDIT_CTA.href} className={buttonVariants({ variant: "audit", size: "sm" })}>
-            <span className="sm:hidden">Free audit</span>
-            <span className="hidden sm:inline">{AUDIT_CTA.label}</span>
+          <Link
+            href={AUDIT_CTA.href}
+            className={buttonVariants({ variant: "audit", size: "sm", className: "max-md:hidden" })}
+          >
+            {AUDIT_CTA.label}
           </Link>
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="flex h-9 items-center gap-2 rounded-full border border-input px-4 text-[13px] text-foreground md:hidden"
+            onClick={() => {
+              haptic();
+              setOpen((v) => !v);
+            }}
+            className="relative flex size-12 items-center justify-center rounded-full bg-[#08090c] text-white shadow-lg shadow-black/15 ring-1 ring-white/15 transition-transform active:scale-90 md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
           >
-            {open ? "Close" : "Menu"}
+            {/* Two-line burger that morphs into an X */}
+            <span aria-hidden="true" className="relative block h-3 w-[18px]">
+              <span
+                className={cn(
+                  "absolute left-0 h-[1.5px] w-full rounded bg-current transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
+                )}
+              />
+              <span
+                className={cn(
+                  "absolute left-0 h-[1.5px] w-full rounded bg-current transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
+                )}
+              />
+            </span>
           </button>
         </div>
       </div>
 
-      {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[72px] overflow-y-auto bg-background md:hidden">
-          <nav aria-label="Mobile" className="container-page flex min-h-full flex-col py-8">
-            <ul>
-              {[{ label: "Services", href: "/services" }, ...links].map((l, i) => (
-                <li key={l.href} className="rise border-b" style={{ animationDelay: `${i * 60}ms` }}>
-                  <Link href={l.href} className="flex items-baseline justify-between py-4">
-                    <span className="font-display text-[40px] leading-none">{l.label}</span>
-                    <span className="text-[11px] tabular-nums text-subtle">0{i + 1}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <p className="label mt-10">Services</p>
-            <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3">
-              {services.map((s) => (
-                <li key={s.slug}>
-                  <Link href={`/services/${s.slug}`} className="text-[15px] text-muted-foreground">
-                    {s.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-auto pt-10">
-              <Link
-                href={AUDIT_CTA.href}
-                className={buttonVariants({ variant: "audit", size: "lg", className: "w-full" })}
+      {/* Mobile menu: full-screen light sheet with oversized links */}
+      <div
+        id="mobile-menu"
+        aria-hidden={!open}
+        inert={!open}
+        className={cn(
+          "fixed inset-0 overflow-y-auto bg-white text-[#08090c] transition-[opacity,visibility] duration-500 md:hidden",
+          "bg-[radial-gradient(90%_45%_at_0%_0%,rgba(45,212,191,0.14),transparent_70%),radial-gradient(70%_40%_at_100%_100%,rgba(99,102,241,0.08),transparent_70%)]",
+          open ? "visible opacity-100" : "invisible opacity-0"
+        )}
+      >
+        <nav aria-label="Mobile" className="flex min-h-full flex-col px-5 pb-8 pt-[96px]">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8b8d96]">Menu</p>
+          <ul className="mt-5 border-t border-[#e8e8ed]">
+            {mobileLinks.map((l, i) => (
+              <li
+                key={l.href}
+                className={cn(
+                  "border-b border-[#e8e8ed] transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+                )}
+                style={{ transitionDelay: open ? `${80 + i * 55}ms` : "0ms" }}
               >
-                {AUDIT_CTA.label}
-                <ArrowRight aria-hidden="true" />
-              </Link>
-              <a href={`mailto:${CONTACT.email}`} className="mt-4 block text-center text-sm text-muted-foreground">
-                {CONTACT.email}
-              </a>
-            </div>
-          </nav>
-        </div>
-      )}
+                <Link
+                  href={l.href}
+                  onClick={() => {
+                    haptic();
+                    setOpen(false);
+                  }}
+                  className="group flex items-center justify-between py-4 active:opacity-60"
+                >
+                  <span className="text-[44px] font-normal leading-none tracking-[-0.03em]">{l.label}</span>
+                  <ArrowUpRight
+                    className={cn(
+                      "size-6 transition-colors",
+                      pathname === l.href ? "text-teal" : "text-[#c9cad1]"
+                    )}
+                    aria-hidden="true"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div
+            className={cn(
+              "mt-auto pt-10 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+              open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+            )}
+            style={{ transitionDelay: open ? "450ms" : "0ms" }}
+          >
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="mb-5 block text-center text-sm text-[#5a5c66]"
+            >
+              {CONTACT.email}
+            </a>
+            <Link
+              href={AUDIT_CTA.href}
+              onClick={() => setOpen(false)}
+              className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-[#08090c] text-[15px] font-medium text-white transition-transform active:scale-[0.97]"
+            >
+              {AUDIT_CTA.label}
+              <ArrowUpRight className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }
