@@ -3,21 +3,25 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Logo from "./Logo";
-import ServiceIcon from "./ServiceIcon";
 import { buttonVariants, cn } from "./ui";
 import { services } from "@/data/services";
-import { AUDIT_CTA } from "@/lib/site";
+import { AUDIT_CTA, CONTACT } from "@/lib/site";
 
 const links = [
-  { label: "Blog", href: "/blog" },
+  { label: "Studio", href: "/#studio" },
+  { label: "Process", href: "/#process" },
+  { label: "Journal", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  // Home opens on a dark hero, so the bar starts dark and turns light on scroll.
+  const overHero = pathname === "/" && !scrolled && !open;
 
   // Close the mobile menu on navigation (state reset during render).
   const [lastPath, setLastPath] = useState(pathname);
@@ -33,43 +37,52 @@ export default function Navbar() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const linkClass = (href: string) =>
     cn(
-      "rounded-md px-3 py-2 text-sm transition-colors hover:text-foreground",
+      "link-draw py-1 text-[14px] transition-colors hover:text-foreground",
       pathname === href ? "text-foreground" : "text-muted-foreground"
     );
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-xl">
-      <div className="container-page flex h-16 items-center gap-6">
+    <header
+      className={cn(
+        "sticky top-0 z-50 transition-[background-color,border-color,color] duration-500",
+        overHero
+          ? "theme-dark border-b border-transparent !bg-transparent"
+          : scrolled || open
+            ? "border-b border-border bg-background/85 backdrop-blur-xl"
+            : "border-b border-transparent bg-background"
+      )}
+    >
+      <div className="container-page flex h-[72px] items-center gap-8">
         <Logo />
 
         <nav aria-label="Main" className="hidden md:block">
-          <ul className="flex items-center">
+          <ul className="flex items-center gap-7">
             {/* Services menu: opens on hover or keyboard focus, no JS needed */}
             <li className="group relative">
-              <Link
-                href="/services"
-                className={cn(linkClass("/services"), "inline-flex items-center gap-1")}
-              >
+              <Link href="/services" className={linkClass("/services")}>
                 Services
-                <ChevronDown
-                  className="size-3.5 transition-transform group-hover:rotate-180 group-focus-within:rotate-180"
-                  aria-hidden="true"
-                />
               </Link>
-              <div className="invisible absolute left-0 top-full pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                <ul className="grid w-[520px] grid-cols-2 gap-1 rounded-xl border bg-popover p-2 shadow-2xl shadow-black/40">
-                  {services.map((s) => (
+              <div className="invisible absolute -left-5 top-full pt-4 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <ul className="w-[340px] rounded-xl border bg-popover p-2 shadow-xl shadow-black/[0.08]">
+                  {services.map((s, i) => (
                     <li key={s.slug}>
                       <Link
                         href={`/services/${s.slug}`}
-                        className="flex gap-3 rounded-lg p-3 transition-colors hover:bg-accent"
+                        className="flex items-baseline gap-4 rounded-lg px-3 py-3 transition-colors hover:bg-accent"
                       >
-                        <ServiceIcon name={s.icon} className="mt-0.5 size-4 shrink-0 text-teal" />
+                        <span className="text-[11px] tabular-nums text-subtle">0{i + 1}</span>
                         <span>
-                          <span className="block text-sm font-medium">{s.name}</span>
-                          <span className="mt-1 line-clamp-2 block text-[13px] leading-snug text-muted-foreground">
+                          <span className="font-display block text-xl leading-tight">{s.name}</span>
+                          <span className="mt-1 block text-[13px] leading-snug text-muted-foreground">
                             {s.highlights[0]}
                           </span>
                         </span>
@@ -89,59 +102,59 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
-          <Link
-            href={AUDIT_CTA.href}
-            className={buttonVariants({ variant: "audit", size: "sm" })}
-          >
+        <div className="ml-auto flex items-center gap-3">
+          <Link href={AUDIT_CTA.href} className={buttonVariants({ variant: "audit", size: "sm" })}>
             <span className="sm:hidden">Free audit</span>
             <span className="hidden sm:inline">{AUDIT_CTA.label}</span>
           </Link>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className={buttonVariants({ variant: "ghost", size: "sm", className: "md:hidden" })}
+            className="flex h-9 items-center gap-2 rounded-full border border-input px-4 text-[13px] text-foreground md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
           >
-            {open ? <X /> : <Menu />}
+            {open ? "Close" : "Menu"}
           </button>
         </div>
       </div>
 
       {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto bg-background md:hidden">
-          <nav aria-label="Mobile" className="container-page py-4">
-            <p className="px-1 pb-2 pt-2 text-xs font-medium text-subtle">Services</p>
-            <ul className="mb-4">
+        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[72px] overflow-y-auto bg-background md:hidden">
+          <nav aria-label="Mobile" className="container-page flex min-h-full flex-col py-8">
+            <ul>
+              {[{ label: "Services", href: "/services" }, ...links].map((l, i) => (
+                <li key={l.href} className="rise border-b" style={{ animationDelay: `${i * 60}ms` }}>
+                  <Link href={l.href} className="flex items-baseline justify-between py-4">
+                    <span className="font-display text-[40px] leading-none">{l.label}</span>
+                    <span className="text-[11px] tabular-nums text-subtle">0{i + 1}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="label mt-10">Services</p>
+            <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <Link
-                    href={`/services/${s.slug}`}
-                    className="flex items-center gap-3 rounded-md px-1 py-3 text-base"
-                  >
-                    <ServiceIcon name={s.icon} className="size-4 text-teal" />
+                  <Link href={`/services/${s.slug}`} className="text-[15px] text-muted-foreground">
                     {s.name}
                   </Link>
                 </li>
               ))}
             </ul>
-            <ul className="border-t pt-2">
-              {[{ label: "All services", href: "/services" }, ...links].map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="block rounded-md px-1 py-3 text-base">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Link
-              href={AUDIT_CTA.href}
-              className={buttonVariants({ variant: "audit", size: "lg", className: "mt-6 w-full" })}
-            >
-              {AUDIT_CTA.label}
-            </Link>
+            <div className="mt-auto pt-10">
+              <Link
+                href={AUDIT_CTA.href}
+                className={buttonVariants({ variant: "audit", size: "lg", className: "w-full" })}
+              >
+                {AUDIT_CTA.label}
+                <ArrowRight aria-hidden="true" />
+              </Link>
+              <a href={`mailto:${CONTACT.email}`} className="mt-4 block text-center text-sm text-muted-foreground">
+                {CONTACT.email}
+              </a>
+            </div>
           </nav>
         </div>
       )}

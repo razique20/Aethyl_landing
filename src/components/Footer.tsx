@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { LinkedInIcon, XIcon } from "./SocialIcons";
 import { services } from "@/data/services";
 import { CONTACT } from "@/lib/site";
 
@@ -13,76 +12,57 @@ const columns = [
     ],
   },
   {
-    title: "Company",
+    title: "Studio",
     links: [
+      { label: "About", href: "/#studio" },
+      { label: "Process", href: "/#process" },
       { label: "Products", href: "/#products" },
-      { label: "Void AI", href: "https://void.aethyl.com" },
-      { label: "Blog", href: "/blog" },
+      { label: "Journal", href: "/blog" },
       { label: "Contact", href: "/contact" },
     ],
   },
   {
-    title: "Get in touch",
+    title: "Elsewhere",
     links: [
-      { label: CONTACT.email, href: `mailto:${CONTACT.email}` },
       { label: "LinkedIn", href: CONTACT.linkedin },
       { label: "X / Twitter", href: CONTACT.x },
+      { label: "Void AI", href: "https://void.aethyl.com" },
     ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t">
-      <div className="container-page py-14">
-        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
+    <footer className="overflow-hidden border-t">
+      <div className="container-page pt-16 sm:pt-20">
+        <div className="grid gap-12 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
           <div>
             <Logo />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              A software studio building custom dashboards, CRM, mobile apps and
-              automation for growing businesses around the world.
+            <p className="font-display mt-6 max-w-sm text-[28px] leading-[1.15]">
+              Software shaped around how your team <em>actually</em> works.
             </p>
-            <div className="mt-5 flex gap-2">
-              <a
-                href={CONTACT.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Aethyl Global on LinkedIn"
-                className="flex size-9 items-center justify-center rounded-md border text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-              >
-                <LinkedInIcon className="size-4" />
-              </a>
-              <a
-                href={CONTACT.x}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Aethyl Global on X"
-                className="flex size-9 items-center justify-center rounded-md border text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-              >
-                <XIcon className="size-4" />
-              </a>
-            </div>
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="link-draw mt-6 inline-block break-all text-[15px] text-foreground"
+            >
+              {CONTACT.email}
+            </a>
           </div>
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h2 className="mb-4 text-sm font-medium">{col.title}</h2>
-              <ul className="space-y-2.5 text-sm">
+              <h2 className="label mb-5">{col.title}</h2>
+              <ul className="space-y-3 text-[15px]">
                 {col.links.map((l) => {
-                  const cls = "break-all text-muted-foreground transition-colors hover:text-foreground";
-                  const internal = l.href.startsWith("/");
+                  const cls = "link-draw text-muted-foreground transition-colors hover:text-foreground";
                   return (
                     <li key={l.href}>
-                      {internal ? (
+                      {l.href.startsWith("/") ? (
                         <Link href={l.href} className={cls}>
                           {l.label}
                         </Link>
                       ) : (
-                        <a
-                          href={l.href}
-                          {...(l.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                          className={cls}
-                        >
+                        <a href={l.href} target="_blank" rel="noopener noreferrer" className={cls}>
                           {l.label}
                         </a>
                       )}
@@ -94,11 +74,19 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t pt-6 text-[13px] text-subtle sm:flex-row sm:justify-between">
-          <p>© {new Date().getFullYear()} Aethyl Global</p>
-          <p>Remote · {CONTACT.regions}</p>
+        <div className="mt-16 flex flex-col gap-2 border-t pt-6 text-[13px] text-subtle sm:flex-row sm:justify-between">
+          <p>© {new Date().getFullYear()} Aethyl Global. All rights reserved.</p>
+          <p>Remote studio · {CONTACT.regions}</p>
         </div>
       </div>
+
+      {/* Oversized wordmark, cropped by the page edge */}
+      <p
+        aria-hidden="true"
+        className="font-display pointer-events-none mt-6 select-none whitespace-nowrap text-center text-[17.5vw] leading-[0.78] text-foreground/[0.06]"
+      >
+        Aethyl Global
+      </p>
     </footer>
   );
 }

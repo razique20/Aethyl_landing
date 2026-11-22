@@ -20,8 +20,7 @@ export default function ServicesPage() {
   return (
     <>
       <ServicesBento headingAs="h1" />
-      <div className="container-page"><div className="rule" /></div>
-      <Process />
+      <Process index="02" />
       <AuditCTA />
     </>
   );

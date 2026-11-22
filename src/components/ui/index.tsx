@@ -1,6 +1,6 @@
 /**
- * Small shadcn/ui-style primitives. Class helpers rather than components for
- * buttons, so they work on <Link>, <a> and <button> alike.
+ * Small UI primitives. Class helpers rather than components for buttons,
+ * so they work on <Link>, <a> and <button> alike.
  */
 
 export function cn(...classes: (string | false | null | undefined)[]) {
@@ -11,21 +11,21 @@ type ButtonVariant = "default" | "audit" | "outline" | "ghost" | "link";
 type ButtonSize = "sm" | "default" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-[background-color,color,border-color,transform] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:transition-transform [&_svg]:duration-300 hover:[&_svg]:translate-x-0.5";
 
 const variants: Record<ButtonVariant, string> = {
-  default: "bg-primary text-primary-foreground hover:bg-primary/90",
+  default: "bg-primary text-primary-foreground hover:bg-primary/85",
   // The only use of amber on the site.
-  audit: "bg-amber text-[#000000] hover:bg-amber/90",
-  outline: "border border-input bg-transparent hover:bg-accent",
-  ghost: "text-muted-foreground hover:bg-accent hover:text-foreground",
+  audit: "bg-amber text-[#08090c] hover:bg-amber/85",
+  outline: "border border-input bg-transparent text-foreground hover:border-foreground/60",
+  ghost: "text-muted-foreground hover:text-foreground",
   link: "text-teal underline-offset-4 hover:underline",
 };
 
 const sizes: Record<ButtonSize, string> = {
-  sm: "h-8 px-3 text-[13px]",
-  default: "h-9 px-4 text-sm",
-  lg: "h-11 px-6 text-[15px]",
+  sm: "h-9 px-4 text-[13px]",
+  default: "h-10 px-5 text-sm",
+  lg: "h-12 px-7 text-[15px]",
 };
 
 export function buttonVariants({
@@ -46,7 +46,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-md border border-border px-2 py-0.5 text-xs font-medium text-muted-foreground",
+        "inline-flex items-center rounded-full border border-border px-3 py-1 text-xs text-muted-foreground",
         className
       )}
     >
@@ -55,32 +55,61 @@ export function Badge({
   );
 }
 
+/** Editorial section label, e.g. "(02) — Services". */
+export function SectionLabel({
+  index,
+  children,
+  className,
+}: {
+  index?: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <p className={cn("label flex items-center gap-3", className)}>
+      {index && <span className="text-muted-foreground">({index})</span>}
+      <span>{children}</span>
+    </p>
+  );
+}
+
 export function SectionHeading({
   title,
   description,
+  label,
+  index,
   as: Tag = "h2",
   align = "left",
   className,
 }: {
   title: React.ReactNode;
   description?: React.ReactNode;
+  label?: string;
+  index?: string;
   as?: "h1" | "h2";
   align?: "left" | "center";
   className?: string;
 }) {
   return (
     <div
-      className={cn(
-        "max-w-2xl",
-        align === "center" && "mx-auto text-center",
-        className
-      )}
+      data-reveal
+      className={cn("max-w-3xl", align === "center" && "mx-auto text-center", className)}
     >
-      <Tag className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+      {label && (
+        <SectionLabel index={index} className={cn("mb-6", align === "center" && "justify-center")}>
+          {label}
+        </SectionLabel>
+      )}
+      <Tag className="font-display text-[44px] leading-[1] text-balance sm:text-6xl lg:text-7xl">
         {title}
       </Tag>
       {description && (
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty sm:text-lg">
+        <p
+          className={cn(
+            "mt-6 max-w-xl text-base leading-relaxed text-muted-foreground text-pretty sm:text-lg",
+            align === "center" && "mx-auto"
+          )}
+        >
           {description}
         </p>
       )}

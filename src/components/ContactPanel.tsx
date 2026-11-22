@@ -27,10 +27,11 @@ export default function ContactPanel({
 }) {
   const Heading = headingAs;
   return (
-    <section id="contact" className="py-20 sm:py-28">
-      <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+    <section id="contact" className="border-t py-24 sm:py-32">
+      <div className="container-page grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         <div>
-          <Heading className="text-3xl font-semibold tracking-[-0.035em] text-balance sm:text-5xl">
+          <p className="label mb-8">Contact</p>
+          <Heading className="font-display text-[48px] leading-[0.98] text-balance sm:text-7xl">
             {heading}
           </Heading>
           <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -38,24 +39,24 @@ export default function ContactPanel({
             with a clear recommendation, whether or not you work with us.
           </p>
 
-          <h3 className="mt-10 text-sm font-medium">What we cover</h3>
-          <ol className="mt-3 space-y-2.5">
+          <h3 className="label mt-12">What we cover</h3>
+          <ol className="mt-5 space-y-3">
             {auditCovers.map((item, i) => (
               <li key={item} className="flex gap-3 text-[15px] text-muted-foreground">
-                <span className="font-mono text-xs leading-6 text-subtle">0{i + 1}</span>
+                <span className="text-[13px] tabular-nums leading-6 text-subtle">0{i + 1}</span>
                 {item}
               </li>
             ))}
           </ol>
 
-          <h3 className="mt-10 text-sm font-medium">Prefer to message us?</h3>
-          <ul className="mt-3 divide-y rounded-xl border">
+          <h3 className="label mt-12">Prefer to message us?</h3>
+          <ul className="mt-5 divide-y border-y">
             {channels.map(({ icon: Icon, label, value, href, external }) => (
               <li key={label}>
                 <a
                   href={href}
                   {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="flex items-center gap-3 px-4 py-3 text-sm transition-colors hover:bg-accent"
+                  className="flex items-center gap-3 py-4 text-sm transition-colors hover:text-foreground"
                 >
                   <Icon className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
                   <span className="w-20 text-muted-foreground">{label}</span>

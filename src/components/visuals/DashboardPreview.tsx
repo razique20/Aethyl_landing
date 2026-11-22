@@ -26,7 +26,7 @@ export default function DashboardPreview({ className }: { className?: string }) 
       role="img"
       aria-label="Example of a custom operations dashboard with order, stock and dispatch metrics"
       className={cn(
-        "overflow-hidden rounded-xl border bg-card text-left shadow-2xl shadow-black/40",
+        "overflow-hidden rounded-xl border bg-card text-left shadow-2xl shadow-black/20",
         className
       )}
     >

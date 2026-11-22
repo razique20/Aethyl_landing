@@ -14,7 +14,7 @@ export default function ThankYou() {
   return (
     <section className="py-24 sm:py-32">
       <div className="container-page max-w-lg text-center">
-        <h1 className="text-4xl font-semibold tracking-[-0.035em]">Thanks — we&apos;ve got it.</h1>
+        <h1 className="font-display text-6xl leading-none">Thanks — we&apos;ve <em>got it.</em></h1>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
           We&apos;ll reply within one working day to schedule your free 30-minute
           audit. Need us sooner? Email{" "}

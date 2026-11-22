@@ -61,7 +61,7 @@ export default function ContactForm({ defaultNeed }: { defaultNeed?: string }) {
       <input type="hidden" name="_subject" value="Free 30-minute audit request — aethyl.com" />
 
       <div className="mb-6">
-        <h2 className="text-lg font-semibold tracking-tight">Book your free audit</h2>
+        <h2 className="font-display text-3xl">Book your free <em>audit</em></h2>
         <p className="mt-1 text-sm text-muted-foreground">
           We&apos;ll reply within one working day to schedule a time.
         </p>
@@ -95,7 +95,7 @@ export default function ContactForm({ defaultNeed }: { defaultNeed?: string }) {
             {needs.map((need) => (
               <label
                 key={need}
-                className="cursor-pointer rounded-md border border-input px-3 py-1.5 text-[13px] text-muted-foreground transition-colors hover:bg-accent has-checked:border-teal has-checked:bg-teal/10 has-checked:text-teal has-focus-visible:ring-2 has-focus-visible:ring-ring"
+                className="cursor-pointer rounded-full border border-input px-3 py-1.5 text-[13px] text-muted-foreground transition-colors hover:bg-accent has-checked:border-teal has-checked:bg-teal/10 has-checked:text-teal has-focus-visible:ring-2 has-focus-visible:ring-ring"
               >
                 <input
                   type="checkbox"

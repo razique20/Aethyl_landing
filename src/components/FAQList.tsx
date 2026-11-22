@@ -1,26 +1,29 @@
-import { ChevronDown } from "lucide-react";
-
 export interface FAQ {
   q: string;
   a: string;
 }
 
-/** shadcn-style accordion on native <details>: rendered in HTML, no JS needed. */
+/** Numbered accordion on native <details>: rendered in HTML, no JS needed. */
 export default function FAQList({ faqs }: { faqs: FAQ[] }) {
   return (
     <div className="border-t">
-      {faqs.map((faq) => (
-        <details key={faq.q} className="accordion border-b">
-          <summary className="flex items-center justify-between gap-4 py-4 text-left">
-            <h3 className="text-[15px] font-medium hover:underline hover:underline-offset-4">
+      {faqs.map((faq, i) => (
+        <details key={faq.q} className="accordion group border-b" data-reveal data-reveal-delay={i * 60}>
+          <summary className="grid grid-cols-[40px_1fr_auto] items-baseline gap-3 py-6 text-left sm:grid-cols-[56px_1fr_auto]">
+            <span className="text-[13px] tabular-nums text-subtle">{String(i + 1).padStart(2, "0")}</span>
+            <h3 className="font-display text-2xl leading-snug transition-colors group-hover:text-muted-foreground sm:text-[28px]">
               {faq.q}
             </h3>
-            <ChevronDown
-              className="accordion-chevron size-4 shrink-0 text-muted-foreground transition-transform duration-200"
+            <span
+              className="accordion-plus font-display text-3xl leading-none text-muted-foreground"
               aria-hidden="true"
-            />
+            >
+              +
+            </span>
           </summary>
-          <p className="pb-5 pr-8 text-[15px] leading-relaxed text-muted-foreground">{faq.a}</p>
+          <p className="pb-7 pl-[52px] pr-8 text-[15px] leading-relaxed text-muted-foreground sm:pl-[68px]">
+            {faq.a}
+          </p>
         </details>
       ))}
     </div>

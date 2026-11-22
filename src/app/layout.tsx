@@ -1,17 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Figtree, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SoundToggle from "@/components/SoundToggle";
+import RevealObserver from "@/components/RevealObserver";
 import JsonLd from "@/components/JsonLd";
 import { CONTACT, SAME_AS, SITE_NAME, SITE_URL } from "@/lib/site";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const figtree = Figtree({ variable: "--font-figtree", subsets: ["latin"] });
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
-  colorScheme: "dark",
+  themeColor: "#ffffff",
+  colorScheme: "light",
 };
 
 // Defaults only. Every page sets its own title, description and canonical
@@ -80,7 +88,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${figtree.variable} ${instrumentSerif.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Marks JS as available so scroll-reveal can hide content until it animates in. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
         <a
           href="#main"
@@ -91,6 +107,8 @@ export default function RootLayout({
         <Navbar />
         <main id="main">{children}</main>
         <Footer />
+        <SoundToggle className="fixed bottom-4 left-4 z-50 bg-background/85 shadow-sm backdrop-blur-md sm:bottom-6 sm:left-6" />
+        <RevealObserver />
         <JsonLd data={[organizationJsonLd, websiteJsonLd]} />
       </body>
     </html>

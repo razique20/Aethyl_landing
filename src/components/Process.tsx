@@ -1,20 +1,38 @@
 import { SectionHeading } from "./ui";
 import { processSteps } from "@/data/services";
 
-export default function Process() {
+export default function Process({ index = "03" }: { index?: string }) {
   return (
-    <section className="py-20 sm:py-28">
-      <div className="container-page">
-        <SectionHeading
-          title="How a project runs"
-          description="No long discovery phase. A free audit, a fixed quote, then working software you can use within weeks."
-        />
-        <ol className="mt-12 grid gap-px overflow-hidden rounded-xl border bg-border sm:grid-cols-2 lg:grid-cols-4">
+    <section id="process" className="border-t py-24 sm:py-32">
+      <div className="container-page grid gap-14 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <SectionHeading
+            label="Process"
+            index={index}
+            title={
+              <>
+                How a project <em>runs</em>
+              </>
+            }
+            description="No long discovery phase. A free audit, a fixed quote, then working software you can use within weeks."
+          />
+        </div>
+
+        <ol className="border-t">
           {processSteps.map((step, i) => (
-            <li key={step.title} className="bg-background p-6">
-              <span className="font-mono text-xs text-subtle">Step {i + 1}</span>
-              <h3 className="mt-3 text-base font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.text}</p>
+            <li
+              key={step.title}
+              data-reveal
+              data-reveal-delay={i * 80}
+              className="grid grid-cols-[72px_1fr] gap-4 border-b py-9 sm:grid-cols-[120px_1fr]"
+            >
+              <span className="font-display text-5xl leading-none text-subtle sm:text-6xl">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className="font-display text-3xl leading-tight">{step.title}</h3>
+                <p className="mt-3 max-w-md text-[15px] leading-relaxed text-muted-foreground">{step.text}</p>
+              </div>
             </li>
           ))}
         </ol>

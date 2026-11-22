@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Dev-only badge; keep it clear of the sound toggle in the bottom-left.
+  devIndicators: { position: "bottom-right" },
   async redirects() {
     return [
       // One canonical host: send bare aethyl.com to www.aethyl.com (308).

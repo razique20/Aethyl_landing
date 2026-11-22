@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ArrowUpRight, ChevronRight } from "lucide-react";
-import ServiceIcon from "@/components/ServiceIcon";
 import ServiceVisual from "@/components/visuals/ServiceVisuals";
 import Process from "@/components/Process";
 import BlogTeaser from "@/components/BlogTeaser";
@@ -82,7 +81,7 @@ export default async function ServicePage({ params }: Props) {
       {/* Header */}
       <section className="pb-16 pt-10 sm:pb-24 sm:pt-14">
         <div className="container-page">
-          <nav aria-label="Breadcrumb" className="mb-12 text-sm text-subtle">
+          <nav aria-label="Breadcrumb" className="rise mb-14 text-sm text-subtle">
             <ol className="flex flex-wrap items-center gap-1.5">
               <li><Link href="/" className="hover:text-foreground">Home</Link></li>
               <li aria-hidden="true"><ChevronRight className="size-3.5" /></li>
@@ -94,17 +93,14 @@ export default async function ServicePage({ params }: Props) {
 
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
             <div>
-              <Badge className="gap-1.5">
-                <ServiceIcon name={service.icon} className="size-3.5 text-teal" />
-                {service.name}
-              </Badge>
-              <h1 className="mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-balance sm:text-6xl">
+              <p className="rise label">Service — {service.name}</p>
+              <h1 className="rise font-display mt-6 text-[52px] leading-[0.95] text-balance sm:text-7xl lg:text-[88px]" style={{ animationDelay: "100ms" }}>
                 {service.h1}
               </h1>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty">
+              <p className="rise mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty" style={{ animationDelay: "200ms" }}>
                 {service.intro[0]}
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="rise mt-10 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: "300ms" }}>
                 <Link href="#contact" className={buttonVariants({ variant: "audit", size: "lg" })}>
                   {AUDIT_CTA.label}
                   <ArrowRight aria-hidden="true" />
@@ -115,7 +111,7 @@ export default async function ServicePage({ params }: Props) {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-xl border bg-card">
+            <div data-reveal className="overflow-hidden rounded-xl border bg-card">
               <div className="flex h-10 items-center gap-2 border-b px-4">
                 <span className="size-2.5 rounded-full bg-input" />
                 <span className="size-2.5 rounded-full bg-input" />
@@ -130,11 +126,11 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* Problem + good fit */}
-      <section className="border-y bg-card/40 py-16 sm:py-20">
+      <section className="border-y bg-soft py-20 sm:py-28">
         <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight">The approach</h2>
-            <div className="mt-4 space-y-4">
+            <h2 className="font-display text-4xl sm:text-5xl">The <em>approach</em></h2>
+            <div className="mt-6 space-y-4">
               {service.intro.slice(1).map((p) => (
                 <p key={p} className="text-[17px] leading-relaxed text-muted-foreground">{p}</p>
               ))}
@@ -146,11 +142,11 @@ export default async function ServicePage({ params }: Props) {
             </ul>
           </div>
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight">A good fit if…</h2>
-            <ul className="mt-4 divide-y rounded-xl border bg-background">
+            <h2 className="font-display text-4xl sm:text-5xl">A good fit <em>if…</em></h2>
+            <ul className="mt-6 border-t">
               {service.goodFit.map((g) => (
-                <li key={g} className="flex gap-3 px-4 py-3.5 text-[15px]">
-                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-teal" aria-hidden="true" />
+                <li key={g} className="flex gap-4 border-b py-4 text-[16px]">
+                  <span className="text-muted-foreground" aria-hidden="true">✦</span>
                   {g}
                 </li>
               ))}
@@ -160,13 +156,13 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* Deliverables */}
-      <section id="what-we-build" className="py-20 sm:py-28">
+      <section id="what-we-build" className="py-24 sm:py-32">
         <div className="container-page">
-          <SectionHeading title={`What we build`} description={service.summary} />
-          <ul className="mt-12 grid gap-px overflow-hidden rounded-xl border bg-border md:grid-cols-2">
+          <SectionHeading label="Deliverables" index="01" title={<>What we <em>build</em></>} description={service.summary} />
+          <ul className="mt-16 grid gap-px overflow-hidden rounded-xl border bg-border md:grid-cols-2">
             {service.deliverables.map((d) => (
-              <li key={d.title} className="bg-background p-6 sm:p-8">
-                <h3 className="text-lg font-semibold tracking-tight">{d.title}</h3>
+              <li key={d.title} data-reveal className="bg-background p-8 sm:p-10">
+                <h3 className="font-display text-3xl leading-tight">{d.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{d.text}</p>
               </li>
             ))}
@@ -174,33 +170,29 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      <div className="container-page"><div className="rule" /></div>
-      <Process />
+      <Process index="02" />
 
-      <section className="py-20 sm:py-28">
-        <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-          <SectionHeading title={`${service.name}: FAQ`} />
+      <section className="border-t py-24 sm:py-32">
+        <div className="container-page grid gap-14 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
+          <SectionHeading label="FAQ" index="03" title={<>{service.name}, <em>answered</em></>} />
           <FAQList faqs={service.faqs} />
         </div>
       </section>
 
-      <BlogTeaser title="Related reading" slugs={service.relatedPosts} />
+      <BlogTeaser title={<>Related <em>reading</em></>} slugs={service.relatedPosts} index="04" />
 
       {/* Other services */}
       <section className="pb-4">
         <div className="container-page">
-          <h2 className="mb-4 text-sm font-medium text-muted-foreground">Other services</h2>
+          <h2 className="label mb-5">Other services</h2>
           <ul className="grid gap-3 sm:grid-cols-3">
             {others.map((s) => (
               <li key={s.slug}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="group flex items-center justify-between rounded-lg border bg-card px-4 py-3.5 text-sm font-medium transition-colors hover:bg-accent"
+                  className="group flex items-center justify-between rounded-xl border bg-card px-5 py-5 transition-colors hover:border-input"
                 >
-                  <span className="inline-flex items-center gap-2.5">
-                    <ServiceIcon name={s.icon} className="size-4 text-teal" />
-                    {s.name}
-                  </span>
+                  <span className="font-display text-2xl">{s.name}</span>
                   <ArrowUpRight className="size-4 text-subtle group-hover:text-foreground" aria-hidden="true" />
                 </Link>
               </li>

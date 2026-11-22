@@ -94,7 +94,7 @@ export default async function BlogPost({ params }: Props) {
 
         <header className="mb-10">
           <Badge>{blog.tag}</Badge>
-          <h1 className="mt-5 text-3xl font-semibold leading-[1.1] tracking-[-0.035em] text-balance sm:text-5xl">
+          <h1 className="font-display mt-6 text-[44px] leading-[1.02] text-balance sm:text-6xl">
             {blog.title}
           </h1>
           <p className="mt-5 text-sm text-subtle">
@@ -118,7 +118,7 @@ export default async function BlogPost({ params }: Props) {
         </div>
 
         <aside className="mt-16 rounded-xl border bg-card p-6 sm:p-8">
-          <h2 className="text-xl font-semibold tracking-tight">Planning something similar?</h2>
+          <h2 className="font-display text-3xl">Planning something <em>similar?</em></h2>
           <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
             Book a free 30-minute audit with our team. We&apos;ll look at how you work
             today and tell you what&apos;s worth building first.
@@ -133,7 +133,7 @@ export default async function BlogPost({ params }: Props) {
       {related.length > 0 && (
         <section className="pb-20">
           <div className="container-page max-w-3xl">
-            <h2 className="text-lg font-semibold tracking-tight">Related articles</h2>
+            <h2 className="label">Related articles</h2>
             <ul className="mt-4 divide-y border-y">
               {related.map((b) => (
                 <li key={b.slug}>

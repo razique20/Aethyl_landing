@@ -4,6 +4,7 @@ import ServicesBento from "@/components/ServicesBento";
 import About from "@/components/home/About";
 import Process from "@/components/Process";
 import Products from "@/components/home/Products";
+import Marquee from "@/components/home/Marquee";
 import BlogTeaser from "@/components/BlogTeaser";
 import FAQList, { faqJsonLd } from "@/components/FAQList";
 import AuditCTA from "@/components/AuditCTA";
@@ -78,51 +79,39 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TechStrip />
+      <Marquee />
       <ServicesBento />
-      <div className="container-page"><div className="rule" /></div>
       <About />
-      <div className="container-page"><div className="rule" /></div>
       <Process />
-      <div className="container-page"><div className="rule" /></div>
       <Products />
-      <section id="faq" className="py-20 sm:py-28">
-        <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
-          <SectionHeading
-            title="Questions, answered"
-            description={
-              <>
-                Something else on your mind?{" "}
-                <a href={`mailto:${CONTACT.email}`} className="text-teal underline-offset-4 hover:underline">
-                  Email us
-                </a>
-                .
-              </>
-            }
-          />
+      <section id="faq" className="border-t py-24 sm:py-32">
+        <div className="container-page grid gap-14 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <SectionHeading
+              label="FAQ"
+              index="05"
+              title={
+                <>
+                  Questions, <em>answered</em>
+                </>
+              }
+              description={
+                <>
+                  Something else on your mind?{" "}
+                  <a href={`mailto:${CONTACT.email}`} className="link-draw text-foreground">
+                    Ask the studio
+                  </a>
+                  .
+                </>
+              }
+            />
+          </div>
           <FAQList faqs={faqs} />
         </div>
       </section>
-      <BlogTeaser />
+      <BlogTeaser index="06" />
       <AuditCTA />
       <JsonLd data={[businessJsonLd, faqJsonLd(faqs)]} />
     </>
-  );
-}
-
-const stack = ["Next.js", "React", "React Native", "Flutter", "TypeScript", "Node.js", "PostgreSQL"];
-
-function TechStrip() {
-  return (
-    <section aria-label="Technologies we build with" className="border-y py-8">
-      <div className="container-page flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-        <p className="text-sm text-subtle">Built with modern, proven technology</p>
-        <ul className="flex flex-wrap justify-center gap-x-7 gap-y-2 text-[15px] font-medium text-muted-foreground">
-          {stack.map((t) => (
-            <li key={t}>{t}</li>
-          ))}
-        </ul>
-      </div>
-    </section>
   );
 }
