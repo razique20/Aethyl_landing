@@ -179,6 +179,17 @@ body {
     }
   }
 
+  /* Hero photo settles in with a slow zoom */
+  .hero-zoom {
+    animation: hero-zoom 2.6s var(--ease-out-expo) both;
+  }
+  @keyframes hero-zoom {
+    from {
+      transform: scale(1.08);
+      opacity: 0.4;
+    }
+  }
+
   /* Scroll reveal: only hidden once JS has run (html.js), so content is
      always visible to crawlers and no-JS visitors. */
   html.js [data-reveal] {
@@ -248,6 +259,7 @@ body::after {
   }
   .marquee,
   .rise,
+  .hero-zoom,
   .eq span {
     animation: none !important;
   }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import DashboardPreview from "@/components/visuals/DashboardPreview";
@@ -9,10 +10,21 @@ export default function Hero() {
     // Dark band like revlient's cinematic hero; slides up under the
     // transparent navbar (72px) so the bar sits on top of it.
     <section className="theme-dark relative -mt-[72px] overflow-hidden pb-4 pt-[72px]">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_85%_10%,rgba(45,212,191,0.10),transparent_70%),radial-gradient(50%_40%_at_10%_100%,rgba(245,158,11,0.06),transparent_70%)]"
-      />
+      {/* Background photo: Earth at night (Unsplash, free licence), under a
+          dark veil so the white type stays readable. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-full max-md:h-[100svh]">
+        <Image
+          src="/hero-earth.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          quality={72}
+          className="hero-zoom object-cover object-[62%_60%] md:object-[center_45%]"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,9,12,0.78)_0%,rgba(8,9,12,0.45)_45%,rgba(8,9,12,0.15)_75%,rgba(8,9,12,0.05)_100%)] max-md:bg-[rgba(8,9,12,0.3)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(8,9,12,0.55)_0%,rgba(8,9,12,0)_25%,rgba(8,9,12,0.25)_55%,rgba(8,9,12,0.92)_80%,#08090c_100%)]" />
+      </div>
       <div className="container-page relative pt-14 sm:pt-20">
         <div className="rise label flex flex-wrap items-center justify-between gap-3 border-b pb-5">
           <span>Aethyl Global — Software studio</span>
