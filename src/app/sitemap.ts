@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { blogs } from "@/data/blogs";
+import { roles } from "@/data/careers";
 import { services } from "@/data/services";
 import { SITE_URL } from "@/lib/site";
 
@@ -17,6 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     })),
     { url: `${SITE_URL}/contact`, lastModified: SITE_UPDATED, changeFrequency: "yearly", priority: 0.8 },
+    { url: `${SITE_URL}/careers`, lastModified: new Date("2026-11-23"), changeFrequency: "weekly", priority: 0.6 },
+    ...roles.map((r) => ({
+      url: `${SITE_URL}/careers/${r.slug}`,
+      lastModified: new Date("2026-11-23"),
+      changeFrequency: "weekly" as const,
+      priority: 0.5,
+    })),
     { url: `${SITE_URL}/blog`, lastModified: SITE_UPDATED, changeFrequency: "weekly", priority: 0.7 },
     ...blogs.map((b) => ({
       url: `${SITE_URL}/blog/${b.slug}`,
