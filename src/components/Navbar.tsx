@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
-import Logo from "./Logo";
+import Logo, { LogoMark } from "./Logo";
 import { buttonVariants, cn } from "./ui";
 import { pillars } from "@/data/services";
 import { AUDIT_CTA, CONTACT } from "@/lib/site";
@@ -86,12 +86,9 @@ export default function Navbar() {
         <Link
           href="/"
           aria-label="Aethyl Global — home"
-          className="relative flex size-12 items-center justify-center bg-ink text-white ring-1 ring-white/15 transition-transform active:scale-90 md:hidden"
+          className="relative block size-12 ring-1 ring-white/15 transition-transform active:scale-90 md:hidden"
         >
-          <span className="font-display text-[22px] leading-none" aria-hidden="true">
-            A
-          </span>
-          <span className="absolute bottom-2 right-2 size-1.5 bg-lime" aria-hidden="true" />
+          <LogoMark className="size-12" />
         </Link>
 
         <nav aria-label="Main" className="hidden md:block">
