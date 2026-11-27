@@ -82,7 +82,11 @@ const businessJsonLd = {
             }))
           : p.items.map((item) => ({
               "@type": "Offer",
-              itemOffered: { "@type": "Service", name: item.label },
+              itemOffered: {
+                "@type": "Service",
+                name: item.label,
+                ...(p.href ? { url: `${SITE_URL}${p.href}` } : {}),
+              },
             })),
     })),
   },

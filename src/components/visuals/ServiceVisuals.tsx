@@ -136,12 +136,104 @@ function FlowVisual() {
   );
 }
 
+function CalendarVisual() {
+  const days = [
+    { d: "Mon", post: "Carousel", ch: "Instagram" },
+    { d: "Tue", post: "Article", ch: "LinkedIn" },
+    { d: "Wed", post: "Short video", ch: "TikTok" },
+    { d: "Thu", post: "Offer post", ch: "Facebook" },
+    { d: "Fri", post: "Enquiry form", ch: "Landing page" },
+  ];
+  return (
+    <div className="flex h-full flex-col gap-2">
+      <div className="flex items-center justify-between text-[11px] text-subtle">
+        <span>Content plan · this week</span>
+        <span className="text-lime">Scheduled</span>
+      </div>
+      <div className="grid flex-1 grid-cols-5 gap-2">
+        {days.map((x, i) => (
+          <div key={x.d} className={cn("flex flex-col border bg-card p-2", i === 4 && "border-lime/40")}>
+            <span className="text-[10px] text-subtle">{x.d}</span>
+            <div className={cn("mt-2 h-10 bg-primary/70", i === 4 && "bg-lime/80")} />
+            <span className="mt-2 text-[10px] font-medium leading-tight">{x.post}</span>
+            <span className="mt-auto pt-1 text-[9px] text-subtle">{x.ch}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ClosingVisual() {
+  const tasks = [
+    ["Bank transactions reconciled", true],
+    ["Sales and purchase invoices recorded", true],
+    ["Payroll prepared", true],
+    ["Monthly report sent", false],
+  ] as const;
+  return (
+    <div className="grid h-full grid-cols-[1.3fr_1fr] gap-3">
+      <div className="border bg-card p-3">
+        <div className="text-[11px] text-subtle">Month-end checklist</div>
+        <ul className="mt-3 space-y-2">
+          {tasks.map(([t, done]) => (
+            <li key={t} className="flex items-center gap-2 text-[11px]">
+              <span className={cn("size-3 shrink-0 border", done ? "border-lime bg-lime" : "border-input")} />
+              <span className={done ? "text-muted-foreground" : ""}>{t}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="flex flex-col border bg-card p-3">
+        <div className="text-[11px] text-subtle">Profit &amp; loss</div>
+        {["Revenue", "Costs", "Profit"].map((k, i) => (
+          <div key={k} className="mt-3">
+            <div className="text-[10px] text-subtle">{k}</div>
+            <div className={cn("mt-1 h-2", i === 2 ? "w-1/2 bg-lime" : i === 1 ? "w-2/3 bg-input" : "w-full bg-primary")} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DeadlinesVisual() {
+  const items = [
+    { t: "Corporate tax registration", s: "Done", done: true },
+    { t: "VAT registration", s: "Done", done: true },
+    { t: "VAT return", s: "Filed", done: true },
+    { t: "Corporate tax return", s: "Next deadline", done: false },
+  ];
+  return (
+    <div className="flex h-full flex-col border bg-card p-3">
+      <div className="flex items-center justify-between text-[11px] text-subtle">
+        <span>Tax compliance</span>
+        <span>With tax partners</span>
+      </div>
+      <ul className="mt-3 flex-1 divide-y border-y">
+        {items.map((x) => (
+          <li key={x.t} className="flex items-center justify-between gap-3 py-2.5 text-[11px]">
+            <span className="flex items-center gap-2">
+              <span className={cn("size-2 shrink-0", x.done ? "bg-input" : "bg-lime")} />
+              {x.t}
+            </span>
+            <span className={x.done ? "text-subtle" : "text-lime"}>{x.s}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export default function ServiceVisual({ name }: { name: ServiceIconKey }) {
   const map = {
     dashboard: ChartVisual,
     crm: PipelineVisual,
     mobile: PhoneVisual,
     automation: FlowVisual,
+    marketing: CalendarVisual,
+    accounting: ClosingVisual,
+    tax: DeadlinesVisual,
   } as const;
   const V = map[name];
   return (

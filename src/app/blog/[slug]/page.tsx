@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const path = `/blog/${slug}`;
 
   return {
-    title: blog.title,
+    title: blog.seoTitle ? { absolute: blog.seoTitle } : blog.title,
     description: blog.excerpt,
     alternates: { canonical: path },
     openGraph: {
@@ -105,7 +105,7 @@ export default async function BlogPost({ params }: Props) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={blog.image}
-          alt=""
+          alt={`Illustration for the article: ${blog.title}`}
           width={1200}
           height={630}
           className="mb-12 h-auto w-full border"
@@ -113,7 +113,7 @@ export default async function BlogPost({ params }: Props) {
 
         <div className="prose-article">
           {blog.content.map((block, i) =>
-            block.type === "heading" ? <h2 key={i}>{block.text}</h2> : <p key={i}>{block.text}</p>
+            block.type === "heading" ? <h2 key={i}>{block.text}</h2> : <p key={i}>{withLinks(block.text)}</p>
           )}
         </div>
 
@@ -148,4 +148,23 @@ export default async function BlogPost({ params }: Props) {
       <JsonLd data={[articleJsonLd, breadcrumbJsonLd]} />
     </>
   );
+}
+
+/** Renders inline [text](/internal-path) links in a paragraph as <Link>s. */
+function withLinks(text: string) {
+  const parts: React.ReactNode[] = [];
+  const re = /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
+  let last = 0;
+  for (const m of text.matchAll(re)) {
+    const i = m.index ?? 0;
+    if (i > last) parts.push(text.slice(last, i));
+    parts.push(
+      <Link key={i} href={m[2]} className="text-foreground underline underline-offset-4 hover:text-lime">
+        {m[1]}
+      </Link>
+    );
+    last = i + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
 }

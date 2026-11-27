@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ArrowUpRight, ChevronRight } from "lucide-react";
@@ -9,7 +10,7 @@ import FAQList, { faqJsonLd } from "@/components/FAQList";
 import ContactPanel from "@/components/ContactPanel";
 import JsonLd from "@/components/JsonLd";
 import { Badge, SectionHeading, buttonVariants } from "@/components/ui";
-import { getServiceBySlug, services } from "@/data/services";
+import { allServices, getServiceBySlug, pillars } from "@/data/services";
 import { AREA_SERVED, AUDIT_CTA, SITE_NAME, SITE_URL } from "@/lib/site";
 
 interface Props {
@@ -19,7 +20,7 @@ interface Props {
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return allServices.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -45,6 +46,9 @@ const formNeed: Record<string, string> = {
   "crm-development": "CRM",
   "mobile-app-development": "Mobile app",
   "business-automation": "Automation / AI agents",
+  marketing: "Marketing",
+  accounting: "Accounting",
+  tax: "Tax (UAE)",
 };
 
 export default async function ServicePage({ params }: Props) {
@@ -53,7 +57,15 @@ export default async function ServicePage({ params }: Props) {
   if (!service) notFound();
 
   const url = `${SITE_URL}/services/${service.slug}`;
-  const others = services.filter((s) => s.slug !== service.slug);
+  const others = allServices.filter((s) => s.slug !== service.slug);
+  const pillar = pillars.find((p) => p.id === service.pillar)!;
+  const isSoftware = service.pillar === "software";
+  // A pillar's own page (e.g. /services/marketing) skips the pillar crumb.
+  const isPillarPage = service.slug === service.pillar;
+  const crumbs = [
+    { name: "Services", href: "/services" },
+    ...(isPillarPage ? [] : [{ name: pillar.name, href: `/services#${pillar.id}` }]),
+  ];
 
   const serviceJsonLd = {
     "@context": "https://schema.org",
@@ -71,9 +83,13 @@ export default async function ServicePage({ params }: Props) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-      { "@type": "ListItem", position: 3, name: "Software", item: `${SITE_URL}/services#software` },
-      { "@type": "ListItem", position: 4, name: service.name, item: url },
+      ...crumbs.map((c, i) => ({
+        "@type": "ListItem",
+        position: i + 2,
+        name: c.name,
+        item: `${SITE_URL}${c.href}`,
+      })),
+      { "@type": "ListItem", position: crumbs.length + 2, name: service.name, item: url },
     ],
   };
 
@@ -86,10 +102,12 @@ export default async function ServicePage({ params }: Props) {
             <ol className="flex flex-wrap items-center gap-1.5">
               <li><Link href="/" className="hover:text-foreground">Home</Link></li>
               <li aria-hidden="true"><ChevronRight className="size-3.5" /></li>
-              <li><Link href="/services" className="hover:text-foreground">Services</Link></li>
-              <li aria-hidden="true"><ChevronRight className="size-3.5" /></li>
-              <li><Link href="/services#software" className="hover:text-foreground">Software</Link></li>
-              <li aria-hidden="true"><ChevronRight className="size-3.5" /></li>
+              {crumbs.map((c) => (
+                <Fragment key={c.href}>
+                  <li><Link href={c.href} className="hover:text-foreground">{c.name}</Link></li>
+                  <li aria-hidden="true"><ChevronRight className="size-3.5" /></li>
+                </Fragment>
+              ))}
               <li className="text-muted-foreground" aria-current="page">{service.name}</li>
             </ol>
           </nav>
@@ -98,7 +116,7 @@ export default async function ServicePage({ params }: Props) {
             <div>
               <p className="rise label flex items-center gap-3">
                 <span className="mark !size-2" aria-hidden="true" />
-                Software — {service.name}
+                {isPillarPage ? `${pillar.name} — Aethyl Global` : `${pillar.name} — ${service.name}`}
               </p>
               <h1 className="rise font-display mt-6 text-[40px] uppercase leading-[0.95] text-balance sm:text-6xl lg:text-[72px]" style={{ animationDelay: "100ms" }}>
                 {service.h1}
@@ -106,13 +124,19 @@ export default async function ServicePage({ params }: Props) {
               <p className="rise mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty" style={{ animationDelay: "200ms" }}>
                 {service.intro[0]}
               </p>
+              {service.partnerNote && (
+                <p className="rise mt-5 flex items-center gap-2 text-[15px] font-medium" style={{ animationDelay: "250ms" }}>
+                  <span className="mark !size-2" aria-hidden="true" />
+                  {service.partnerNote}
+                </p>
+              )}
               <div className="rise mt-10 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: "300ms" }}>
                 <Link href="#contact" className={buttonVariants({ variant: "audit", size: "lg" })}>
                   {AUDIT_CTA.label}
                   <ArrowRight aria-hidden="true" />
                 </Link>
-                <Link href="#what-we-build" className={buttonVariants({ variant: "outline", size: "lg" })}>
-                  What we build
+                <Link href="#deliverables" className={buttonVariants({ variant: "outline", size: "lg" })}>
+                  {isSoftware ? "What we build" : "What you get"}
                 </Link>
               </div>
             </div>
@@ -142,11 +166,13 @@ export default async function ServicePage({ params }: Props) {
                 <p key={p} className="text-[17px] leading-relaxed text-muted-foreground">{p}</p>
               ))}
             </div>
-            <ul className="mt-6 flex flex-wrap gap-2" aria-label="Typical technology">
-              {service.stack.map((t) => (
-                <li key={t}><Badge>{t}</Badge></li>
-              ))}
-            </ul>
+            {service.stack && (
+              <ul className="mt-6 flex flex-wrap gap-2" aria-label={service.stackLabel ?? "Typical technology"}>
+                {service.stack.map((t) => (
+                  <li key={t}><Badge>{t}</Badge></li>
+                ))}
+              </ul>
+            )}
           </div>
           <div>
             <h2 className="font-display text-3xl uppercase sm:text-4xl">A good fit <em>if…</em></h2>
@@ -163,9 +189,9 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* Deliverables */}
-      <section id="what-we-build" className="py-24 sm:py-32">
+      <section id="deliverables" className="py-24 sm:py-32">
         <div className="container-page">
-          <SectionHeading label="Deliverables" index="01" title={<>What we <em>build</em></>} description={service.summary} />
+          <SectionHeading label="Deliverables" index="01" title={isSoftware ? <>What we <em>build</em></> : <>What you <em>get</em></>} description={service.summary} />
           <ul className="mt-16 grid gap-px overflow-hidden border bg-border md:grid-cols-2">
             {service.deliverables.map((d) => (
               <li key={d.title} data-reveal className="bg-background p-8 sm:p-10">
@@ -191,7 +217,7 @@ export default async function ServicePage({ params }: Props) {
       {/* Other services */}
       <section className="pb-4">
         <div className="container-page">
-          <h2 className="label mb-5">Other software services</h2>
+          <h2 className="label mb-5">Other services</h2>
           <ul className="grid gap-3 sm:grid-cols-3">
             {others.map((s) => (
               <li key={s.slug}>
@@ -208,7 +234,10 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      <ContactPanel heading={`Let’s scope your ${service.name.toLowerCase()} project`} defaultNeed={formNeed[service.slug]} />
+      <ContactPanel
+        heading={isSoftware ? `Let’s scope your ${service.name.toLowerCase()} project` : `Talk to us about ${service.name.toLowerCase()}`}
+        defaultNeed={formNeed[service.slug]}
+      />
 
       <JsonLd data={[serviceJsonLd, breadcrumbJsonLd, faqJsonLd(service.faqs)]} />
     </>

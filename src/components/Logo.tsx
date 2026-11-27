@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import mark from "../../public/logo-mark.png";
+import mark from "../../public/logo-mark-transparent.png";
 
 /** The pillar mark followed by the AETHYL wordmark with GLOBAL in wide spacing. */
 export default function Logo({ size = 22, className }: { size?: number; className?: string }) {
@@ -25,7 +25,7 @@ export function Wordmark({ size = 22 }: { size?: number }) {
   );
 }
 
-/** The brand mark: four white pillars under a blue roof, on ink. */
+/** The brand mark: four white pillars under a blue roof, transparent background. */
 export function LogoMark({ className }: { className?: string }) {
   return <Image src={mark} alt="" width={64} height={64} className={`block shrink-0 ${className ?? ""}`} />;
 }

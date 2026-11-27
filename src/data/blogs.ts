@@ -7,6 +7,8 @@ export interface Blog {
   slug: string;
   tag: string;
   title: string;
+  /** Shorter <title> when the headline is too long for search results. */
+  seoTitle?: string;
   excerpt: string;
   image: string;
   date: string;
@@ -16,6 +18,43 @@ export interface Blog {
 }
 
 export const blogs: Blog[] = [
+  {
+    slug: "outsourced-accounting-and-tax-for-small-business",
+    tag: "Accounting & Tax",
+    title: "Outsourced Accounting and Tax for Small Business: What to Hand Off First",
+    seoTitle: "Outsourced Accounting & Tax: What to Hand Off First",
+    excerpt:
+      "You don't have to hand over everything at once. A plain-language guide to which accounting and tax tasks to outsource first, and what to keep in-house.",
+    image: "/blog/outsourced-accounting-and-tax.svg",
+    date: "2026-11-27T00:00:00Z",
+    readTime: "4 min read",
+    author: "Aethyl Team",
+    content: [
+      { type: "paragraph", text: "Most small business owners don't decide to outsource their accounting. It happens slowly. The bookkeeping slips a month, then two. A tax deadline arrives sooner than expected. Payroll takes a whole afternoon. At some point the question changes from \"should we get help?\" to \"where do we even start?\"" },
+      { type: "paragraph", text: "The good news is that you don't have to hand over everything at once. Outsourcing works best in stages, starting with the work that is most repetitive, most time-sensitive, or most expensive to get wrong." },
+      { type: "heading", text: "1. Start with bookkeeping" },
+      { type: "paragraph", text: "Bookkeeping is the foundation everything else sits on. Your monthly reports, your payroll and your tax returns all depend on sales, expenses and bank transactions being recorded correctly and on time." },
+      { type: "paragraph", text: "It is also the task that most often falls behind, because it never feels urgent until it suddenly is. Handing bookkeeping off first gives you up-to-date numbers every month, and it means the next steps have something reliable to work from." },
+      { type: "paragraph", text: "What you keep: approving payments, answering questions about unusual transactions, and sending receipts and invoices on a regular routine. A simple monthly checklist makes this easy." },
+      { type: "heading", text: "2. Then monthly financial reporting" },
+      { type: "paragraph", text: "Once the books are current, a monthly report becomes possible: a profit and loss statement, a balance sheet and a view of your cash. This is where outsourcing starts to pay back in decisions, not just saved time." },
+      { type: "paragraph", text: "Ask for reports in plain language. You should be able to see what you earned, what you spent, what is left and what changed since last month, without needing an accounting background to read it." },
+      { type: "heading", text: "3. Payroll, once the team grows" },
+      { type: "paragraph", text: "With two or three people, payroll is manageable by hand. As the team grows, it becomes a monthly task with little room for error: salaries, allowances, deductions, joiners and leavers. Getting it wrong affects people directly." },
+      { type: "paragraph", text: "Handing over payroll support means calculations and records are prepared on time each month. You stay in control of approvals and changes, such as new hires or salary updates, and someone else handles the routine." },
+      { type: "heading", text: "4. Tax registration, filing and deadlines" },
+      { type: "paragraph", text: "Tax is the area where mistakes cost the most, and where the rules are easiest to misread. For businesses in the UAE, that means corporate tax and VAT: knowing whether you need to register, preparing returns, and meeting each deadline." },
+      { type: "paragraph", text: "Tax work is much easier when your bookkeeping is already in order, which is why it usually comes after steps one and two. Returns prepared from up-to-date records are faster to complete and easier to check." },
+      { type: "heading", text: "What to keep in-house" },
+      { type: "paragraph", text: "Outsourcing the work doesn't mean outsourcing the decisions. Keep pricing, spending approvals, hiring and the overall direction of the business with you. A good partner gives you clear numbers and flags issues early, so those decisions are easier to make." },
+      { type: "heading", text: "Choosing who to hand it to" },
+      { type: "paragraph", text: "A few questions are worth asking any provider. Who will actually do the work? Who do you contact when something is unclear? What do they need from you each month? How will you receive reports, and how often?" },
+      { type: "paragraph", text: "It also helps when the people handling your accounts can talk to the people handling your other systems. If your sales data lives in a CRM or your invoices come from another tool, connecting them to your books removes a lot of manual entry." },
+      { type: "heading", text: "How we approach it" },
+      { type: "paragraph", text: "At Aethyl Global, our [accounting services](/services/accounting) and [tax services](/services/tax) are delivered with trusted partners. We coordinate the work and stay your single point of contact, alongside the software and marketing work we do for growing businesses." },
+      { type: "paragraph", text: "If you're not sure where your business should start, a [free 30-minute call](/contact) is a good first step. We'll look at where things stand today and suggest what to hand off first." },
+    ],
+  },
   {
     slug: "custom-websites-vs-templates",
     tag: "Web Development",
@@ -29,9 +68,9 @@ export const blogs: Blog[] = [
     content: [
       { type: "paragraph", text: "When you're launching a business online, the temptation to use a template is real. WordPress themes, Wix, Squarespace — they promise a beautiful site in minutes. But for growing businesses that care about performance, SEO, and brand differentiation, templates quickly become a ceiling." },
       { type: "paragraph", text: "The real cost of a template isn't what you pay upfront — it's what you lose in missed opportunities. Slow load times, generic designs that blend into the crowd, and SEO limitations that keep you buried on page two of Google. For businesses serious about growth, the math doesn't lie." },
-      { type: "heading", text: "Performance: The 3× Speed Advantage" },
-      { type: "paragraph", text: "Custom websites built with modern frameworks like Next.js and React give you full control over performance. No bloated theme code, no unnecessary plugins loading on every page. A custom site can achieve Lighthouse scores of 95+ across the board, while template sites often struggle to break 70." },
-      { type: "paragraph", text: "Speed directly impacts revenue. Google's research shows that as page load time goes from 1s to 3s, the probability of bounce increases by 32%. At 5s, that number jumps to 90%. A custom-built site loads in under 1.5 seconds on average — that's the difference between a customer completing a purchase and hitting the back button." },
+      { type: "heading", text: "Performance: Ship Only What the Page Needs" },
+      { type: "paragraph", text: "Custom websites built with modern frameworks like Next.js and React give you full control over performance. No bloated theme code, no unnecessary plugins loading on every page. That makes high Lighthouse scores far easier to reach than on a heavy theme stacked with plugins." },
+      { type: "paragraph", text: "Speed directly impacts revenue. Google's own research on mobile pages found that the chance of a visitor bouncing rises sharply as load time grows from one second to several. A lean site keeps people on the page long enough to act." },
       { type: "paragraph", text: "Modern frameworks also enable partial hydration and streaming server-side rendering, meaning only the interactive parts of your page load JavaScript. Template sites typically load the entire theme's JS bundle on every page, regardless of what's actually needed." },
       { type: "heading", text: "SEO: Why Templates Hold You Back" },
       { type: "paragraph", text: "SEO is another area where custom builds shine. With a template, you're stuck with the schema markup, heading structure, and meta tag system the theme developer chose. A custom site lets you implement structured data, dynamic Open Graph tags, and programmatic SEO pages that scale with your content." },
@@ -39,7 +78,7 @@ export const blogs: Blog[] = [
       { type: "paragraph", text: "Programmatic SEO is where custom sites truly pull ahead. Imagine creating hundreds of location-specific landing pages, each with unique content, proper schema markup, and optimized meta tags — all generated from a single template in your codebase. This is trivial with Next.js but nearly impossible with a WordPress theme." },
       { type: "heading", text: "Brand Consistency and Trust Signals" },
       { type: "paragraph", text: "Brand consistency matters more than most founders realize. When your website looks like thousands of other sites using the same theme, you lose the trust signal that a unique, polished digital presence provides. Custom design ensures every pixel reinforces your brand identity." },
-      { type: "paragraph", text: "Studies show that 75% of consumers judge a company's credibility based on their website design. If your site looks generic, visitors assume your service is too. A custom design communicates professionalism, attention to detail, and investment in quality — the same qualities customers look for in a development partner." },
+      { type: "paragraph", text: "Visitors often judge a company's credibility by its website. If your site looks generic, visitors assume your service is too. A custom design communicates professionalism, attention to detail, and investment in quality — the same qualities customers look for in a development partner." },
       { type: "heading", text: "Total Cost of Ownership" },
       { type: "paragraph", text: "The cost difference is shrinking too. With frameworks like Next.js, Tailwind CSS, and headless CMS platforms, a professional custom website can be delivered in 2–4 weeks at a fraction of what it cost five years ago. The ROI compared to a template that you'll outgrow in six months is clear." },
       { type: "paragraph", text: "Consider the hidden costs of templates: premium theme licenses ($50–200/year), paid plugins ($100–500/year), developer time to customize the template ($2,000–5,000), and the inevitable rebuild when you outgrow it ($10,000+). A custom site is a one-time investment that scales with your business for years." },
@@ -68,10 +107,10 @@ export const blogs: Blog[] = [
       { type: "paragraph", text: "The Skia rendering engine means Flutter draws every pixel itself, bypassing platform-specific UI components entirely. This gives you absolute control over the visual output but means you're responsible for implementing platform conventions (like iOS back gestures or Android's material ripple effects) manually." },
       { type: "heading", text: "Performance Benchmarks in 2026" },
       { type: "paragraph", text: "Performance benchmarks in 2026 show both frameworks handling complex UIs well. Flutter has a slight edge in raw rendering performance due to its Skia-based engine, while React Native wins on startup time and memory usage for apps that rely heavily on native modules." },
-      { type: "paragraph", text: "In real-world testing, both frameworks deliver 60fps animations and handle lists with thousands of items smoothly. The performance difference is negligible for 95% of mobile apps. The choice should come down to your team's expertise and your app's specific requirements, not synthetic benchmarks." },
+      { type: "paragraph", text: "In real-world testing, both frameworks deliver 60fps animations and handle lists with thousands of items smoothly. For most business apps the performance difference is negligible. The choice should come down to your team's expertise and your app's specific requirements, not synthetic benchmarks." },
       { type: "heading", text: "When to Choose Which" },
       { type: "paragraph", text: "Our recommendation: choose React Native if your team knows React and you need deep native integrations (payments, Bluetooth, camera). Choose Flutter if you're building a design-heavy app where UI consistency across platforms is critical, or if you're starting from scratch with a team willing to learn Dart." },
-      { type: "paragraph", text: "If you already have a React web app, React Native is the natural choice — code sharing between web and mobile can reach 40-60%. If you're building a new product from scratch with no existing codebase, Flutter's consistent rendering and excellent widget library give you a slight head start on visual polish." },
+      { type: "paragraph", text: "If you already have a React web app, React Native is the natural choice — a good share of logic and code can be reused between web and mobile. If you're building a new product from scratch with no existing codebase, Flutter's consistent rendering and excellent widget library give you a slight head start on visual polish." },
       { type: "paragraph", text: "Either way, you're making a good choice. Both frameworks are production-ready, backed by major tech companies, and used by thousands of apps with millions of users. The worst decision is spending months deliberating instead of shipping your MVP." },
     ],
   },
@@ -214,13 +253,13 @@ export const blogs: Blog[] = [
       { type: "heading", text: "Setting Up GitHub Actions" },
       { type: "paragraph", text: "GitHub Actions is the natural choice for most startups already on GitHub. A basic pipeline runs on every pull request: install dependencies, run linting, execute tests, and build the project. If everything passes, the PR can be merged with confidence." },
       { type: "paragraph", text: "Here's a minimal but effective GitHub Actions config for a Next.js project: run TypeScript type checking, ESLint, unit tests (if you have them), and a production build. The entire pipeline should take under 3 minutes. If it takes longer, investigate parallelization or caching strategies." },
-      { type: "paragraph", text: "Add branch protection rules: require the CI pipeline to pass before merging, require at least one review (even from a co-founder), and prevent force-pushes to main. These guardrails catch 90% of production issues before they reach users." },
+      { type: "paragraph", text: "Add branch protection rules: require the CI pipeline to pass before merging, require at least one review (even from a co-founder), and prevent force-pushes to main. These guardrails catch many problems before they reach users." },
       { type: "heading", text: "Automated Deployment with Vercel" },
       { type: "paragraph", text: "Vercel (or Netlify) handles the deployment side. Every push to main triggers an automatic deployment with preview URLs for every branch. This means designers, product managers, and stakeholders can review changes before they go live — no staging server required." },
       { type: "paragraph", text: "Preview deployments are the secret weapon. Every pull request gets its own URL with the latest changes. Share it with your team, test it on mobile, show it to stakeholders — all before merging. This eliminates the \"it looked different on staging\" problem entirely." },
       { type: "heading", text: "Testing Strategy for Small Teams" },
       { type: "paragraph", text: "Testing doesn't have to be comprehensive from day one. Start with unit tests for critical business logic, integration tests for API endpoints, and a smoke test that verifies the core user flow works end-to-end. Expand coverage as the codebase grows." },
-      { type: "paragraph", text: "The 80/20 rule applies: 20% of your tests will catch 80% of bugs. Focus on tests for your payment flow, authentication, and core business logic. Skip testing CSS, layout, and edge cases that won't impact revenue. You can add comprehensive testing later when you have the resources." },
+      { type: "paragraph", text: "A small set of well-chosen tests catches most of the bugs that matter. Focus on tests for your payment flow, authentication, and core business logic. Skip testing CSS, layout, and edge cases that won't impact revenue. You can add comprehensive testing later when you have the resources." },
       { type: "heading", text: "The Complete Pipeline" },
       { type: "paragraph", text: "The full pipeline for a typical Next.js startup looks like: push to branch → GitHub Actions runs lint + test + build → Vercel creates preview deployment → team reviews → merge to main → automatic production deployment. Total time from code change to production: under 5 minutes." },
       { type: "paragraph", text: "This pipeline scales from a solo founder to a 20-person engineering team without changes. The same tools, the same process, the same speed. That's the beauty of investing in CI/CD early — it grows with you." },

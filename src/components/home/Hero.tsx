@@ -57,11 +57,12 @@ export default function Hero() {
           style={{ animationDelay: "260ms" }}
         >
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty sm:text-xl">
-            <span className="text-foreground">Software</span>,{" "}
+            Your business services partner for{" "}
+            <span className="text-foreground">software</span>,{" "}
             <span className="text-foreground">marketing</span>,{" "}
             <span className="text-foreground">accounting</span> and{" "}
-            <span className="text-foreground">tax</span> for growing businesses, with one
-            point of contact instead of four separate firms.
+            <span className="text-foreground">tax</span>: one partner and one point of
+            contact instead of four separate firms.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
             <Link href={AUDIT_CTA.href} className={buttonVariants({ variant: "audit", size: "lg" })}>
@@ -81,7 +82,7 @@ export default function Hero() {
           {pillars.map((p, i) => (
             <li key={p.id} className="border-b border-r">
               <Link
-                href={`/services#${p.id}`}
+                href={p.href ?? `/services#${p.id}`}
                 className="group flex h-full flex-col justify-between gap-8 bg-background/70 p-4 backdrop-blur-sm transition-colors hover:bg-background sm:p-6"
               >
                 <span className="text-[13px] tabular-nums text-muted-foreground">0{i + 1}</span>

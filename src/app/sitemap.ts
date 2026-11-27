@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogs } from "@/data/blogs";
 import { roles } from "@/data/careers";
-import { services } from "@/data/services";
+import { allServices } from "@/data/services";
 import { SITE_URL } from "@/lib/site";
 
 // Bump when page content meaningfully changes.
@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: SITE_URL, lastModified: SITE_UPDATED, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/services`, lastModified: SITE_UPDATED, changeFrequency: "monthly", priority: 0.9 },
-    ...services.map((s) => ({
+    ...allServices.map((s) => ({
       url: `${SITE_URL}/services/${s.slug}`,
       lastModified: SITE_UPDATED,
       changeFrequency: "monthly" as const,

@@ -86,9 +86,9 @@ export default function Navbar() {
         <Link
           href="/"
           aria-label="Aethyl Global — home"
-          className="relative block size-12 ring-1 ring-white/15 transition-transform active:scale-90 md:hidden"
+          className="relative flex size-12 items-center justify-center transition-transform active:scale-90 md:hidden"
         >
-          <LogoMark className="size-12" />
+          <LogoMark className="size-10" />
         </Link>
 
         <nav aria-label="Main" className="hidden md:block">
@@ -103,7 +103,7 @@ export default function Navbar() {
                   {pillars.map((p, i) => (
                     <li key={p.id}>
                       <Link
-                        href={`/services#${p.id}`}
+                        href={p.href ?? `/services#${p.id}`}
                         className="flex items-baseline gap-4 px-3 py-3 transition-colors hover:bg-accent"
                       >
                         <span className="text-[11px] tabular-nums text-subtle">0{i + 1}</span>

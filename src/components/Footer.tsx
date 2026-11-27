@@ -7,7 +7,7 @@ const columns = [
   {
     title: "Services",
     links: [
-      ...pillars.map((p) => ({ label: p.name, href: `/services#${p.id}` })),
+      ...pillars.map((p) => ({ label: p.href ? `${p.name} services` : p.name, href: p.href ?? `/services#${p.id}` })),
       { label: "All services", href: "/services" },
     ],
   },

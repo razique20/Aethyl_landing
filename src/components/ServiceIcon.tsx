@@ -1,4 +1,4 @@
-import { LayoutDashboard, Users, Smartphone, Workflow } from "lucide-react";
+import { Calculator, LayoutDashboard, Megaphone, ReceiptText, Smartphone, Users, Workflow } from "lucide-react";
 import type { ServiceIconKey } from "@/data/services";
 
 const icons = {
@@ -6,6 +6,9 @@ const icons = {
   crm: Users,
   mobile: Smartphone,
   automation: Workflow,
+  marketing: Megaphone,
+  accounting: Calculator,
+  tax: ReceiptText,
 } as const;
 
 export default function ServiceIcon({

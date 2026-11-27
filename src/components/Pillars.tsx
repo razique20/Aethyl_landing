@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import RailProgress from "./RailProgress";
 import { SectionHeading, cn } from "./ui";
 import { pillars } from "@/data/services";
@@ -86,6 +86,18 @@ export default function Pillars({
                     </li>
                   ))}
                 </ul>
+                {p.href && (
+                  <Link
+                    href={p.href}
+                    className="group mt-6 inline-flex items-center gap-2 self-start text-[15px] font-medium text-foreground"
+                  >
+                    <span className="link-draw">Explore {p.name.toLowerCase()} services</span>
+                    <ArrowRight
+                      className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                )}
                 {p.partnerNote && (
                   <p className="mt-auto flex items-center gap-2 pt-6 text-[13px] text-muted-foreground">
                     <span className="mark !size-1.5" aria-hidden="true" />
