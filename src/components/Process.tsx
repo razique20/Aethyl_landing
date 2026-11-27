@@ -12,10 +12,10 @@ export default function Process({ index = "03" }: { index?: string }) {
             index={index}
             title={
               <>
-                How a project <em>runs</em>
+                How we <em>work</em>
               </>
             }
-            description="No long discovery phase. A free audit, a fixed quote, then working software you can use within weeks."
+            description="No long discovery phase. A free call, a clear quote, then work you can see."
           />
         </div>
 
@@ -30,13 +30,13 @@ export default function Process({ index = "03" }: { index?: string }) {
                 key={step.title}
                 data-reveal
                 data-reveal-delay={i * 80}
-                className="flex w-[80%] shrink-0 snap-start flex-col justify-between gap-10 rounded-2xl border bg-card p-6 sm:w-[55%] lg:grid lg:w-auto lg:grid-cols-[120px_1fr] lg:gap-4 lg:rounded-none lg:border-0 lg:border-b lg:bg-transparent lg:px-0 lg:py-9"
+                className="flex w-[80%] shrink-0 snap-start flex-col justify-between gap-10 border bg-card p-6 sm:w-[55%] lg:grid lg:w-auto lg:grid-cols-[120px_1fr] lg:gap-4 lg:border-0 lg:border-b lg:bg-transparent lg:px-0 lg:py-9"
               >
-                <span className="font-display text-6xl leading-none text-subtle">
+                <span className="font-display text-5xl leading-none text-subtle">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <h3 className="font-display text-3xl leading-tight">{step.title}</h3>
+                  <h3 className="font-display text-2xl uppercase leading-tight sm:text-3xl">{step.title}</h3>
                   <p className="mt-3 max-w-md text-[15px] leading-relaxed text-muted-foreground">{step.text}</p>
                 </div>
               </li>

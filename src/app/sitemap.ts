@@ -5,7 +5,7 @@ import { services } from "@/data/services";
 import { SITE_URL } from "@/lib/site";
 
 // Bump when page content meaningfully changes.
-const SITE_UPDATED = new Date("2026-11-20");
+const SITE_UPDATED = new Date("2026-11-27");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

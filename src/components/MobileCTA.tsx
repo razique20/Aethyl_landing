@@ -8,7 +8,7 @@ import { AUDIT_CTA } from "@/lib/site";
 import { cn } from "./ui";
 
 /**
- * Phones only: a floating "free audit" pill that slides in once the visitor
+ * Phones only: a floating "free call" button that slides in once the visitor
  * has scrolled past the first screen, and steps aside near the page end
  * (where the full CTA and footer are) and on the contact page itself.
  */
@@ -39,11 +39,11 @@ export default function MobileCTA() {
       aria-hidden={!show}
       tabIndex={show ? 0 : -1}
       className={cn(
-        "fixed bottom-4 right-4 z-40 inline-flex h-12 items-center gap-2 rounded-full bg-amber pl-5 pr-4 text-[14px] font-medium text-[#08090c] shadow-xl shadow-black/20 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95 md:hidden",
+        "fixed bottom-4 right-4 z-40 inline-flex h-12 items-center gap-2 bg-blue pl-5 pr-4 text-[14px] font-medium text-white transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95 md:hidden",
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-24 opacity-0"
       )}
     >
-      Free 30-min audit
+      {AUDIT_CTA.short}
       <ArrowRight className="size-4" aria-hidden="true" />
     </Link>
   );

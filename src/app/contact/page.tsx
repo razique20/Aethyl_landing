@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import ContactPanel from "@/components/ContactPanel";
 
 export const metadata: Metadata = {
-  title: "Book a Free 30-Minute Audit — Contact Us",
+  title: "Book a Free 30-Minute Call — Contact Us",
   description:
-    "Book a free 30-minute audit with Aethyl Global to see what to automate first. Email us, message us on LinkedIn or X, or send the form to discuss custom dashboards, CRM, mobile apps or business automation.",
+    "Book a free 30-minute call with Aethyl Global about software, marketing, accounting or tax for your business. Email aethylglobal@gmail.com or send the form.",
   alternates: { canonical: "/contact" },
   openGraph: {
     url: "/contact",
-    title: "Book a Free 30-Minute Audit | Aethyl Global",
+    title: "Book a Free 30-Minute Call | Aethyl Global",
     description:
-      "Talk to our team about dashboards, CRM, mobile apps or automation. Free, 30 minutes, no obligation.",
+      "Talk to us about software, marketing, accounting or tax. Free, 30 minutes, no obligation.",
   },
 };
 
 export default function ContactPage() {
-  return <ContactPanel heading="Book a free 30-minute audit" headingAs="h1" />;
+  return <ContactPanel heading="Book a free 30-minute call" headingAs="h1" />;
 }

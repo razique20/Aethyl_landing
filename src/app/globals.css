@@ -1,70 +1,126 @@
 @import "tailwindcss";
 
 /*
- * Editorial design tokens, light like revlient.com: white and off-white
- * sections with near-black ink, plus dark bands (.theme-dark) for the hero
- * and closing CTA. Instrument Serif for display, Figtree for text. Teal is a
- * quiet accent; amber is reserved for the free-audit CTA only.
+ * Aethyl brand system: bold, flat, editorial. Ink black base, royal blue
+ * for buttons and big blocks, lime only for small highlights (the square
+ * mark, focus rings, active markers). Off-white for light sections
+ * (.theme-light), royal blue blocks (.theme-blue). Archivo Black for
+ * display type, Inter for text. Hard edges: every radius is 0.
  */
 @theme {
-  --color-background: #ffffff;
-  --color-soft: #fbfbfd;
-  --color-foreground: #08090c;
-  --color-card: #ffffff;
-  --color-popover: #ffffff;
-  --color-muted: #f4f4f6;
-  --color-muted-foreground: #5a5c66;
-  --color-subtle: #8b8d96;
-  --color-accent: #f3f3f6;
-  --color-border: #e8e8ed;
-  --color-input: #d6d7de;
-  --color-ring: #0d9488;
-  --color-primary: #08090c;
+  --color-background: #0a0a0b;
+  --color-soft: #111113;
+  --color-foreground: #ffffff;
+  --color-card: #121214;
+  --color-popover: #121214;
+  --color-muted: #18181b;
+  --color-muted-foreground: #8a8f98;
+  --color-subtle: #6e737c;
+  --color-accent: #1b1b1f;
+  --color-border: #232327;
+  --color-input: #38383e;
+  --color-ring: #d4ff3f;
+  --color-primary: #1b34c0;
   --color-primary-foreground: #ffffff;
-  --color-teal: #0d9488;
-  --color-amber: #f59e0b;
+  /* Signature mark colour: lime on dark, blue where lime would vanish. */
+  --color-mark: #d4ff3f;
 
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 18px;
+  /* Fixed brand colours, never re-pointed by a theme band. */
+  --color-ink: #0a0a0b;
+  --color-blue: #1b34c0;
+  --color-blue-deep: #0b1450;
+  --color-lime: #d4ff3f;
+  --color-paper: #f4f1ea;
+  --color-grey: #8a8f98;
+
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Dark band: re-points the same tokens, so every utility inside just works. */
+/* Theme bands re-point the same tokens, so every utility inside just works. */
 .theme-dark {
-  --color-background: #08090c;
-  --color-soft: #0c0d11;
-  --color-foreground: #f5f5f7;
-  --color-card: #101116;
-  --color-popover: #121318;
-  --color-muted: #16171c;
-  --color-muted-foreground: #a3a5ae;
-  --color-subtle: #6f717a;
-  --color-accent: #1a1b21;
-  --color-border: #22232a;
-  --color-input: #33343c;
-  --color-ring: #2dd4bf;
-  --color-primary: #f5f5f7;
-  --color-primary-foreground: #08090c;
-  --color-teal: #2dd4bf;
+  --color-background: #0a0a0b;
+  --color-soft: #111113;
+  --color-foreground: #ffffff;
+  --color-card: #121214;
+  --color-popover: #121214;
+  --color-muted: #18181b;
+  --color-muted-foreground: #8a8f98;
+  --color-subtle: #6e737c;
+  --color-accent: #1b1b1f;
+  --color-border: #232327;
+  --color-input: #38383e;
+  --color-ring: #d4ff3f;
+  --color-primary: #1b34c0;
+  --color-primary-foreground: #ffffff;
+  --color-mark: #d4ff3f;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  color-scheme: dark;
+}
+
+/* Off-white section. Secondary text is darker than brand grey here, because
+   #8A8F98 on #F4F1EA is too faint to read. */
+.theme-light {
+  --color-background: #f4f1ea;
+  --color-soft: #ece8de;
+  --color-foreground: #0a0a0b;
+  --color-card: #faf8f3;
+  --color-popover: #faf8f3;
+  --color-muted: #e9e5da;
+  --color-muted-foreground: #4f535b;
+  --color-subtle: #6b6f77;
+  --color-accent: #e6e1d5;
+  --color-border: #d9d3c6;
+  --color-input: #bdb6a7;
+  --color-ring: #1b34c0;
+  --color-primary: #1b34c0;
+  --color-primary-foreground: #ffffff;
+  --color-mark: #1b34c0;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  color-scheme: light;
+}
+
+/* Royal blue block. Buttons inside turn ink so they still stand out. */
+.theme-blue {
+  --color-background: #1b34c0;
+  --color-soft: #1a31b3;
+  --color-foreground: #ffffff;
+  --color-card: #1f3acb;
+  --color-popover: #1f3acb;
+  --color-muted: #2440cf;
+  --color-muted-foreground: #c8cff3;
+  --color-subtle: #a9b4ea;
+  --color-accent: #2541d2;
+  --color-border: #4157d0;
+  --color-input: #6475d8;
+  --color-ring: #d4ff3f;
+  --color-primary: #0a0a0b;
+  --color-primary-foreground: #ffffff;
+  --color-mark: #d4ff3f;
   background-color: var(--color-background);
   color: var(--color-foreground);
   color-scheme: dark;
 }
 
 @theme inline {
-  --font-sans: var(--font-figtree);
-  --font-display: var(--font-instrument-serif);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-archivo-black);
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
   background-color: var(--color-background);
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 body {
@@ -77,7 +133,8 @@ body {
 }
 
 ::selection {
-  background: rgba(13, 148, 136, 0.18);
+  background: #d4ff3f;
+  color: #0a0a0b;
 }
 
 @layer base {
@@ -99,22 +156,49 @@ body {
     }
   }
 
-  /* Serif display type. Italic <em> inside reads as the accent word. */
+  /* Display type: Archivo Black. Big titles add \`uppercase\`. An <em> inside
+     is set upright in the secondary colour, never italic. */
   .font-display {
-    font-family: var(--font-display), "Times New Roman", serif;
+    font-family: var(--font-display), "Arial Black", Impact, sans-serif;
     font-weight: 400;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
+  }
+  .font-display.uppercase {
+    letter-spacing: -0.01em;
   }
   .font-display em {
-    font-style: italic;
+    font-style: normal;
     color: var(--color-muted-foreground);
+  }
+
+  /* The signature mark: a small lime square. */
+  .mark {
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    flex-shrink: 0;
+    background: var(--color-mark);
+  }
+
+  /* Diagonal block edges */
+  .cut-tr {
+    clip-path: polygon(0 0, calc(100% - 56px) 0, 100% 56px, 100% 100%, 0 100%);
+  }
+  .slant-top {
+    clip-path: polygon(0 48px, 100% 0, 100% 100%, 0 100%);
+  }
+  @media (min-width: 768px) {
+    .slant-top {
+      clip-path: polygon(0 96px, 100% 0, 100% 100%, 0 100%);
+    }
   }
 
   /* Small editorial label, e.g. "(02) Services" */
   .label {
     font-size: 12px;
     line-height: 1;
-    letter-spacing: 0.14em;
+    font-weight: 500;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--color-subtle);
   }
@@ -179,17 +263,6 @@ body {
     }
   }
 
-  /* Hero photo settles in with a slow zoom */
-  .hero-zoom {
-    animation: hero-zoom 2.6s var(--ease-out-expo) both;
-  }
-  @keyframes hero-zoom {
-    from {
-      transform: scale(1.08);
-      opacity: 0.4;
-    }
-  }
-
   /* Scroll reveal: only hidden once JS has run (html.js), so content is
      always visible to crawlers and no-JS visitors. */
   html.js [data-reveal] {
@@ -205,7 +278,6 @@ body {
     display: block;
     width: 2px;
     height: 100%;
-    border-radius: 1px;
     background: currentColor;
     transform-origin: bottom;
     transform: scaleY(0.25);
@@ -226,11 +298,11 @@ body {
   .prose-article h2 {
     margin-top: 2.75rem;
     margin-bottom: 0.75rem;
-    font-family: var(--font-display), serif;
+    font-family: var(--font-display), "Arial Black", sans-serif;
     font-weight: 400;
-    font-size: 1.875rem;
+    font-size: 1.625rem;
     line-height: 1.15;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
   .prose-article p {
     font-size: 1.0625rem;
@@ -242,24 +314,12 @@ body {
   }
 }
 
-/* Fine film grain over everything, for a printed, less digital feel. */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
   .marquee,
   .rise,
-  .hero-zoom,
   .eq span {
     animation: none !important;
   }

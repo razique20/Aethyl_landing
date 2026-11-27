@@ -19,7 +19,7 @@ export function BlogRow({ blog, headingLevel = "h3" }: { blog: Blog; headingLeve
         {formatDate(blog.date)}
       </time>
       <div>
-        <Heading className="font-display text-[28px] leading-[1.15] text-balance transition-colors group-hover:text-muted-foreground sm:text-[32px]">
+        <Heading className="font-display text-[22px] leading-[1.15] text-balance transition-colors group-hover:text-muted-foreground sm:text-[26px]">
           {blog.title}
         </Heading>
         <p className="mt-3 max-w-2xl line-clamp-2 text-[15px] leading-relaxed text-muted-foreground">{blog.excerpt}</p>
@@ -30,7 +30,7 @@ export function BlogRow({ blog, headingLevel = "h3" }: { blog: Blog; headingLeve
 }
 
 export default function BlogTeaser({
-  title = "Notes on planning your next system",
+  title = "Notes for growing businesses",
   slugs,
   index,
 }: {

@@ -62,8 +62,8 @@ export default function RailProgress({
           >
             <span
               className={cn(
-                "block h-1.5 rounded-full transition-all duration-500",
-                active === i ? "w-6 bg-foreground" : "w-1.5 bg-input"
+                "block h-1.5 transition-all duration-500",
+                active === i ? "w-6 bg-mark" : "w-1.5 bg-input"
               )}
             />
           </button>

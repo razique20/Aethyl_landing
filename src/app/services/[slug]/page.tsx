@@ -10,7 +10,7 @@ import ContactPanel from "@/components/ContactPanel";
 import JsonLd from "@/components/JsonLd";
 import { Badge, SectionHeading, buttonVariants } from "@/components/ui";
 import { getServiceBySlug, services } from "@/data/services";
-import { AUDIT_CTA, SITE_NAME, SITE_URL } from "@/lib/site";
+import { AREA_SERVED, AUDIT_CTA, SITE_NAME, SITE_URL } from "@/lib/site";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -63,7 +63,7 @@ export default async function ServicePage({ params }: Props) {
     url,
     serviceType: service.name,
     provider: { "@id": `${SITE_URL}/#organization` },
-    areaServed: ["Middle East", "India", "Europe", "North America", "South America"],
+    areaServed: AREA_SERVED,
   };
 
   const breadcrumbJsonLd = {
@@ -72,7 +72,8 @@ export default async function ServicePage({ params }: Props) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
       { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-      { "@type": "ListItem", position: 3, name: service.name, item: url },
+      { "@type": "ListItem", position: 3, name: "Software", item: `${SITE_URL}/services#software` },
+      { "@type": "ListItem", position: 4, name: service.name, item: url },
     ],
   };
 
@@ -87,14 +88,19 @@ export default async function ServicePage({ params }: Props) {
               <li aria-hidden="true"><ChevronRight className="size-3.5" /></li>
               <li><Link href="/services" className="hover:text-foreground">Services</Link></li>
               <li aria-hidden="true"><ChevronRight className="size-3.5" /></li>
+              <li><Link href="/services#software" className="hover:text-foreground">Software</Link></li>
+              <li aria-hidden="true"><ChevronRight className="size-3.5" /></li>
               <li className="text-muted-foreground" aria-current="page">{service.name}</li>
             </ol>
           </nav>
 
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
             <div>
-              <p className="rise label">Service — {service.name}</p>
-              <h1 className="rise font-display mt-6 text-[52px] leading-[0.95] text-balance sm:text-7xl lg:text-[88px]" style={{ animationDelay: "100ms" }}>
+              <p className="rise label flex items-center gap-3">
+                <span className="mark !size-2" aria-hidden="true" />
+                Software — {service.name}
+              </p>
+              <h1 className="rise font-display mt-6 text-[40px] uppercase leading-[0.95] text-balance sm:text-6xl lg:text-[72px]" style={{ animationDelay: "100ms" }}>
                 {service.h1}
               </h1>
               <p className="rise mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty" style={{ animationDelay: "200ms" }}>
@@ -111,11 +117,12 @@ export default async function ServicePage({ params }: Props) {
               </div>
             </div>
 
-            <div data-reveal className="overflow-hidden rounded-xl border bg-card">
+            <div data-reveal className="overflow-hidden border bg-card">
               <div className="flex h-10 items-center gap-2 border-b px-4">
-                <span className="size-2.5 rounded-full bg-input" />
-                <span className="size-2.5 rounded-full bg-input" />
-                <span className="size-2.5 rounded-full bg-input" />
+                <span className="size-2.5 bg-input" />
+                <span className="size-2.5 bg-input" />
+                <span className="size-2.5 bg-lime" />
+                <span className="label ml-auto">Illustrative</span>
               </div>
               <div className={service.icon === "mobile" ? "h-72 overflow-hidden p-6 pb-0" : "h-72 p-6"}>
                 <ServiceVisual name={service.icon} />
@@ -126,10 +133,10 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* Problem + good fit */}
-      <section className="border-y bg-soft py-20 sm:py-28">
+      <section className="theme-light py-20 sm:py-28">
         <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
-            <h2 className="font-display text-4xl sm:text-5xl">The <em>approach</em></h2>
+            <h2 className="font-display text-3xl uppercase sm:text-4xl">The <em>approach</em></h2>
             <div className="mt-6 space-y-4">
               {service.intro.slice(1).map((p) => (
                 <p key={p} className="text-[17px] leading-relaxed text-muted-foreground">{p}</p>
@@ -142,11 +149,11 @@ export default async function ServicePage({ params }: Props) {
             </ul>
           </div>
           <div>
-            <h2 className="font-display text-4xl sm:text-5xl">A good fit <em>if…</em></h2>
+            <h2 className="font-display text-3xl uppercase sm:text-4xl">A good fit <em>if…</em></h2>
             <ul className="mt-6 border-t">
               {service.goodFit.map((g) => (
                 <li key={g} className="flex gap-4 border-b py-4 text-[16px]">
-                  <span className="text-muted-foreground" aria-hidden="true">✦</span>
+                  <span className="mark mt-[0.45em] !size-2" aria-hidden="true" />
                   {g}
                 </li>
               ))}
@@ -159,10 +166,10 @@ export default async function ServicePage({ params }: Props) {
       <section id="what-we-build" className="py-24 sm:py-32">
         <div className="container-page">
           <SectionHeading label="Deliverables" index="01" title={<>What we <em>build</em></>} description={service.summary} />
-          <ul className="mt-16 grid gap-px overflow-hidden rounded-xl border bg-border md:grid-cols-2">
+          <ul className="mt-16 grid gap-px overflow-hidden border bg-border md:grid-cols-2">
             {service.deliverables.map((d) => (
               <li key={d.title} data-reveal className="bg-background p-8 sm:p-10">
-                <h3 className="font-display text-3xl leading-tight">{d.title}</h3>
+                <h3 className="font-display text-2xl leading-tight">{d.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{d.text}</p>
               </li>
             ))}
@@ -184,15 +191,15 @@ export default async function ServicePage({ params }: Props) {
       {/* Other services */}
       <section className="pb-4">
         <div className="container-page">
-          <h2 className="label mb-5">Other services</h2>
+          <h2 className="label mb-5">Other software services</h2>
           <ul className="grid gap-3 sm:grid-cols-3">
             {others.map((s) => (
               <li key={s.slug}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="group flex items-center justify-between rounded-xl border bg-card px-5 py-5 transition-colors hover:border-input"
+                  className="group flex items-center justify-between border bg-card px-5 py-5 transition-colors hover:border-input"
                 >
-                  <span className="font-display text-2xl">{s.name}</span>
+                  <span className="font-display text-xl uppercase">{s.name}</span>
                   <ArrowUpRight className="size-4 text-subtle group-hover:text-foreground" aria-hidden="true" />
                 </Link>
               </li>

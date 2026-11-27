@@ -12,14 +12,14 @@ function ChartVisual() {
       <div className="col-span-2 rounded-lg border bg-card p-3">
         <div className="flex items-baseline justify-between">
           <span className="text-[11px] text-subtle">Revenue</span>
-          <span className="text-[11px] text-teal">+18%</span>
+          <span className="text-[11px] text-lime">+18%</span>
         </div>
         <div className="mt-1 text-[15px] font-semibold">$486,200</div>
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="mt-2 h-20 w-full">
           <polyline
             points={pts}
             fill="none"
-            stroke="var(--color-teal)"
+            stroke="var(--color-lime)"
             strokeWidth="2"
             vectorEffect="non-scaling-stroke"
           />
@@ -60,7 +60,7 @@ function PipelineVisual() {
                 key={it}
                 className={cn(
                   "rounded-md border bg-background px-2 py-1.5 text-[11px]",
-                  c.name === "Won" && "border-teal/40"
+                  c.name === "Won" && "border-lime/40"
                 )}
               >
                 {it}
@@ -91,7 +91,7 @@ function PhoneVisual() {
               key={t}
               className={cn(
                 "flex items-center justify-between rounded-md border px-2 py-1.5 text-[10px]",
-                i === 0 && "border-teal/40 bg-teal/5"
+                i === 0 && "border-lime/40 bg-lime/5"
               )}
             >
               <span>{n}</span>
@@ -121,7 +121,7 @@ function FlowVisual() {
           <div
             className={cn(
               "w-full rounded-lg border bg-card px-3 py-2.5",
-              i === 1 && "border-teal/40"
+              i === 1 && "border-lime/40"
             )}
           >
             <div className="text-[12px] font-medium">{s.title}</div>

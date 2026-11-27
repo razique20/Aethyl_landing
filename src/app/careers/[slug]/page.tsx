@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Mail } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
-import { LinkedInIcon, XIcon } from "@/components/SocialIcons";
 import { SectionLabel, buttonVariants } from "@/components/ui";
 import { getRoleBySlug, roles } from "@/data/careers";
 import { applyHref } from "@/lib/apply";
@@ -46,8 +45,6 @@ export default async function RolePage({ params }: Props) {
 
   const channels = [
     { icon: Mail, label: "Email your CV", value: CONTACT.email, href: apply, external: false },
-    { icon: LinkedInIcon, label: "LinkedIn", value: "Aethyl Global", href: CONTACT.linkedin, external: true },
-    { icon: XIcon, label: "X", value: "@aethylglobal", href: CONTACT.x, external: true },
   ];
 
   const breadcrumbJsonLd = {
@@ -74,14 +71,14 @@ export default async function RolePage({ params }: Props) {
 
           <SectionLabel className="rise mt-12">Careers — {role.team}</SectionLabel>
           <h1
-            className="rise font-display mt-6 text-[52px] leading-[0.95] text-balance sm:text-7xl lg:text-[96px]"
+            className="rise font-display mt-6 text-[40px] uppercase leading-[0.95] text-balance sm:text-6xl lg:text-[80px]"
             style={{ animationDelay: "100ms" }}
           >
             {role.title}
           </h1>
           <div className="rise mt-6 flex flex-wrap gap-2" style={{ animationDelay: "160ms" }}>
             {[role.team, role.type, role.location].map((t) => (
-              <span key={t} className="rounded-full border px-3 py-1 text-[13px] text-muted-foreground">
+              <span key={t} className="border px-2.5 py-1 text-[13px] text-muted-foreground">
                 {t}
               </span>
             ))}
@@ -111,7 +108,7 @@ export default async function RolePage({ params }: Props) {
               { heading: "What you bring", items: role.requirements },
             ].map((col) => (
               <div key={col.heading} data-reveal>
-                <h2 className="font-display text-4xl">{col.heading}</h2>
+                <h2 className="font-display text-2xl uppercase sm:text-3xl">{col.heading}</h2>
                 <ul className="mt-6 border-t">
                   {col.items.map((item) => (
                     <li key={item} className="flex gap-4 border-b py-4 text-[16px] leading-relaxed">
@@ -124,7 +121,7 @@ export default async function RolePage({ params }: Props) {
             ))}
 
             <div data-reveal>
-              <h2 className="font-display text-4xl">How to apply</h2>
+              <h2 className="font-display text-2xl uppercase sm:text-3xl">How to apply</h2>
               <p className="mt-4 max-w-xl text-[16px] leading-relaxed text-muted-foreground">
                 Email your CV to{" "}
                 <a href={apply} className="link-draw text-foreground">
@@ -138,9 +135,9 @@ export default async function RolePage({ params }: Props) {
 
           {/* Apply card: sticky beside the details on desktop */}
           <aside className="lg:sticky lg:top-28 lg:self-start">
-            <div className="rounded-2xl border bg-card p-6 sm:p-8">
+            <div className="border bg-card p-6 sm:p-8">
               <p className="label">Apply for this role</p>
-              <p className="font-display mt-4 text-3xl leading-tight">{role.title}</p>
+              <p className="font-display mt-4 text-2xl uppercase leading-tight">{role.title}</p>
               <a href={apply} className={buttonVariants({ size: "lg", className: "mt-6 w-full" })}>
                 <Mail aria-hidden="true" />
                 Email your CV
@@ -175,10 +172,10 @@ export default async function RolePage({ params }: Props) {
               <li key={r.slug}>
                 <Link
                   href={`/careers/${r.slug}`}
-                  className="group flex items-center justify-between rounded-2xl border bg-card px-6 py-5 transition-[border-color,transform] hover:border-input active:scale-[0.98]"
+                  className="group flex items-center justify-between border bg-card px-6 py-5 transition-[border-color,transform] hover:border-input active:scale-[0.98]"
                 >
                   <span>
-                    <span className="font-display block text-2xl">{r.title}</span>
+                    <span className="font-display block text-xl uppercase">{r.title}</span>
                     <span className="mt-1 block text-[13px] text-muted-foreground">
                       {r.type} · {r.location}
                     </span>

@@ -6,12 +6,12 @@ import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import Logo from "./Logo";
 import { buttonVariants, cn } from "./ui";
-import { services } from "@/data/services";
+import { pillars } from "@/data/services";
 import { AUDIT_CTA, CONTACT } from "@/lib/site";
 import { haptic } from "@/lib/haptics";
 
 const links = [
-  { label: "Studio", href: "/#studio" },
+  { label: "About", href: "/#about" },
   { label: "Process", href: "/#process" },
   { label: "Journal", href: "/blog" },
   { label: "Contact", href: "/contact" },
@@ -28,7 +28,7 @@ export default function Navbar() {
   const progress = useRef<HTMLDivElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  // Home opens on a dark hero, so the bar starts dark and turns light on scroll.
+  // Home opens on the hero, so the bar starts transparent and fills in on scroll.
   const overHero = pathname === "/" && !scrolled && !open;
 
   // Close the mobile menu on navigation (state reset during render).
@@ -67,7 +67,7 @@ export default function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 transition-[background-color,border-color,color] duration-500",
-        // Phones: no bar at all, just floating circular buttons (revlient-style).
+        // Phones: no bar at all, just floating square buttons.
         "max-md:border-b-0 max-md:!bg-transparent max-md:backdrop-blur-none",
         overHero
           ? "theme-dark border-b border-transparent !bg-transparent"
@@ -79,18 +79,19 @@ export default function Navbar() {
       <div
         ref={progress}
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-teal md:hidden"
+        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-lime md:hidden"
       />
       <div className="container-page relative z-10 flex h-[72px] items-center gap-8">
         <Logo className="max-md:hidden" />
         <Link
           href="/"
           aria-label="Aethyl Global — home"
-          className="flex size-12 items-center justify-center rounded-full bg-[#08090c] text-white shadow-lg shadow-black/15 ring-1 ring-white/15 transition-transform active:scale-90 md:hidden"
+          className="relative flex size-12 items-center justify-center bg-ink text-white ring-1 ring-white/15 transition-transform active:scale-90 md:hidden"
         >
-          <span className="text-[22px] font-light leading-none tracking-[-0.06em]" aria-hidden="true">
-            ag.
+          <span className="font-display text-[22px] leading-none" aria-hidden="true">
+            A
           </span>
+          <span className="absolute bottom-2 right-2 size-1.5 bg-lime" aria-hidden="true" />
         </Link>
 
         <nav aria-label="Main" className="hidden md:block">
@@ -101,18 +102,21 @@ export default function Navbar() {
                 Services
               </Link>
               <div className="invisible absolute -left-5 top-full pt-4 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                <ul className="w-[340px] rounded-xl border bg-popover p-2 shadow-xl shadow-black/[0.08]">
-                  {services.map((s, i) => (
-                    <li key={s.slug}>
+                <ul className="w-[360px] border bg-popover p-2">
+                  {pillars.map((p, i) => (
+                    <li key={p.id}>
                       <Link
-                        href={`/services/${s.slug}`}
-                        className="flex items-baseline gap-4 rounded-lg px-3 py-3 transition-colors hover:bg-accent"
+                        href={`/services#${p.id}`}
+                        className="flex items-baseline gap-4 px-3 py-3 transition-colors hover:bg-accent"
                       >
                         <span className="text-[11px] tabular-nums text-subtle">0{i + 1}</span>
                         <span>
-                          <span className="font-display block text-xl leading-tight">{s.name}</span>
+                          <span className="font-display block text-lg uppercase leading-tight">{p.name}</span>
                           <span className="mt-1 block text-[13px] leading-snug text-muted-foreground">
-                            {s.highlights[0]}
+                            {p.items
+                              .slice(0, 3)
+                              .map((item) => item.label)
+                              .join(", ")}
                           </span>
                         </span>
                       </Link>
@@ -144,7 +148,7 @@ export default function Navbar() {
               haptic();
               setOpen((v) => !v);
             }}
-            className="relative flex size-12 items-center justify-center rounded-full bg-[#08090c] text-white shadow-lg shadow-black/15 ring-1 ring-white/15 transition-transform active:scale-90 md:hidden"
+            className="relative flex size-12 items-center justify-center bg-ink text-white ring-1 ring-white/15 transition-transform active:scale-90 md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -153,13 +157,13 @@ export default function Navbar() {
             <span aria-hidden="true" className="relative block h-3 w-[18px]">
               <span
                 className={cn(
-                  "absolute left-0 h-[1.5px] w-full rounded bg-current transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  "absolute left-0 h-[2px] w-full bg-current transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                   open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
                 )}
               />
               <span
                 className={cn(
-                  "absolute left-0 h-[1.5px] w-full rounded bg-current transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  "absolute left-0 h-[2px] w-full bg-current transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
                   open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
                 )}
               />
@@ -168,25 +172,27 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu: full-screen light sheet with oversized links */}
+      {/* Mobile menu: full-screen off-white sheet with oversized links */}
       <div
         id="mobile-menu"
         aria-hidden={!open}
         inert={!open}
         className={cn(
-          "fixed inset-0 overflow-y-auto bg-white text-[#08090c] transition-[opacity,visibility] duration-500 md:hidden",
-          "bg-[radial-gradient(90%_45%_at_0%_0%,rgba(45,212,191,0.14),transparent_70%),radial-gradient(70%_40%_at_100%_100%,rgba(99,102,241,0.08),transparent_70%)]",
+          "theme-light fixed inset-0 overflow-y-auto transition-[opacity,visibility] duration-500 md:hidden",
           open ? "visible opacity-100" : "invisible opacity-0"
         )}
       >
         <nav aria-label="Mobile" className="flex min-h-full flex-col px-5 pb-8 pt-[96px]">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#8b8d96]">Menu</p>
-          <ul className="mt-5 border-t border-[#e8e8ed]">
+          <p className="label flex items-center gap-3">
+            <span className="mark !size-2" aria-hidden="true" />
+            Menu
+          </p>
+          <ul className="mt-5 border-t">
             {mobileLinks.map((l, i) => (
               <li
                 key={l.href}
                 className={cn(
-                  "border-b border-[#e8e8ed] transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                  "border-b transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
                   open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
                 )}
                 style={{ transitionDelay: open ? `${80 + i * 55}ms` : "0ms" }}
@@ -199,11 +205,11 @@ export default function Navbar() {
                   }}
                   className="group flex items-center justify-between py-4 active:opacity-60"
                 >
-                  <span className="text-[44px] font-normal leading-none tracking-[-0.03em]">{l.label}</span>
+                  <span className="font-display text-[40px] uppercase leading-none">{l.label}</span>
                   <ArrowUpRight
                     className={cn(
                       "size-6 transition-colors",
-                      pathname === l.href ? "text-teal" : "text-[#c9cad1]"
+                      pathname === l.href ? "text-blue" : "text-input"
                     )}
                     aria-hidden="true"
                   />
@@ -221,14 +227,14 @@ export default function Navbar() {
           >
             <a
               href={`mailto:${CONTACT.email}`}
-              className="mb-5 block text-center text-sm text-[#5a5c66]"
+              className="mb-5 block text-center text-sm text-muted-foreground"
             >
               {CONTACT.email}
             </a>
             <Link
               href={AUDIT_CTA.href}
               onClick={() => setOpen(false)}
-              className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-[#08090c] text-[15px] font-medium text-white transition-transform active:scale-[0.97]"
+              className="flex h-14 w-full items-center justify-center gap-2 bg-blue text-[15px] font-medium text-white transition-transform active:scale-[0.97]"
             >
               {AUDIT_CTA.label}
               <ArrowUpRight className="size-4" aria-hidden="true" />

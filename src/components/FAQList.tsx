@@ -11,11 +11,11 @@ export default function FAQList({ faqs }: { faqs: FAQ[] }) {
         <details key={faq.q} className="accordion group border-b" data-reveal data-reveal-delay={i * 60}>
           <summary className="grid grid-cols-[40px_1fr_auto] items-baseline gap-3 py-6 text-left sm:grid-cols-[56px_1fr_auto]">
             <span className="text-[13px] tabular-nums text-subtle">{String(i + 1).padStart(2, "0")}</span>
-            <h3 className="font-display text-2xl leading-snug transition-colors group-hover:text-muted-foreground sm:text-[28px]">
+            <h3 className="font-display text-xl leading-snug transition-colors group-hover:text-muted-foreground sm:text-2xl">
               {faq.q}
             </h3>
             <span
-              className="accordion-plus font-display text-3xl leading-none text-muted-foreground"
+              className="accordion-plus font-display text-3xl leading-none text-mark"
               aria-hidden="true"
             >
               +

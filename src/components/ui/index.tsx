@@ -11,15 +11,16 @@ type ButtonVariant = "default" | "audit" | "outline" | "ghost" | "link";
 type ButtonSize = "sm" | "default" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-[background-color,color,border-color,transform] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:transition-transform [&_svg]:duration-300 hover:[&_svg]:translate-x-0.5 active:scale-[0.97] [-webkit-tap-highlight-color:transparent]";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-[background-color,color,border-color,transform] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:transition-transform [&_svg]:duration-300 hover:[&_svg]:translate-x-0.5 active:scale-[0.97] [-webkit-tap-highlight-color:transparent]";
 
 const variants: Record<ButtonVariant, string> = {
+  // Primary: royal blue (ink inside a blue block).
   default: "bg-primary text-primary-foreground hover:bg-primary/85",
-  // The only use of amber on the site.
-  audit: "bg-amber text-[#08090c] hover:bg-amber/85",
-  outline: "border border-input bg-transparent text-foreground hover:border-foreground/60",
+  // The main call to action. Always royal blue.
+  audit: "bg-blue text-white hover:bg-[#2741d4]",
+  outline: "border border-input bg-transparent text-foreground hover:border-foreground",
   ghost: "text-muted-foreground hover:text-foreground",
-  link: "text-teal underline-offset-4 hover:underline",
+  link: "text-foreground underline decoration-1 underline-offset-4 hover:decoration-2",
 };
 
 const sizes: Record<ButtonSize, string> = {
@@ -46,7 +47,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border border-border px-3 py-1 text-xs text-muted-foreground",
+        "inline-flex items-center border border-border px-2.5 py-1 text-xs text-muted-foreground",
         className
       )}
     >
@@ -55,7 +56,7 @@ export function Badge({
   );
 }
 
-/** Editorial section label, e.g. "(02) — Services". */
+/** Section label with the lime square mark, e.g. "■ 02 / Services". */
 export function SectionLabel({
   index,
   children,
@@ -67,7 +68,8 @@ export function SectionLabel({
 }) {
   return (
     <p className={cn("label flex items-center gap-3", className)}>
-      {index && <span className="text-muted-foreground">({index})</span>}
+      <span className="mark !size-2" aria-hidden="true" />
+      {index && <span className="text-muted-foreground">{index} /</span>}
       <span>{children}</span>
     </p>
   );
@@ -100,7 +102,7 @@ export function SectionHeading({
           {label}
         </SectionLabel>
       )}
-      <Tag className="font-display text-[44px] leading-[1] text-balance sm:text-6xl lg:text-7xl">
+      <Tag className="font-display text-[34px] uppercase leading-[0.98] text-balance sm:text-5xl lg:text-6xl">
         {title}
       </Tag>
       {description && (

@@ -7,9 +7,9 @@ import { applyHref } from "@/lib/apply";
 import { CONTACT } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Careers — Remote Jobs at a Software Studio",
+  title: "Careers — Remote Jobs at Aethyl Global",
   description:
-    "Join Aethyl Global, a remote software studio. Open roles: Full-stack Engineer, Graphic Designer and Automation Specialist. Email your CV to apply.",
+    "Join Aethyl Global, a remote business services company. Open roles: Full-stack Engineer, Graphic Designer and Automation Specialist. Email your CV to apply.",
   alternates: { canonical: "/careers" },
   openGraph: {
     url: "/careers",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 const perks = [
   { title: "Fully remote", text: "Work from anywhere. Our team and clients span the Middle East, India, Europe and the Americas." },
-  { title: "Real impact", text: "You ship software that businesses use every day, and see the impact on how they work." },
+  { title: "Real impact", text: "Your work is used by growing businesses every day, and you see the impact on how they run." },
   { title: "Small, senior team", text: "No layers of process. You talk to clients, own your work and learn across the whole stack." },
 ];
 
@@ -32,7 +32,7 @@ export default function CareersPage() {
         <div className="container-page">
           <SectionLabel className="rise mb-8">Careers</SectionLabel>
           <h1
-            className="rise font-display max-w-4xl text-[52px] leading-[0.95] text-balance sm:text-7xl lg:text-[96px]"
+            className="rise font-display max-w-4xl text-[40px] uppercase leading-[0.95] text-balance sm:text-6xl lg:text-[80px]"
             style={{ animationDelay: "100ms" }}
           >
             Build what&apos;s <em>next</em> with us
@@ -41,15 +41,15 @@ export default function CareersPage() {
             className="rise mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty"
             style={{ animationDelay: "200ms" }}
           >
-            We&apos;re a remote software studio building dashboards, CRM systems, mobile
-            apps and automation for growing businesses.
+            We&apos;re a remote business services company helping growing businesses
+            with software, marketing, accounting and tax.
           </p>
         </div>
       </section>
 
-      <section id="roles" className="border-t bg-soft py-20 sm:py-28">
+      <section id="roles" className="theme-light py-20 sm:py-28">
         <div className="container-page">
-          <h2 className="font-display mb-10 text-4xl sm:text-5xl">
+          <h2 className="font-display mb-10 text-3xl uppercase sm:text-5xl">
             Open <em>roles</em>
           </h2>
 
@@ -58,10 +58,10 @@ export default function CareersPage() {
               <li key={role.slug} data-reveal data-reveal-delay={i * 80}>
                 <Link
                   href={`/careers/${role.slug}`}
-                  className="group flex items-start gap-4 rounded-2xl border bg-card p-6 transition-[border-color,transform] duration-300 hover:border-input active:scale-[0.98] sm:items-center sm:gap-6 sm:p-8"
+                  className="group flex items-start gap-4 border bg-card p-6 transition-[border-color,transform] duration-300 hover:border-input active:scale-[0.98] sm:items-center sm:gap-6 sm:p-8"
                 >
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-display text-[32px] leading-tight transition-colors group-hover:text-muted-foreground sm:text-4xl">
+                    <h3 className="font-display text-[26px] uppercase leading-tight transition-colors group-hover:text-muted-foreground sm:text-3xl">
                       {role.title}
                     </h3>
                     <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
@@ -69,13 +69,13 @@ export default function CareersPage() {
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {[role.team, role.type, role.location].map((t) => (
-                        <span key={t} className="rounded-full border px-3 py-1 text-xs text-muted-foreground">
+                        <span key={t} className="border px-2.5 py-1 text-xs text-muted-foreground">
                           {t}
                         </span>
                       ))}
                     </div>
                   </div>
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-full border transition-colors group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
+                  <span className="flex size-11 shrink-0 items-center justify-center border transition-colors group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
                     <ArrowUpRight className="size-5" aria-hidden="true" />
                     <span className="sr-only">View role</span>
                   </span>
@@ -88,7 +88,7 @@ export default function CareersPage() {
 
       <section className="border-t py-20 sm:py-28">
         <div className="container-page">
-          <h2 data-reveal className="font-display text-4xl sm:text-5xl">
+          <h2 data-reveal className="font-display text-3xl uppercase sm:text-5xl">
             Why <em>Aethyl</em>
           </h2>
           <ol className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
@@ -103,9 +103,9 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <section className="theme-dark py-20 sm:py-28">
+      <section className="theme-blue slant-top pb-20 pt-28 sm:pb-28 sm:pt-44">
         <div className="container-page">
-          <h2 data-reveal className="font-display max-w-3xl text-5xl leading-[1] sm:text-7xl">
+          <h2 data-reveal className="font-display max-w-3xl text-4xl uppercase leading-[1] sm:text-6xl">
             Don&apos;t see your <em>role?</em>
           </h2>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">

@@ -72,7 +72,7 @@ export const services: Service[] = [
       },
       {
         q: "How long does a custom dashboard take to build?",
-        a: "A first working version is typically live in 2 to 4 weeks, depending on how many data sources are involved. We confirm the timeline after the free audit.",
+        a: "A first working version is typically live in 2 to 4 weeks, depending on how many data sources are involved. We confirm the timeline after the free call.",
       },
       {
         q: "Will it work on mobile?",
@@ -127,7 +127,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "Why build a custom CRM instead of using an existing one?",
-        a: "A custom CRM fits your exact process, avoids per-seat licence costs as you grow, and can include workflows a generic tool can't. If an off-the-shelf CRM suits you better, we'll tell you during the audit.",
+        a: "A custom CRM fits your exact process, avoids per-seat licence costs as you grow, and can include workflows a generic tool can't. If an off-the-shelf CRM suits you better, we'll tell you during the free call.",
       },
       {
         q: "Can you migrate our existing customer data?",
@@ -186,7 +186,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "How much does a mobile app cost?",
-        a: "It depends on features, integrations and design. After the free 30-minute audit we give you a scoped quote, and we can suggest a smaller first release to get to market sooner.",
+        a: "It depends on features, integrations and design. After the free 30-minute call we give you a scoped quote, and we can suggest a smaller first release to get to market sooner.",
       },
       {
         q: "React Native or Flutter — which do you use?",
@@ -245,7 +245,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What kinds of tasks can be automated?",
-        a: "Anything rule-based and repeated: data entry between systems, report generation, invoice and order processing, appointment scheduling and enquiry routing. The audit identifies which ones save you the most time first.",
+        a: "Anything rule-based and repeated: data entry between systems, report generation, invoice and order processing, appointment scheduling and enquiry routing. The free call identifies which ones save you the most time first.",
       },
       {
         q: "Is AI automation safe for our business data?",
@@ -260,21 +260,89 @@ export function getServiceBySlug(slug: string): Service | undefined {
   return services.find((s) => s.slug === slug);
 }
 
+/**
+ * The four service pillars. Software is built by our own team; accounting and
+ * tax are delivered with trusted partners (never claim in-house accountants
+ * or registered tax agents).
+ */
+export type PillarId = "software" | "marketing" | "accounting" | "tax";
+
+export interface Pillar {
+  id: PillarId;
+  name: string;
+  description: string;
+  items: { label: string; href?: string }[];
+  /** Shown as a note when the work is delivered with partners. */
+  partnerNote?: string;
+}
+
+export const pillars: Pillar[] = [
+  {
+    id: "software",
+    name: "Software",
+    description:
+      "Custom software built around how your team works, from first sketch to launch, and supported after it.",
+    items: [
+      { label: "Custom dashboards", href: "/services/custom-dashboards" },
+      { label: "CRM systems", href: "/services/crm-development" },
+      { label: "Web development" },
+      { label: "Mobile apps", href: "/services/mobile-app-development" },
+      { label: "AI automation", href: "/services/business-automation" },
+    ],
+  },
+  {
+    id: "marketing",
+    name: "Marketing",
+    description:
+      "Social media, content and brand work that keeps your business visible and brings in new enquiries.",
+    items: [
+      { label: "Social media management" },
+      { label: "Content and design" },
+      { label: "Brand development" },
+      { label: "Lead generation" },
+    ],
+  },
+  {
+    id: "accounting",
+    name: "Accounting",
+    description:
+      "Bookkeeping, monthly financial reporting and payroll support, delivered with trusted accounting partners.",
+    items: [
+      { label: "Bookkeeping" },
+      { label: "Monthly financial reporting" },
+      { label: "Payroll support" },
+    ],
+    partnerNote: "Delivered with trusted accounting partners",
+  },
+  {
+    id: "tax",
+    name: "Tax",
+    description:
+      "UAE corporate tax and VAT registration, filing and compliance support, delivered with trusted tax partners.",
+    items: [
+      { label: "Corporate tax registration and filing" },
+      { label: "VAT registration and filing" },
+      { label: "Compliance support" },
+    ],
+    partnerNote: "Delivered with trusted tax partners",
+  },
+];
+
 export const processSteps = [
   {
-    title: "Free 30-minute audit",
-    text: "We start with how your team actually operates — tools, spreadsheets, repetitive tasks — and show you what to automate first.",
+    title: "Free 30-minute call",
+    text: "We learn how your business runs today and where you need help: software, marketing, accounting or tax.",
   },
   {
     title: "Scope & quote",
-    text: "A clear written scope, timeline and fixed quote for the first release — before any commitment.",
+    text: "A clear written scope, timeline and quote for the work, before any commitment.",
   },
   {
-    title: "Sketch to launch",
-    text: "We design and build the full system — app, backend and admin panel — and you see working software every week.",
+    title: "Delivery",
+    text: "Software ships in weekly releases you can see. Accounting and tax work runs with our partners, coordinated by us.",
   },
   {
-    title: "Launch & ongoing support",
-    text: "We launch, train your team and stay on to support and improve the software as your business grows.",
+    title: "Ongoing support",
+    text: "One point of contact for everything, and we stay on as your business grows.",
   },
 ];

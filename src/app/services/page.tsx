@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
+import Pillars from "@/components/Pillars";
 import ServicesBento from "@/components/ServicesBento";
 import Process from "@/components/Process";
 import AuditCTA from "@/components/AuditCTA";
 
 export const metadata: Metadata = {
-  title: "Custom Software Development Services",
+  title: "Services — Software, Marketing, Accounting & Tax",
   description:
-    "Custom dashboards, CRM development, mobile apps and business automation, from first sketch to launch and support. See what we build and book a free 30-minute audit.",
+    "Software (dashboards, CRM, web, mobile apps, AI automation), marketing, accounting and UAE tax support for growing businesses, with one point of contact. Book a free 30-minute call.",
   alternates: { canonical: "/services" },
   openGraph: {
     url: "/services",
-    title: "Custom Software Development Services | Aethyl Global",
+    title: "Services — Software, Marketing, Accounting & Tax | Aethyl Global",
     description:
-      "Custom dashboards, CRM, mobile apps and automation, built around how your team works.",
+      "Every service a growing business needs. One partner. Software, marketing, accounting and tax.",
   },
 };
 
 export default function ServicesPage() {
   return (
     <>
-      <ServicesBento headingAs="h1" />
-      <Process index="02" />
+      <Pillars headingAs="h1" />
+      <ServicesBento index="02" />
+      <Process index="03" />
       <AuditCTA />
     </>
   );

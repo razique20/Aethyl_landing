@@ -1,20 +1,20 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { services } from "@/data/services";
-import { CONTACT } from "@/lib/site";
+import { pillars } from "@/data/services";
+import { CONTACT, TAGLINE } from "@/lib/site";
 
 const columns = [
   {
     title: "Services",
     links: [
-      ...services.map((s) => ({ label: s.name, href: `/services/${s.slug}` })),
+      ...pillars.map((p) => ({ label: p.name, href: `/services#${p.id}` })),
       { label: "All services", href: "/services" },
     ],
   },
   {
-    title: "Studio",
+    title: "Company",
     links: [
-      { label: "About", href: "/#studio" },
+      { label: "About", href: "/#about" },
       { label: "Process", href: "/#process" },
       { label: "Journal", href: "/blog" },
       { label: "Careers", href: "/careers" },
@@ -37,8 +37,8 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
           <div>
             <Logo />
-            <p className="font-display mt-6 max-w-sm text-[28px] leading-[1.15]">
-              Software shaped around how your team <em>actually</em> works.
+            <p className="font-display mt-6 max-w-sm text-[26px] uppercase leading-[1.05]">
+              {TAGLINE}
             </p>
             <a
               href={`mailto:${CONTACT.email}`}
@@ -75,16 +75,16 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-col gap-2 border-t pt-6 text-[13px] text-subtle sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} Aethyl Global. All rights reserved.</p>
-          <p>Remote studio · {CONTACT.regions}</p>
+          <p>Remote team · {CONTACT.regions}</p>
         </div>
       </div>
 
       {/* Oversized wordmark, cropped by the page edge */}
       <p
         aria-hidden="true"
-        className="font-display pointer-events-none mt-6 select-none whitespace-nowrap text-center text-[17.5vw] leading-[0.78] text-foreground/[0.06]"
+        className="font-display pointer-events-none mt-6 select-none whitespace-nowrap text-center text-[19vw] uppercase leading-[0.78] text-foreground/[0.06]"
       >
-        Aethyl Global
+        Aethyl
       </p>
     </footer>
   );

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Figtree, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Archivo_Black, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,20 +7,14 @@ import SoundToggle from "@/components/SoundToggle";
 import RevealObserver from "@/components/RevealObserver";
 import MobileCTA from "@/components/MobileCTA";
 import JsonLd from "@/components/JsonLd";
-import { CONTACT, SAME_AS, SITE_NAME, SITE_URL } from "@/lib/site";
+import { AREA_SERVED, COMPANY_DESCRIPTION, CONTACT, SAME_AS, SITE_NAME, SITE_URL } from "@/lib/site";
 
-const figtree = Figtree({ variable: "--font-figtree", subsets: ["latin"] });
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-});
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"], weight: ["400", "500"] });
+const archivoBlack = Archivo_Black({ variable: "--font-archivo-black", subsets: ["latin"], weight: "400" });
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
-  colorScheme: "light",
+  themeColor: "#0a0a0b",
+  colorScheme: "dark",
 };
 
 // Defaults only. Every page sets its own title, description and canonical
@@ -29,11 +23,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Custom Dashboards, CRM, Mobile Apps & Automation | Aethyl Global",
+    default: "Software, Marketing, Accounting & Tax for Growing Businesses | Aethyl Global",
     template: "%s | Aethyl Global",
   },
-  description:
-    "Aethyl Global is a software studio building custom dashboards, CRM systems, mobile apps and automation for growing businesses around the world.",
+  description: COMPANY_DESCRIPTION,
   applicationName: SITE_NAME,
   verification: {
     google: "fKp-8EqALDkxPwe7Ds1cgwg6BGEWOoUNfEtkpCrS0-I",
@@ -71,9 +64,9 @@ const organizationJsonLd = {
   logo: `${SITE_URL}/icon.svg`,
   email: CONTACT.email,
   sameAs: SAME_AS,
-  description:
-    "Software studio building custom dashboards, CRM systems, mobile apps and automation for growing businesses worldwide.",
-  areaServed: ["Middle East", "India", "Europe", "North America", "South America"],
+  description: COMPANY_DESCRIPTION,
+  slogan: "Every service a growing business needs. One partner.",
+  areaServed: AREA_SERVED,
 };
 
 const websiteJsonLd = {
@@ -91,7 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${figtree.variable} ${instrumentSerif.variable} ${geistMono.variable}`}
+      className={`${inter.variable} ${archivoBlack.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -101,14 +94,14 @@ export default function RootLayout({
       <body className="min-h-screen bg-background text-foreground antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
         >
           Skip to content
         </a>
         <Navbar />
         <main id="main">{children}</main>
         <Footer />
-        <SoundToggle className="fixed bottom-4 left-4 z-50 bg-background/85 shadow-sm backdrop-blur-md sm:bottom-6 sm:left-6" />
+        <SoundToggle className="fixed bottom-4 left-4 z-50 bg-background/85 backdrop-blur-md sm:bottom-6 sm:left-6" />
         <MobileCTA />
         <RevealObserver />
         <JsonLd data={[organizationJsonLd, websiteJsonLd]} />

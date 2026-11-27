@@ -96,7 +96,7 @@ export default function SoundToggle({ className }: { className?: string }) {
       aria-pressed={playing}
       aria-label={playing ? "Turn background music off" : "Turn background music on"}
       className={cn(
-        "group inline-flex h-9 min-w-9 items-center justify-center gap-2.5 rounded-full border border-input px-3 sm:px-3.5 text-[12px] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:border-foreground/60 hover:text-foreground",
+        "group inline-flex h-9 min-w-9 items-center justify-center gap-2.5 border border-input px-3 sm:px-3.5 text-[12px] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:border-foreground/60 hover:text-foreground",
         className
       )}
     >

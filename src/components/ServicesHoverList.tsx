@@ -37,7 +37,7 @@ export default function ServicesHoverList({ items }: { items: Item[] }) {
                 href={`/services/${s.slug}`}
                 onMouseEnter={() => setActive(i)}
                 onFocus={() => setActive(i)}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border bg-card transition-transform active:scale-[0.98] lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-baseline lg:gap-x-8 lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-transparent lg:py-8 lg:active:scale-100"
+                className="group flex h-full flex-col overflow-hidden border bg-card transition-transform active:scale-[0.98] lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-baseline lg:gap-x-8 lg:overflow-visible lg:border-0 lg:bg-transparent lg:py-8 lg:active:scale-100"
               >
                 <div
                   aria-hidden="true"
@@ -50,7 +50,7 @@ export default function ServicesHoverList({ items }: { items: Item[] }) {
                   <div className="mt-2 lg:mt-0">
                     <h3
                       className={cn(
-                        "font-display text-[34px] leading-[1.05] transition-[color,transform] duration-500 ease-out sm:text-5xl",
+                        "font-display text-[28px] uppercase leading-[1.02] transition-[color,transform] duration-500 ease-out sm:text-4xl",
                         active === i ? "text-foreground lg:translate-x-2" : "text-foreground lg:text-muted-foreground"
                       )}
                     >
@@ -61,7 +61,7 @@ export default function ServicesHoverList({ items }: { items: Item[] }) {
                     </span>
                     <span className="mt-4 flex flex-wrap gap-2">
                       {s.highlights.map((h) => (
-                        <span key={h} className="rounded-full border px-3 py-1 text-xs text-muted-foreground">
+                        <span key={h} className="border px-2.5 py-1 text-xs text-muted-foreground">
                           {h}
                         </span>
                       ))}
@@ -85,12 +85,12 @@ export default function ServicesHoverList({ items }: { items: Item[] }) {
       {/* Preview frame: desktop only, purely decorative */}
       <div className="hidden lg:block" aria-hidden="true">
         <div className="sticky top-28">
-          <div className="relative aspect-[4/3.4] overflow-hidden rounded-xl border bg-card">
+          <div className="relative aspect-[4/3.4] overflow-hidden border bg-card">
             <div className="flex h-10 items-center justify-between border-b px-4">
               <span className="flex gap-1.5">
-                <span className="size-2.5 rounded-full bg-input" />
-                <span className="size-2.5 rounded-full bg-input" />
-                <span className="size-2.5 rounded-full bg-input" />
+                <span className="size-2.5 bg-input" />
+                <span className="size-2.5 bg-input" />
+                <span className="size-2.5 bg-lime" />
               </span>
               <span className="label">{items[active].name}</span>
             </div>
@@ -107,7 +107,7 @@ export default function ServicesHoverList({ items }: { items: Item[] }) {
               </div>
             ))}
           </div>
-          <p className="mt-4 text-[13px] text-subtle">Hover a service to preview</p>
+          <p className="mt-4 text-[13px] text-subtle">Illustrative interface. Hover a service to preview.</p>
         </div>
       </div>
     </div>

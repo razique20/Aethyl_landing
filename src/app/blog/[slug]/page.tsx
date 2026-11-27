@@ -94,7 +94,7 @@ export default async function BlogPost({ params }: Props) {
 
         <header className="mb-10">
           <Badge>{blog.tag}</Badge>
-          <h1 className="font-display mt-6 text-[44px] leading-[1.02] text-balance sm:text-6xl">
+          <h1 className="font-display mt-6 text-[34px] leading-[1.04] text-balance sm:text-5xl">
             {blog.title}
           </h1>
           <p className="mt-5 text-sm text-subtle">
@@ -108,7 +108,7 @@ export default async function BlogPost({ params }: Props) {
           alt=""
           width={1200}
           height={630}
-          className="mb-12 h-auto w-full rounded-xl border"
+          className="mb-12 h-auto w-full border"
         />
 
         <div className="prose-article">
@@ -117,13 +117,13 @@ export default async function BlogPost({ params }: Props) {
           )}
         </div>
 
-        <aside className="mt-16 rounded-xl border bg-card p-6 sm:p-8">
-          <h2 className="font-display text-3xl">Planning something <em>similar?</em></h2>
+        <aside className="theme-blue cut-tr mt-16 p-6 sm:p-8">
+          <h2 className="font-display text-2xl uppercase">Planning something <em>similar?</em></h2>
           <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
-            Book a free 30-minute audit with our team. We&apos;ll look at how you work
-            today and tell you what&apos;s worth building first.
+            Book a free 30-minute call with our team. We&apos;ll look at how you work
+            today and tell you what&apos;s worth doing first.
           </p>
-          <Link href={AUDIT_CTA.href} className={buttonVariants({ variant: "audit", className: "mt-5" })}>
+          <Link href={AUDIT_CTA.href} className={buttonVariants({ className: "mt-5" })}>
             {AUDIT_CTA.label}
             <ArrowRight aria-hidden="true" />
           </Link>

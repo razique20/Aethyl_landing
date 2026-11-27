@@ -13,11 +13,14 @@ const needs = [
   "Mobile app",
   "Automation / AI agents",
   "Website or web app",
+  "Marketing",
+  "Accounting",
+  "Tax (UAE)",
   "Not sure yet",
 ];
 
 const field =
-  "flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm placeholder:text-subtle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "flex h-10 w-full border border-input bg-transparent px-3 py-2 text-sm placeholder:text-subtle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 const label = "mb-2 block text-sm font-medium";
 
 /**
@@ -56,12 +59,12 @@ export default function ContactForm({ defaultNeed }: { defaultNeed?: string }) {
       action={FORM_ENDPOINT}
       method="POST"
       onSubmit={handleSubmit}
-      className="rounded-xl border bg-card p-6 sm:p-8"
+      className="border bg-card p-6 sm:p-8"
     >
-      <input type="hidden" name="_subject" value="Free 30-minute audit request — aethyl.com" />
+      <input type="hidden" name="_subject" value="Free 30-minute call request — aethyl.com" />
 
       <div className="mb-6">
-        <h2 className="font-display text-3xl">Book your free <em>audit</em></h2>
+        <h2 className="font-display text-2xl uppercase">Book your free <em>call</em></h2>
         <p className="mt-1 text-sm text-muted-foreground">
           We&apos;ll reply within one working day to schedule a time.
         </p>
@@ -95,7 +98,7 @@ export default function ContactForm({ defaultNeed }: { defaultNeed?: string }) {
             {needs.map((need) => (
               <label
                 key={need}
-                className="cursor-pointer rounded-full border border-input px-3 py-1.5 text-[13px] text-muted-foreground transition-colors hover:bg-accent has-checked:border-teal has-checked:bg-teal/10 has-checked:text-teal has-focus-visible:ring-2 has-focus-visible:ring-ring"
+                className="cursor-pointer border border-input px-3 py-1.5 text-[13px] text-muted-foreground transition-colors hover:bg-accent has-checked:border-lime has-checked:bg-lime has-checked:text-ink has-focus-visible:ring-2 has-focus-visible:ring-ring"
               >
                 <input
                   type="checkbox"
@@ -116,14 +119,14 @@ export default function ContactForm({ defaultNeed }: { defaultNeed?: string }) {
             id="cf-message"
             name="message"
             rows={4}
-            placeholder="e.g. We track stock in Excel across two warehouses and want a live dashboard."
+            placeholder="e.g. We need a CRM for our sales team and help with monthly bookkeeping."
             className={`${field} h-auto min-h-[110px] resize-y`}
           />
         </div>
       </div>
 
       {error && (
-        <p role="alert" className="mt-5 rounded-md border border-amber/40 px-3 py-2 text-sm text-amber">
+        <p role="alert" className="mt-5 border border-foreground/40 px-3 py-2 text-sm text-foreground">
           {error}
         </p>
       )}
@@ -133,7 +136,7 @@ export default function ContactForm({ defaultNeed }: { defaultNeed?: string }) {
         disabled={submitting}
         className={buttonVariants({ variant: "audit", size: "lg", className: "mt-6 w-full" })}
       >
-        {submitting ? "Sending…" : "Book my free 30-minute audit"}
+        {submitting ? "Sending…" : "Book my free 30-minute call"}
       </button>
       <p className="mt-3 text-center text-xs text-subtle">No cost, no obligation, no spam.</p>
     </form>
