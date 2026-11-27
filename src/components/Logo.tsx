@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import mark from "../../public/logo-mark.png";
 
-/** The "Ag" mark followed by the AETHYL wordmark with GLOBAL in wide spacing. */
+/** The pillar mark followed by the AETHYL wordmark with GLOBAL in wide spacing. */
 export default function Logo({ size = 22, className }: { size?: number; className?: string }) {
   return (
     <Link
@@ -25,7 +25,7 @@ export function Wordmark({ size = 22 }: { size?: number }) {
   );
 }
 
-/** The "Ag" brand mark: off-white Ag with a royal blue square, on ink. */
+/** The brand mark: four white pillars under a blue roof, on ink. */
 export function LogoMark({ className }: { className?: string }) {
   return <Image src={mark} alt="" width={64} height={64} className={`block shrink-0 ${className ?? ""}`} />;
 }
