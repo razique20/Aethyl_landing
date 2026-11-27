@@ -4,6 +4,7 @@ import Pillars from "@/components/Pillars";
 import About from "@/components/home/About";
 import Process from "@/components/Process";
 import Marquee from "@/components/home/Marquee";
+import PhotoBand from "@/components/home/PhotoBand";
 import BlogTeaser from "@/components/BlogTeaser";
 import FAQList, { faqJsonLd } from "@/components/FAQList";
 import AuditCTA from "@/components/AuditCTA";
@@ -95,6 +96,7 @@ export default function Home() {
       <Pillars />
       <About />
       <Process />
+      <PhotoBand />
       <section id="faq" className="border-t py-24 sm:py-32">
         <div className="container-page grid gap-14 lg:grid-cols-[1fr_1.5fr] lg:gap-20">
           <div className="lg:sticky lg:top-28 lg:self-start">

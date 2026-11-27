@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui";
@@ -9,6 +10,22 @@ export default function Hero() {
     // Dark blue background (the one gradient the brand allows). Slides up
     // under the transparent navbar (72px) so the bar sits on top of it.
     <section className="theme-dark relative -mt-[72px] overflow-hidden bg-[linear-gradient(165deg,#0a0a0b_0%,#0a0a0b_38%,#0b1450_100%)] pt-[72px]">
+      {/* Background photo: a team at work (Unsplash, free licence), under an
+          ink veil so the type stays readable. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/team.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          quality={70}
+          className="object-cover object-[72%_center] opacity-60 grayscale-[35%] md:opacity-45"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#0a0a0b_0%,rgba(10,10,11,0.86)_40%,rgba(10,10,11,0.45)_100%)] max-md:bg-[linear-gradient(to_bottom,rgba(10,10,11,0.55)_0%,rgba(10,10,11,0.7)_45%,rgba(10,10,11,0.85)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(10,10,11,0.6)_0%,rgba(10,10,11,0)_30%,rgba(11,20,80,0.55)_100%)]" />
+      </div>
+
       {/* Diagonal royal blue block, flat */}
       <div
         aria-hidden="true"

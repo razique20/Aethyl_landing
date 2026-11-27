@@ -1,4 +1,5 @@
 import { SectionLabel } from "@/components/ui";
+import { OnePartnerMap } from "@/components/visuals/BrandScenes";
 
 const regions = ["Middle East", "India", "Europe", "Americas"];
 
@@ -29,6 +30,10 @@ export default function About() {
           A business services company for growing businesses.{" "}
           <em>Software, marketing, accounting and tax, with one partner to call.</em>
         </h2>
+
+        <div data-reveal className="mt-14">
+          <OnePartnerMap />
+        </div>
 
         <div className="mt-16 grid gap-12 border-t pt-10 md:grid-cols-[1fr_2fr] md:gap-16">
           <div data-reveal>
