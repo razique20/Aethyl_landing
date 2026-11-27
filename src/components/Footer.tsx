@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { pillars } from "@/data/services";
+import { blogs } from "@/data/blogs";
 import { CONTACT, TAGLINE } from "@/lib/site";
 
 const columns = [
@@ -16,9 +17,19 @@ const columns = [
     links: [
       { label: "About", href: "/#about" },
       { label: "Process", href: "/#process" },
-      { label: "Journal", href: "/blog" },
+      { label: "Blog", href: "/blog" },
       { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    title: "Blog",
+    links: [
+      ...[...blogs]
+        .sort((a, b) => b.date.localeCompare(a.date))
+        .slice(0, 3)
+        .map((b) => ({ label: b.seoTitle ?? b.title, href: `/blog/${b.slug}` })),
+      { label: "All articles", href: "/blog" },
     ],
   },
   {
@@ -34,7 +45,7 @@ export default function Footer() {
   return (
     <footer className="overflow-hidden border-t">
       <div className="container-page pt-16 sm:pt-20">
-        <div className="grid gap-12 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.4fr_0.8fr]">
           <div>
             <Logo />
             <p className="font-display mt-6 max-w-sm text-[26px] uppercase leading-[1.05]">
